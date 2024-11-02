@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="328.0" prefWidth="492.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.$legacyfiles.AccessInfo">
+   <children>
+      <TextField layoutX="246.0" layoutY="69.0" prefHeight="53.0" prefWidth="212.0" />
+   </children>
+</AnchorPane>

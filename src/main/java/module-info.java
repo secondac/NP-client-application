@@ -1,4 +1,4 @@
-module core.npteamproject {
+module com.examples {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -7,6 +7,10 @@ module core.npteamproject {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
 
-    opens core.npteamproject to javafx.fxml;
-    exports core.npteamproject;
+    opens core.$legacyfiles to javafx.fxml;
+    exports core.$legacyfiles;
+    exports core.controller;
+    exports core.model;
+    exports core.view;
+    exports core.service;
 }

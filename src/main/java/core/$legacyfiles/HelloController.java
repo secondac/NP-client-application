@@ -1,4 +1,4 @@
-package core.npteamproject;
+package core.$legacyfiles;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
