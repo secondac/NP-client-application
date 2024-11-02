@@ -8,7 +8,8 @@
 
 ```aiignore
 
-com.example.twentyquestions
+│ pakage core │
+
 │
 ├── model
 │   ├── User.java
@@ -36,8 +37,8 @@ com.example.twentyquestions
 │   └── GameService.java
 │
 └── util
-    ├── HttpClientUtil.java
-    └── JsonParser.java
+    ├── ?
+    └── ?
 
 ```
 
