@@ -1,4 +1,4 @@
-package core.$legacyfiles;
+package core.$__legacyfiles;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

@@ -5,12 +5,12 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MainClient extends Application {
+public class ClientMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         // Load the initial login view
         LoginView loginView = new LoginView();
-        Scene scene = new Scene(loginView.getLayout(), 800, 600);
+        Scene scene = new Scene(loginView.getLayout(), 640, 240);
 
         primaryStage.setTitle("Twenty Questions Game");
         primaryStage.setScene(scene);

@@ -17,6 +17,8 @@ public class LoginController {
     @FXML
     private Label errorLabel;
 
+    private Button loginButton;
+
     @FXML
     private void handleLogin() {
         String username = usernameField.getText();
@@ -33,4 +35,6 @@ public class LoginController {
             // Logic for navigating to the next screen goes here
         }
     }
+
+
 }

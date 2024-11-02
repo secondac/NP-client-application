@@ -1,4 +1,4 @@
-package core.$legacyfiles;
+package core.$__legacyfiles;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

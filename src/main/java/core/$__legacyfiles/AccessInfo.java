@@ -1,4 +1,4 @@
-package core.$legacyfiles;
+package core.$__legacyfiles;
 
 public class AccessInfo {
 }
