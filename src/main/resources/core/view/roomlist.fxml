@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.controller.RoomListController">
+   <children>
+       <SplitPane dividerPositions="0.6634948096885813">
+           <!-- Left side: Room list -->
+           <items>
+               <VBox alignment="CENTER" prefWidth="400" spacing="15">
+                   <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Available Rooms" />
+                   <TableView fx:id="roomTable" prefHeight="382.0" prefWidth="537.0">
+                       <columns>
+                           <TableColumn fx:id="roomNameColumn" prefWidth="414.6666566133499" text="Room Name" />
+                           <TableColumn fx:id="currentPlayersColumn" prefWidth="123.33331298828125" text="Players" />
+                       </columns>
+                   </TableView>
+               <AnchorPane prefHeight="10.0" prefWidth="722.0">
+                  <children>
+                         <Button layoutX="317.0" onAction="#handleRefresh" prefHeight="42.0" prefWidth="80.0" text="Refresh" />
+                         <Button layoutX="409.0" onAction="#handleJoinRoom" prefHeight="42.0" prefWidth="80.0" text="Join Room" />
+                  </children></AnchorPane>
+               </VBox>
+
+               <!-- Right side: User information -->
+               <VBox alignment="TOP_CENTER" prefWidth="300" spacing="15">
+                   <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="User Information" />
+                   <Label text="Username:" />
+                   <Label fx:id="usernameLabel" style="-fx-font-size: 14px;" text="-" />
+                   <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Connected Users" />
+                   <ListView fx:id="userListView" />
+               </VBox>
+           </items>
+       </SplitPane>
+   </children>
+</AnchorPane>
