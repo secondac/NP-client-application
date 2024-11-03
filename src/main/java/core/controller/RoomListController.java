@@ -1,6 +1,9 @@
 package core.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -8,6 +11,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import core.model.Room;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class RoomListController {
 
@@ -56,6 +62,21 @@ public class RoomListController {
         Room selectedRoom = roomTable.getSelectionModel().getSelectedItem();
         if (selectedRoom != null) {
             System.out.println("Joining room: " + selectedRoom.getName());
+        }
+    }
+
+    private void openGameRoom() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/gameroom.fxml"));
+            Parent gameRoomLayout = loader.load();
+
+            Stage currentStage = (Stage) roomTable.getScene().getWindow();
+            currentStage.setScene(new Scene(gameRoomLayout));
+            currentStage.setTitle("Game Room");
+            currentStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to load the game room.");
         }
     }
 }
