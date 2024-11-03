@@ -1,0 +1,10 @@
+.text-area {
+    -fx-font-family: '맑은 고딕';
+    -fx-font-size: 14px;
+}
+
+.label {
+    -fx-font-size: 14pt;
+    -fx-font-family: "gangwon_font_bold";
+    /* NanumSquare */
+}
