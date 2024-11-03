@@ -3,7 +3,7 @@
 
 ### 
 ### 1. structures
-- MVC 패턴에 의거하여 작성되었습니다.
+- MVC 패턴으로 작성되었습니다.
 - It was written based on the MVC pattern.
 
 ```aiignore
