@@ -1,10 +1,9 @@
-.text-area {
-    -fx-font-family: '맑은 고딕';
-    -fx-font-size: 14px;
+@font-face {
+    font-family: 'GangwonBold';
+    src: url('/core/font/gangwon_font_bold.ttf');
 }
 
-.label {
-    -fx-font-size: 14pt;
-    -fx-font-family: "gangwon_font_bold";
-    /* NanumSquare */
+#welcomeLabel {
+    -fx-font-family: 'GangwonBold';
+    -fx-font-size: 18px;
 }
