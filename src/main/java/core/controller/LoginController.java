@@ -36,6 +36,8 @@ public class LoginController {
         String usernameFieldText = idField.getText();
         String serverFieldText = usernameField.getText();
 
+
+
         if (usernameFieldText.isEmpty() || serverFieldText.isEmpty()) {
             errorLabel.setText("Please enter both username and password.");
             errorLabel.setVisible(true);

@@ -11,7 +11,6 @@ public class LoginView {
 
     public LoginView() {
         try {
-            Font.loadFont(getClass().getResourceAsStream("/font/gangwon_font_bold.ttf"), 12);
             FXMLLoader loader = new FXMLLoader(LoginView.class.getResource("loginview.fxml"));
             layout = loader.load();
         } catch (IOException e) {

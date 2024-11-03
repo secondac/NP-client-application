@@ -1,6 +1,24 @@
 @font-face {
     font-family: 'GangwonBold';
-    src: url('/core/font/gangwon_font_bold.ttf');
+    src: url('core/font/gangwon_font_bold.ttf');
+}
+
+.root{
+    -fx-background-color: #383838;
+    -fx-font-size: 15pt;
+}
+.label{
+    -fx-text-fill: #E8E8E8;
+}
+.button{
+    -fx-background-color: linear-gradient(#DC9656, #AB4642);
+    -fx-text-fill: #E8E8E8;
+    -fx-background-radius: 4;
+}
+.button-blue{
+    -fx-background-color: #7CAFC2;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 4;
 }
 
 #welcomeLabel {
