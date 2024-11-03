@@ -47,6 +47,7 @@ public class LoginView {
         }
     }
 
+    // getter
     public Parent getLayout() {
         return layout;
     }
