@@ -18,8 +18,10 @@ import java.io.OutputStream;
 public class LoginController {
 
     @FXML
-
     private TextField idField;
+
+    @FXML
+    private Label welcomeLabel;
 
     @FXML
     private TextField usernameField;
