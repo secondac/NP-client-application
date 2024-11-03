@@ -7,11 +7,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import core.model.dto.LoginRequestDTO;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 
 
@@ -36,6 +38,20 @@ public class LoginController {
         String usernameFieldText = idField.getText();
         String serverFieldText = usernameField.getText();
 
+
+        try (InputStream fontStream = getClass().getResourceAsStream("/core/font/gangwon_font_bold.ttf")) {
+            if (fontStream != null) {
+                Font gangwonFont = Font.loadFont(fontStream, 18);
+                if (gangwonFont != null) {
+                    welcomeLabel.setFont(gangwonFont);
+                    System.out.println("Font loaded successfully: " + gangwonFont.getName());
+                } else {
+                    System.out.println("Failed to load font.");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
         if (usernameFieldText.isEmpty() || serverFieldText.isEmpty()) {
