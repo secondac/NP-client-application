@@ -34,15 +34,14 @@ public class RoomListController {
 
     @FXML
     private void initialize() {
-        // Initialize table columns
         roomNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         currentPlayersColumn.setCellValueFactory(new PropertyValueFactory<>("currentPlayers"));
 
-        // Load sample data (replace with actual data logic)
+        // sample data
         roomTable.getItems().add(new Room("Room A", 5));
         roomTable.getItems().add(new Room("Room B", 3));
 
-        // Example of setting the username
+        // sample data
         usernameLabel.setText("User123");
         userListView.getItems().addAll("User1", "User2", "User3");
     }
@@ -50,7 +49,6 @@ public class RoomListController {
     @FXML
     private void handleRefresh() {
         System.out.println("Refreshing room list...");
-        // Implement logic to refresh the room list
     }
 
     @FXML
@@ -58,7 +56,6 @@ public class RoomListController {
         Room selectedRoom = roomTable.getSelectionModel().getSelectedItem();
         if (selectedRoom != null) {
             System.out.println("Joining room: " + selectedRoom.getName());
-            // Implement logic to join the selected room
         }
     }
 }
