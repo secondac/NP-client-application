@@ -16,6 +16,7 @@ module core {
     exports core.$__legacyfiles;
     exports core.controller;
     exports core.model;
+    exports core.model.dto;
     exports core.view;
     exports core.service;
     exports core;
