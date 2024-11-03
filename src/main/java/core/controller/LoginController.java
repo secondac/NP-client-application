@@ -1,5 +1,6 @@
 package core.controller;
 
+import core.view.RoomListView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +17,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-
 public class LoginController {
 
     @FXML
@@ -31,6 +31,7 @@ public class LoginController {
     @FXML
     private Label errorLabel;
 
+    @FXML
     private Button loginButton;
 
     @FXML
@@ -38,7 +39,7 @@ public class LoginController {
         String usernameFieldText = idField.getText();
         String serverFieldText = usernameField.getText();
 
-
+        // 폰트 로드
         try (InputStream fontStream = getClass().getResourceAsStream("/core/font/gangwon_font_bold.ttf")) {
             if (fontStream != null) {
                 Font gangwonFont = Font.loadFont(fontStream, 18);
@@ -53,31 +54,34 @@ public class LoginController {
             e.printStackTrace();
         }
 
-
+        // 입력 필드 확인
         if (usernameFieldText.isEmpty() || serverFieldText.isEmpty()) {
             errorLabel.setText("Please enter both username and password.");
             errorLabel.setVisible(true);
-        } else {
-            System.out.println("Login successful with username: " + usernameFieldText);
-            errorLabel.setVisible(false);
+            return;
         }
 
+        System.out.println("Login successful with username: " + usernameFieldText);
+        errorLabel.setVisible(false);
 
+        // 현재 Stage 닫기 및 RoomListView의 새 Stage 열기
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/roomlist.fxml"));
-            Parent roomListLayout = loader.load();
+            RoomListView roomListView = new RoomListView();
+            Stage newStage = new Stage();
+            Scene newScene = new Scene(roomListView.getLayout());
+            newStage.setScene(newScene);
+            newStage.setTitle("Room List");
 
+            // 현재 Stage 닫기
             Stage currentStage = (Stage) idField.getScene().getWindow();
-            currentStage.setScene(new Scene(roomListLayout));
-            currentStage.setTitle("Room List");
-            currentStage.show();
+            currentStage.close();
 
-        } catch (IOException e) {
+            // 새 Stage 열기
+            newStage.show();
+        } catch (Exception e) {
             e.printStackTrace();
             errorLabel.setText("Failed to load the room list.");
             errorLabel.setVisible(true);
         }
     }
-
-
 }
