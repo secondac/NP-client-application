@@ -35,8 +35,8 @@ public class LoginView {
             // Stage와 Scene 생성 및 설정
             stage = new Stage();
             Scene scene = new Scene(layout, 480, 240);
-            scene.getStylesheets().add(getClass().getResource("/core/styles.css").toExternalForm());
-            System.out.println("styles.css applied.");
+            scene.getStylesheets().add(getClass().getResource("/core/view/loginview.css").toExternalForm());
+            System.out.println("loginview.css applied.");
 
             stage.setTitle("스무고개 게임");
             stage.setScene(scene);
