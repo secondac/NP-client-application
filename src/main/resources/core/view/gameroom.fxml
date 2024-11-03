@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="core.controller.GameRoomController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.controller.GameRoomController">
+    <children>
+        <SplitPane dividerPositions="0.7" prefHeight="400.0" prefWidth="600.0">
+            <!-- Left side: Game content and interaction -->
+            <items>
+                <VBox alignment="TOP_LEFT" prefWidth="420.0" spacing="10.0">
+                    <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="방 #" />
+                    <TextArea fx:id="gameContentArea" editable="false" prefHeight="325.0" prefWidth="415.0" style="-fx-font-family: '맑은 고딕'; -fx-font-size: 14px;" />
 
+                    <!-- HBox를 추가하여 TextField와 Button을 가로로 배치 -->
+                    <HBox spacing="5.0">
+                        <TextField fx:id="questionTextField" promptText="질문을 작성하세요" HBox.hgrow="ALWAYS" />
+                        <Button onAction="#handleSendQuestion" text="Send" />
+                    </HBox>
+                </VBox>
+
+                <!-- Right side: Participant list and exit button -->
+                <VBox alignment="TOP_CENTER" prefWidth="180.0" spacing="10.0">
+                    <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="참여자 목록" />
+                    <ListView fx:id="participantListView" prefHeight="324.0" prefWidth="176.0" />
+                    <Button fx:id="exitButton" onAction="#handleExitRoom" text="Exit Room" />
+                </VBox>
+            </items>
+        </SplitPane>
+    </children>
 </AnchorPane>

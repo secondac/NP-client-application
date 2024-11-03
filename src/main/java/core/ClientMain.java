@@ -12,7 +12,7 @@ public class ClientMain extends Application {
         LoginView loginView = new LoginView();
         Scene scene = new Scene(loginView.getLayout(), 480, 240);
 
-        primaryStage.setTitle("Twenty Questions Game");
+        primaryStage.setTitle("스무고개 게임");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

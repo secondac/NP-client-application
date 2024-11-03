@@ -62,6 +62,21 @@ public class RoomListController {
         Room selectedRoom = roomTable.getSelectionModel().getSelectedItem();
         if (selectedRoom != null) {
             System.out.println("Joining room: " + selectedRoom.getName());
+
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/gameroom.fxml"));
+                Parent gameRoomLayout = loader.load();
+
+                Stage currentStage = (Stage) roomTable.getScene().getWindow();
+                currentStage.setScene(new Scene(gameRoomLayout));
+                currentStage.setTitle("Game Room");
+                currentStage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Failed to load the game room.");
+            }
+        } else {
+            System.out.println("No room selected.");
         }
     }
 
