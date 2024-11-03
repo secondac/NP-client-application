@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class ClientMain extends Application {
     @Override
     public void start(Stage primaryStage) {
-        // Load the initial login view
+
         LoginView loginView = new LoginView();
         Scene scene = new Scene(loginView.getLayout(), 640, 240);
 
