@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'GangwonBold';
-    src: url('core/font/gangwon_font_bold.ttf');
+    src: url('/core/font/gangwon_font_bold.ttf');
 }
 
 .root{
