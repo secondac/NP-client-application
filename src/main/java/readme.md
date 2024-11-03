@@ -4,7 +4,7 @@
 ### 
 ### 1. structures
 - MVC 패턴으로 작성되었습니다.
-- It was written based on the MVC pattern.
+- It was written based on the MVC design pattern.
 
 ```aiignore
 

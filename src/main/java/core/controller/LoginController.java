@@ -72,6 +72,10 @@ public class LoginController {
             newStage.setScene(newScene);
             newStage.setTitle("Room List");
 
+
+            newScene.getStylesheets().add(getClass().getResource("/core/view/roomlist.css").toExternalForm());
+            System.out.println("roomlist.css applied.");
+
             // 현재 Stage 닫기
             Stage currentStage = (Stage) idField.getScene().getWindow();
             currentStage.close();

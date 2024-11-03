@@ -8,16 +8,16 @@
     -fx-font-size: 15pt;
 }
 .label{
-    -fx-text-fill: #E8E8E8;
+    -fx-text-fill: #383838;
 }
 .button{
     -fx-background-color: linear-gradient(#DC9656, #AB4642);
-    -fx-text-fill: #E8E8E8;
+    -fx-text-fill: #383838;
     -fx-background-radius: 4;
 }
 .button-blue{
     -fx-background-color: #7CAFC2;
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: #383838;
     -fx-background-radius: 4;
 }
 

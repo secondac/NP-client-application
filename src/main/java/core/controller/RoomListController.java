@@ -67,9 +67,13 @@ public class RoomListController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/gameroom.fxml"));
                 Parent gameRoomLayout = loader.load();
 
-                // 새로운 Stage 생성
                 Stage newStage = new Stage();
-                newStage.setScene(new Scene(gameRoomLayout));
+                Scene newScene = new Scene(gameRoomLayout);
+
+                newScene.getStylesheets().add(getClass().getResource("/core/view/gameroom.css").toExternalForm());
+                System.out.println("gameroom.css applied.");
+
+                newStage.setScene(newScene);
                 newStage.setTitle("Game Room");
                 newStage.show();
 
