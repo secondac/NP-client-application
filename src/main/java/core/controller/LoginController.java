@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -16,10 +15,10 @@ public class LoginController {
 
     @FXML
 
-    private TextField usernameField;
+    private TextField idField;
 
     @FXML
-    private PasswordField serverField;
+    private TextField usernameField;
 
     @FXML
     private Label errorLabel;
@@ -28,8 +27,8 @@ public class LoginController {
 
     @FXML
     private void handleLogin() {
-        String usernameFieldText = usernameField.getText();
-        String serverFieldText = serverField.getText();
+        String usernameFieldText = idField.getText();
+        String serverFieldText = usernameField.getText();
 
         if (usernameFieldText.isEmpty() || serverFieldText.isEmpty()) {
             errorLabel.setText("Please enter both username and password.");
@@ -44,7 +43,7 @@ public class LoginController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/roomlist.fxml"));
             Parent roomListLayout = loader.load();
 
-            Stage currentStage = (Stage) usernameField.getScene().getWindow();
+            Stage currentStage = (Stage) idField.getScene().getWindow();
             currentStage.setScene(new Scene(roomListLayout));
             currentStage.setTitle("Room List");
             currentStage.show();

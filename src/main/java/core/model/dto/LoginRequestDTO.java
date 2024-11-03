@@ -1,12 +1,20 @@
 package core.model.dto;
 
 public class LoginRequestDTO {
+    private String id;
     private String username;
-    private String serverIp;
 
-    public LoginRequestDTO(String username, String serverIp) {
+    public LoginRequestDTO(String id, String username) {
+        this.id = id;
         this.username = username;
-        this.serverIp = serverIp;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -15,13 +23,5 @@ public class LoginRequestDTO {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getServerIp() {
-        return serverIp;
-    }
-
-    public void setServerIp(String serverIp) {
-        this.serverIp = serverIp;
     }
 }
