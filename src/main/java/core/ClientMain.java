@@ -10,7 +10,7 @@ public class ClientMain extends Application {
     public void start(Stage primaryStage) {
 
         LoginView loginView = new LoginView();
-        Scene scene = new Scene(loginView.getLayout(), 640, 240);
+        Scene scene = new Scene(loginView.getLayout(), 480, 240);
 
         primaryStage.setTitle("Twenty Questions Game");
         primaryStage.setScene(scene);

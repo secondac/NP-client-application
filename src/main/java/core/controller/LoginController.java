@@ -15,10 +15,11 @@ import java.io.IOException;
 public class LoginController {
 
     @FXML
+
     private TextField usernameField;
 
     @FXML
-    private PasswordField passwordField;
+    private PasswordField serverField;
 
     @FXML
     private Label errorLabel;
@@ -27,14 +28,14 @@ public class LoginController {
 
     @FXML
     private void handleLogin() {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
+        String usernameFieldText = usernameField.getText();
+        String serverFieldText = serverField.getText();
 
-        if (username.isEmpty() || password.isEmpty()) {
+        if (usernameFieldText.isEmpty() || serverFieldText.isEmpty()) {
             errorLabel.setText("Please enter both username and password.");
             errorLabel.setVisible(true);
         } else {
-            System.out.println("Login successful with username: " + username);
+            System.out.println("Login successful with username: " + usernameFieldText);
             errorLabel.setVisible(false);
         }
 
