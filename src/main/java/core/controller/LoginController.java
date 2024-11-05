@@ -45,6 +45,7 @@ public class LoginController {
                 Font gangwonFont = Font.loadFont(fontStream, 18);
                 if (gangwonFont != null) {
                     welcomeLabel.setFont(gangwonFont);
+                    welcomeLabel.setFont(new Font("GangwonBold", 16));
                     System.out.println("Font loaded successfully: " + gangwonFont.getName());
                 } else {
                     System.out.println("Failed to load font.");

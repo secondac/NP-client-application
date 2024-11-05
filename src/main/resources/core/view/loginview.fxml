@@ -8,8 +8,7 @@
    <AnchorPane prefHeight="200.0" prefWidth="200.0">
       <children>
 
-          <Label fx:id = "welcomeLabel" layoutX="4.0" layoutY="20.0" prefHeight="45.0" prefWidth="428.0"
-                 text="스무고개 게임에 오신 것을 환영합니다!" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
+          <Label fx:id="welcomeLabel" layoutX="4.0" layoutY="20.0" prefHeight="45.0" prefWidth="428.0" text="스무고개 게임에 오신 것을 환영합니다!" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" />
 
 
           <Label fx:id="errorLabel" prefHeight="43.0" prefWidth="12.0" textFill="red" visible="false">
@@ -18,20 +17,20 @@
             </font>
           </Label>
       
-          <TextField fx:id="usernameField" layoutX="94.0" layoutY="144.0" prefHeight="31.0" prefWidth="197.0" promptText="server" text="your name" />
+          <TextField fx:id="usernameField" layoutX="101.0" layoutY="144.0" prefHeight="31.0" prefWidth="197.0" promptText="server" text="your name" />
       
-          <TextField fx:id="idField" layoutX="94.0" layoutY="100.0" prefHeight="31.0" prefWidth="197.0" promptText="your name" text="id" />
+          <TextField fx:id="idField" layoutX="101.0" layoutY="100.0" prefHeight="31.0" prefWidth="197.0" promptText="your name" text="id" />
       
-          <Button layoutX="308.0" layoutY="109.0" onAction="#handleLogin" prefHeight="44.0" prefWidth="109.0" text="Login">
+          <Button layoutX="317.0" layoutY="109.0" onAction="#handleLogin" prefHeight="44.0" prefWidth="100.0" text="Login">
             <font>
                <Font name="Dubai Regular" size="18.0" />
             </font>
          </Button>
-          <Label contentDisplay="CENTER" layoutX="35.0" layoutY="100.0" prefHeight="31.0" prefWidth="52.0" style="-fx-background-color: transparent;" text="ID">
+          <Label contentDisplay="CENTER" layoutX="26.0" layoutY="100.0" prefHeight="32.0" prefWidth="59.0" style="-fx-background-color: transparent;" text="ID">
             <font>
                <Font name="Dubai Bold" size="18.0" />
             </font></Label>
-          <Label contentDisplay="CENTER" layoutX="35.0" layoutY="144.0" prefHeight="31.0" prefWidth="52.0" style="-fx-background-color: transparent;" text="Name">
+          <Label contentDisplay="CENTER" layoutX="26.0" layoutY="144.0" prefHeight="32.0" prefWidth="59.0" style="-fx-background-color: transparent;" text="Name">
             <font>
                <Font name="Dubai Bold" size="18.0" />
             </font></Label>

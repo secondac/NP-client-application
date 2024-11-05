@@ -6,26 +6,33 @@
 .root{
     -fx-background-color: #383838;
     -fx-font-size: 15pt;
-    -fx-font-family: 'GangwonBold';
+    -fx-font-family: 'Arial';
 }
 .label{
     -fx-text-fill: #E8E8E8;
-    -fx-font-family: 'GangwonBold';
+    -fx-font-family: 'Verdana';
 }
 .button{
     -fx-background-color: linear-gradient(#DC9656, #AB4642);
     -fx-text-fill: #E8E8E8;
     -fx-background-radius: 4;
-    -fx-font-family: 'GangwonBold';
+    -fx-font-family: 'Arial';
 }
 .button-blue{
     -fx-background-color: #7CAFC2;
     -fx-text-fill: #FFFFFF;
     -fx-background-radius: 4;
-    -fx-font-family: 'GangwonBold';
+    -fx-font-family: 'Arial';
 }
 
 #welcomeLabel {
-    -fx-font-family: 'GangwonBold';
+    -fx-font-family: 'Verdana';
     -fx-font-size: 18px;
 }
+
+
+/*
+-fx-background-image: url('loginview.png');
+-fx-background-size: cover; // 배경이 라벨의 크기에 맞게 조정
+-fx-background-repeat: no-repeat;
+ */
