@@ -1,5 +1,6 @@
 package core.view;
 
+import core.ClientMain;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,19 +19,13 @@ public class LoginView {
             FXMLLoader loader = new FXMLLoader(LoginView.class.getResource("loginview.fxml"));
             layout = loader.load();
 
-            // 폰트 로드
-            try (InputStream fontStream = getClass().getResourceAsStream("/core/font/gangwon_font_bold.ttf")) {
-                if (fontStream != null) {
-                    Font gangwonFont = Font.loadFont(fontStream, 18);
-                    if (gangwonFont != null) {
-                        System.out.println("Font loaded successfully: " + gangwonFont.getName());
-                    } else {
-                        System.out.println("Failed to load font.");
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            Font.loadFont(ClientMain.class.getResource("font/TRON.ttf").toExternalForm(), 10);
+            Font.loadFont(ClientMain.class.getResource("font/BMDOHYEON.ttf").toExternalForm(), 10);
+            Font.loadFont(ClientMain.class.getResource("font/gangwon_font_bold.ttf").toExternalForm(), 10);
+
+
+
+
 
             // Stage와 Scene 생성 및 설정
             stage = new Stage();

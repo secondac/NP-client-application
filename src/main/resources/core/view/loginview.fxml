@@ -5,13 +5,11 @@
 <?import javafx.scene.text.*?>
 
 <VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.controller.LoginController">
-   <AnchorPane prefHeight="200.0" prefWidth="200.0">
+   <AnchorPane prefHeight="200.0" prefWidth="441.0">
       <children>
 
-          <Label fx:id="welcomeLabel" layoutX="4.0" layoutY="20.0" prefHeight="45.0" prefWidth="428.0" stylesheets="@loginview.css" text="스무고개 게임에 오신 것을 환영합니다!" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
-            <font>
-               <Font name="GangwonEduAll Bold" size="28.0" />
-            </font>
+          <Label fx:id="welcomeLabel" layoutX="4.0" layoutY="20.0" prefHeight="45.0" prefWidth="428.0" stylesheets="@loginview.css" text="  스무고개 게임에 오신 것을 환영합니다!" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+
           </Label>
 
 
@@ -25,7 +23,7 @@
       
           <TextField fx:id="idField" layoutX="101.0" layoutY="100.0" prefHeight="31.0" prefWidth="197.0" promptText="your name" text="id" />
       
-          <Button layoutX="317.0" layoutY="109.0" onAction="#handleLogin" prefHeight="44.0" prefWidth="100.0" text="Login">
+          <Button layoutX="327.0" layoutY="110.0" onAction="#handleLogin" prefHeight="44.0" prefWidth="100.0" text="Login">
             <font>
                <Font name="Dubai Regular" size="18.0" />
             </font>

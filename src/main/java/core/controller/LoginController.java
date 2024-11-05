@@ -39,14 +39,16 @@ public class LoginController {
         String usernameFieldText = idField.getText();
         String serverFieldText = usernameField.getText();
 
+
+        /*
         // 폰트 로드
-        try (InputStream fontStream = getClass().getResourceAsStream("/core/font/gangwon_font_bold.ttf")) {
+        try (InputStream fontStream = getClass().getResourceAsStream("/core/font/LeferiBaseBold.ttf")) {
             if (fontStream != null) {
-                Font gangwonFont = Font.loadFont(fontStream, 18);
-                if (gangwonFont != null) {
-                    welcomeLabel.setFont(gangwonFont);
-                    welcomeLabel.setFont(new Font("GangwonBold", 16));
-                    System.out.println("Font loaded successfully: " + gangwonFont.getName());
+                Font font = Font.loadFont(fontStream, 18);
+                if (font != null) {
+                    welcomeLabel.setFont(font);
+
+                    System.out.println("Font loaded successfully: " + font.getName());
                 } else {
                     System.out.println("Failed to load font.");
                 }
@@ -54,6 +56,8 @@ public class LoginController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+         */
 
         // 입력 필드 확인
         if (usernameFieldText.isEmpty() || serverFieldText.isEmpty()) {

@@ -1,0 +1,13 @@
+/** file: custom-font-styles.css
+ * Place in same directory as CustomFontApp.java
+ */
+
+.title {
+    -fx-font-family: "TRON";
+    -fx-font-size: 20;
+}
+
+.caption {
+    -fx-font-family: "TRON";
+    -fx-font-size: 10;
+}
