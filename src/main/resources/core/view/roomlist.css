@@ -1,5 +1,10 @@
 @font-face {
-    font-family: 'GangwonBold';
+    font-family: 'BM DoHyeon';
+    src: url('../font/BMDOHYEON.ttf');
+}
+
+@font-face {
+    font-family: 'GangwonEduAll Bold';
     src: url('../font/gangwon_font_bold.ttf');
 }
 
