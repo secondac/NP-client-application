@@ -1,10 +1,10 @@
 @font-face {
-    font-family: '배달의민족 도현';
+    font-family: 'BM DoHyeon';
     src: url('../font/BMDOHYEON.ttf');
 }
 
 @font-face {
-    font-family: '강원교육모두 Bold';
+    font-family: 'GangwonEduAll Bold';
     src: url('../font/gangwon_font_bold.ttf');
 }
 
@@ -15,32 +15,32 @@
 }
 .label{
     -fx-text-fill: #E8E8E8;
-    -fx-font-family: '강원교육모두 Bold';
+    -fx-font-family: 'BM DoHyeon';
 }
 .button{
     -fx-background-color: linear-gradient(#DC9656, #AB4642);
     -fx-text-fill: #E8E8E8;
     -fx-background-radius: 4;
-    -fx-font-family: '강원교육모두 Bold';
+    -fx-font-family: 'GangwonEduAll Bold';
 }
 .text-field{
     -fx-text-fill: #E8E8E8;
-    -fx-font-family: '배달의민족 도현';
+    -fx-font-family: 'GangwonEduAll Bold';
 }
 
 .text-area{
     -fx-text-fill: #E8E8E8;
-    -fx-font-family: '배달의민족 도현';
+    -fx-font-family: 'GangwonEduAll Bold';
 }
 .button-blue{
     -fx-background-color: #7CAFC2;
     -fx-text-fill: #FFFFFF;
     -fx-background-radius: 4;
-    -fx-font-family: '배달의민족 도현';
+    -fx-font-family: 'GangwonEduAll Bold';
 }
 
 #welcomeLabel {
-    -fx-font-family: '강원교육모두 Bold';
+    -fx-font-family: 'GangwonEduAll Bold';
     -fx-font-size: 28px;
     -fx-text-alignment: center; /* Text */
     -fx-alignment: center; /* Label  */
