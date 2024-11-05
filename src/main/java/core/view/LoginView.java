@@ -32,7 +32,7 @@ public class LoginView {
 
             // Stage와 Scene 생성 및 설정
             stage = new Stage();
-            Scene scene = new Scene(layout, 480, 240);
+            Scene scene = new Scene(layout, 480, 220);
             scene.getStylesheets().add(getClass().getResource("/core/view/loginview.css").toExternalForm());
             System.out.println("loginview.css applied.");
 

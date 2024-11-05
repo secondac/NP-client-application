@@ -16,6 +16,7 @@
 .label{
     -fx-text-fill: #E8E8E8;
     -fx-font-family: 'BM DoHyeon';
+
 }
 .button{
     -fx-background-color: linear-gradient(#DC9656, #AB4642);
@@ -23,9 +24,10 @@
     -fx-background-radius: 4;
     -fx-font-family: 'GangwonEduAll Bold';
 }
-.text-field{
-    -fx-text-fill: #E8E8E8;
+.text-field {
+    -fx-text-fill: rgba(56, 56, 56, 0.8);
     -fx-font-family: 'GangwonEduAll Bold';
+    -fx-prompt-text-fill: rgba(192, 192, 192, 0.8);
 }
 
 .text-area{
@@ -46,6 +48,13 @@
     -fx-alignment: center; /* Label  */
 }
 
+#errorLabel {
+    -fx-text-fill: rgba(255, 56, 56, 0.8);
+    -fx-font-family: 'GangwonEduAll Bold';
+    -fx-font-size: 18px;
+    -fx-text-alignment: center; /* Text */
+    -fx-alignment: center; /* Label  */
+}
 
 /*
 

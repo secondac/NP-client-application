@@ -5,7 +5,7 @@
 <?import javafx.scene.text.*?>
 
 <VBox alignment="CENTER" spacing="15" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.controller.LoginController">
-   <AnchorPane prefHeight="200.0" prefWidth="441.0">
+   <AnchorPane prefHeight="220.0" prefWidth="480.0">
       <children>
 
           <Label fx:id="welcomeLabel" layoutX="4.0" layoutY="20.0" prefHeight="45.0" prefWidth="428.0" stylesheets="@loginview.css" text="  스무고개 게임에 오신 것을 환영합니다!" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
@@ -13,17 +13,17 @@
           </Label>
 
 
-          <Label fx:id="errorLabel" prefHeight="43.0" prefWidth="12.0" textFill="red" visible="false">
+          <Label fx:id="errorLabel" layoutY="63.0" prefHeight="25.0" prefWidth="480.0" text="ID와 Name을 모두 입력하세요" textAlignment="CENTER" textFill="red" visible="false">
             <font>
-               <Font size="36.0" />
+               <Font size="18.0" />
             </font>
           </Label>
-      
-          <TextField fx:id="usernameField" layoutX="101.0" layoutY="144.0" prefHeight="31.0" prefWidth="197.0" promptText="server" text="your name" />
-      
-          <TextField fx:id="idField" layoutX="101.0" layoutY="100.0" prefHeight="31.0" prefWidth="197.0" promptText="your name" text="id" />
-      
-          <Button layoutX="327.0" layoutY="110.0" onAction="#handleLogin" prefHeight="44.0" prefWidth="100.0" text="Login">
+
+          <TextField fx:id="usernameField" layoutX="113.0" layoutY="144.0" prefHeight="31.0" prefWidth="197.0" promptText="your username" />
+
+          <TextField fx:id="idField" layoutX="113.0" layoutY="100.0" prefHeight="31.0" prefWidth="197.0" promptText="your ID" />
+
+          <Button layoutX="342.0" layoutY="111.0" onAction="#handleLogin" prefHeight="55.0" prefWidth="108.0" text="Connect">
             <font>
                <Font name="Dubai Regular" size="18.0" />
             </font>
