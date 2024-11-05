@@ -1,7 +1,4 @@
-@font-face {
-    font-family: 'GangwonBold';
-    src: url('../font/gangwon_font_bold.ttf');
-}
+
 
 .root{
     -fx-background-color: #383838;
@@ -16,8 +13,9 @@
     -fx-background-color: linear-gradient(#DC9656, #AB4642);
     -fx-text-fill: #E8E8E8;
     -fx-background-radius: 4;
-    -fx-font-family: 'Arial';
+    -fx-font-family: 'gangwon_font_bold';
 }
+
 .button-blue{
     -fx-background-color: #7CAFC2;
     -fx-text-fill: #FFFFFF;
@@ -26,12 +24,18 @@
 }
 
 #welcomeLabel {
-    -fx-font-family: 'Verdana';
-    -fx-font-size: 18px;
+    -fx-font-family: 'LeferiBaseBold';
+    -fx-font-size: 24px;
 }
 
 
 /*
+
+@font-face {
+    font-family: 'GangwonBold';
+    src: url('../font/gangwon_font_bold.ttf');
+}
+
 -fx-background-image: url('loginview.png');
 -fx-background-size: cover; // 배경이 라벨의 크기에 맞게 조정
 -fx-background-repeat: no-repeat;

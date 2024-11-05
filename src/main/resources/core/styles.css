@@ -8,7 +8,6 @@
     -fx-font-size: 15pt;
 }
 .label{
-    -fx-font-family: 'GangwonBold';
     -fx-font-size: 18px;
     -fx-text-fill: #E8E8E8;
 }
@@ -24,6 +23,5 @@
 }
 
 #welcomeLabel {
-    -fx-font-family: 'GangwonBold';
     -fx-font-size: 18px;
 }
