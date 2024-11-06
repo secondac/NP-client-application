@@ -6,6 +6,7 @@ module core {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
+    requires com.google.gson;
 
     opens core.$__legacyfiles to javafx.fxml;
     opens core.view to javafx.fxml;
