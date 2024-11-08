@@ -23,4 +23,6 @@ module core {
     exports core.view;
     exports core.service;
     exports core;
+    exports core.$__legacyfiles.test;
+    opens core.$__legacyfiles.test to com.google.gson, javafx.fxml;
 }

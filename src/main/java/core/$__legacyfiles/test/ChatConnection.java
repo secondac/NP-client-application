@@ -1,4 +1,4 @@
-package core.$__legacyfiles;
+package core.$__legacyfiles.test;
 
 public class ChatConnection {
     private Integer userId;

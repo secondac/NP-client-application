@@ -1,4 +1,4 @@
-package core.$__legacyfiles;
+package core.$__legacyfiles.test;
 
 public enum RequestType {
     ROOMLIST,
