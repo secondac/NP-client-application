@@ -8,11 +8,13 @@ module core {
     requires com.almasb.fxgl.all;
     requires com.google.gson;
 
-    opens core.$__legacyfiles to javafx.fxml;
+    opens core.$__legacyfiles to javafx.fxml, com.google.gson;
+
     opens core.view to javafx.fxml;
     opens core.controller to javafx.fxml;
     opens core.service to javafx.fxml;
     opens core.model to javafx.fxml;
+
 
     exports core.$__legacyfiles;
     exports core.controller;
