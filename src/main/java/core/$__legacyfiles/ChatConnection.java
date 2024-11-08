@@ -1,19 +1,22 @@
 package core.$__legacyfiles;
 
 public class ChatConnection {
+    private Integer userId;
     private Integer chatId;
-    private String message;
 
-    public ChatConnection(Integer chatId, String message) {
+    public ChatConnection() {
+    }
+
+    public ChatConnection(Integer userId, Integer chatId) {
+        this.userId = userId;
         this.chatId = chatId;
-        this.message = message;
+    }
+
+    public Integer getUserId() {
+        return userId;
     }
 
     public Integer getChatId() {
         return chatId;
-    }
-
-    public String getMessage() {
-        return message;
     }
 }

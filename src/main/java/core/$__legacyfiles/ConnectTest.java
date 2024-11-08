@@ -1,9 +1,5 @@
 package core.$__legacyfiles;
 
-import com.google.gson.Gson;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.Socket;
 
 import com.google.gson.Gson;
 import java.io.OutputStreamWriter;
@@ -16,8 +12,8 @@ public class ConnectTest {
 
     public static void main(String[] args) {
         // 필요한 객체를 DTO로 래핑
-        RequestType requestType = RequestType.CONNECTCHAT;  // 또는 NEWROOM
-        ChatConnection chatConnection = new ChatConnection(123, "Hello, this is a test message!");
+        RequestType requestType = RequestType.CONNECTCHAT;
+        ChatConnection chatConnection = new ChatConnection(456, 123); // userId와 chatId 설정
 
         DTO dto = new DTO(requestType, chatConnection);
 
