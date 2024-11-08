@@ -6,16 +6,17 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class ConnectTest {
+public class ConnectChatTest {
     private static final String SERVER_ADDRESS = "localhost";
     private static final int SERVER_PORT = 10001;
 
     public static void main(String[] args) {
         Gson gson = new Gson();
 
+
         // CONNECTCHAT
         RequestType requestType1 = RequestType.CONNECTCHAT;
-        ChatConnection chatConnection = new ChatConnection(456, 123); // userId와 chatId 설정
+        ChatConnection chatConnection = new ChatConnection(4413456, 121353); // userId와 chatId 설정
         DTO dto1 = new DTO(requestType1, chatConnection);
         String json1 = gson.toJson(dto1);
 
@@ -48,5 +49,7 @@ public class ConnectTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
 }
