@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="StacktraceSettings">
+    <option name="folders">
+      <set>
+        <option value="$PROJECT_DIR$/src/main/java" />
+        <option value="$PROJECT_DIR$/src/main/resources" />
+        <option value="$PROJECT_DIR$/src/test/java" />
+        <option value="$PROJECT_DIR$/target/generated-sources/annotations" />
+      </set>
+    </option>
+    <option name="packages">
+      <set>
+        <option value="core.$__legacyfiles" />
+        <option value="core.$__legacyfiles.manager" />
+        <option value="core.$__legacyfiles.roomlist" />
+        <option value="core.$__legacyfiles.test" />
+        <option value="core.common" />
+        <option value="core.controller" />
+        <option value="core.model" />
+        <option value="core.model.dto" />
+        <option value="core.service" />
+        <option value="core.view" />
+      </set>
+    </option>
+  </component>
+</project>

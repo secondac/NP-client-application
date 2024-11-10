@@ -35,21 +35,29 @@ public class ConnectChatTest {
         try (Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
              PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true)) {
 
+            Thread.sleep(100);
+
             out.println(json1);
             System.out.println("CONNECTCHAT 요청 JSON 데이터 서버로 전송: " + json1);
 
             Thread.sleep(100);
-            out.println(json2);
+            //out.println(json2);
             System.out.println("NEWROOM 요청 JSON 데이터 서버로 전송: " + json2);
 
             Thread.sleep(100);
-            out.println(json3);
+            //out.println(json3);
             System.out.println("SENDMESSAGE 요청 JSON 데이터 서버로 전송: " + json3);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        try{
+            Thread.sleep(500);
+
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
 
     }
 }

@@ -27,13 +27,16 @@ public class RoomListController {
     private TableColumn<Room, Integer> currentPlayersColumn;
 
     @FXML
+    private Label roomlistLabel;
+
+    @FXML
     private Label usernameLabel;
 
     @FXML
     private ListView<String> userListView;
 
     @FXML
-    private Button refreshButton;
+    private Button createRoomButton;
 
     @FXML
     private Button joinRoomButton;
@@ -86,18 +89,25 @@ public class RoomListController {
         }
     }
 
+    @FXML
     private void openGameRoom() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/gameroom.fxml"));
-            Parent gameRoomLayout = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/createroom.fxml"));
+            Parent createRoomLayout = loader.load();
 
-            Stage currentStage = (Stage) roomTable.getScene().getWindow();
-            currentStage.setScene(new Scene(gameRoomLayout));
-            currentStage.setTitle("Game Room");
-            currentStage.show();
+            Stage createRoomStage = new Stage();
+            Scene createRoomScene = new Scene(createRoomLayout);
+
+            // 스타일 시트를 적용하고 창을 보여줍니다.
+            //createRoomScene.getStylesheets().add(getClass().getResource("/core/view/createroom.css").toExternalForm());
+            System.out.println("createroom.css applied.");
+
+            createRoomStage.setScene(createRoomScene);
+            createRoomStage.setTitle("Create New Room");
+            createRoomStage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Failed to load the game room.");
+            System.out.println("Failed to load the create room.");
         }
     }
 }
