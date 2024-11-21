@@ -9,10 +9,15 @@
     </option>
     <option name="packages">
       <set>
+        <option value="$02_thread.velog" />
+        <option value="$03_io.polymorphism" />
+        <option value="assignment1.as1" />
+        <option value="assignment1.as2" />
         <option value="core.$__legacyfiles" />
         <option value="core.$__legacyfiles.manager" />
         <option value="core.$__legacyfiles.roomlist" />
         <option value="core.$__legacyfiles.test" />
+        <option value="core.$__testserver" />
         <option value="core.common" />
         <option value="core.controller" />
         <option value="core.model" />

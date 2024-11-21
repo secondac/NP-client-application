@@ -29,7 +29,7 @@
 
                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="유저 정보" />
 
-                   <Label prefHeight="26.0" prefWidth="55.0" text="name:" />
+                   <Label fx:id="currentUserName" prefHeight="26.0" prefWidth="55.0" text="name:" />
 
                    <Label fx:id="usernameLabel" style="-fx-font-size: 14px;" text="-" />
 

@@ -25,4 +25,5 @@ module core {
     exports core;
     exports core.$__legacyfiles.test;
     opens core.$__legacyfiles.test to com.google.gson, javafx.fxml;
+    exports core.$__testserver;
 }

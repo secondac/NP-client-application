@@ -32,6 +32,9 @@ public class RoomListController {
     private Label roomlistLabel;
 
     @FXML
+    private Label currentUserName;
+
+    @FXML
     private Label usernameLabel;
 
     @FXML
