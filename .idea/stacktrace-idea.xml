@@ -5,8 +5,6 @@
       <set>
         <option value="$PROJECT_DIR$/src/main/java" />
         <option value="$PROJECT_DIR$/src/main/resources" />
-        <option value="$PROJECT_DIR$/src/test/java" />
-        <option value="$PROJECT_DIR$/target/generated-sources/annotations" />
       </set>
     </option>
     <option name="packages">
