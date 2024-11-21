@@ -53,20 +53,8 @@ public class GameRoomController {
     private void handleExitRoom() {
         System.out.println("Exiting the room...");
 
-        try {
-            // roomlist.fxml을 로드하여 Parent 객체 생성
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/roomlist.fxml"));
-            Parent roomListLayout = loader.load();
-
-            // 현재 Stage를 가져와서 Scene 교체
-            Stage currentStage = (Stage) exitButton.getScene().getWindow();
-            currentStage.setScene(new Scene(roomListLayout));
-            currentStage.setTitle("Room List");
-            currentStage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Failed to load the room list.");
-        }
+        // 현재 Stage 닫기
+        Stage currentStage = (Stage) exitButton.getScene().getWindow();
+        currentStage.close();
     }
 }
