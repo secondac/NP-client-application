@@ -9,8 +9,6 @@ public class ClientMain extends Application {
         new LoginView();
     }
 
-    // commit test
-
     public static void main(String[] args) {
         launch(args);
     }
