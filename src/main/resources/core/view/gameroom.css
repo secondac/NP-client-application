@@ -29,6 +29,10 @@
     -fx-background-radius: 4;
 }
 
+#exitButton{
+    -fx-text-fill: #FF0000;
+}
+
 #welcomeLabel {
     -fx-font-family: 'GangwonEduAll Bold';
     -fx-font-size: 18px;
