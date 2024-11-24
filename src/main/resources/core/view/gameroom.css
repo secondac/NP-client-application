@@ -37,3 +37,21 @@
     -fx-font-family: 'GangwonEduAll Bold';
     -fx-font-size: 18px;
 }
+
+
+.chat-bubble {
+    -fx-background-radius: 15;
+    -fx-padding: 10;
+    -fx-wrap-text: true;
+    -fx-max-width: 250px;
+}
+
+.chat-bubble.user {
+    -fx-background-color: #DCF8C6; /* 사용자 메시지: 연한 초록색 */
+    -fx-text-fill: black;
+}
+
+.chat-bubble.other {
+    -fx-background-color: #FFFFFF; /* 다른 사용자 메시지: 흰색 */
+    -fx-text-fill: black;
+}
