@@ -17,6 +17,7 @@
         <option value="core.$__legacyfiles.manager" />
         <option value="core.$__legacyfiles.roomlist" />
         <option value="core.$__legacyfiles.test" />
+        <option value="core.$__server.dto" />
         <option value="core.$__testserver" />
         <option value="core.common" />
         <option value="core.controller" />
