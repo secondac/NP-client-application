@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -14,6 +15,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class CreateRoomController {
+
+    @FXML
+    private Label createLabel;
+
+    @FXML
+    private Label titleLabel;
 
     @FXML
     private TextField roomTitleField;
@@ -71,6 +78,10 @@ public class CreateRoomController {
      */
     @FXML
     private void handleCancel() {
+        // 취소 버튼을 눌렀을 때도 onRoomExitCallback 호출
+        if (onRoomExitCallback != null) {
+            onRoomExitCallback.run();
+        }
         closeWindow();
     }
 
