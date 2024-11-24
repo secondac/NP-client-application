@@ -19,8 +19,15 @@
 
 /* 일반 레이블 스타일 */
 .label {
-    -fx-font-size: 16px;
+    -fx-font-size: 18px;
     -fx-text-fill: #555555;
+    -fx-font-family: "BM DoHyeon";
+}
+
+.text-field {
+    -fx-font-size: 18px;
+    -fx-text-fill: #555555;
+    -fx-font-family: "GangwonEduAll Bold";
 }
 
 /* 기본 버튼 스타일 */
@@ -31,22 +38,29 @@
     -fx-cursor: hand;
 }
 
-/* 주요 버튼 스타일 (방 생성) */
-.primary-button {
-    -fx-background-color: #4CAF50; /* 녹색 */
-    -fx-text-fill: white;
+#roomTitleField{
+    -fx-font-family: "GangwonEduAll Bold";
 }
 
-.primary-button:hover {
+#createRoomButton {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-family: "GangwonEduAll Bold";
+    -fx-font-size: 24px;
+}
+
+#createRoomButton:hover {
     -fx-background-color: #45A049;
 }
 
-/* 보조 버튼 스타일 (취소) */
-.secondary-button {
-    -fx-background-color: #f44336; /* 빨간색 */
+
+#cancelButton {
+    -fx-background-color: #f44336;
     -fx-text-fill: white;
+    -fx-font-family: "GangwonEduAll Bold";
+    -fx-font-size: 24px;
 }
 
-.secondary-button:hover {
+#cancelButton:hover {
     -fx-background-color: #da190b;
 }

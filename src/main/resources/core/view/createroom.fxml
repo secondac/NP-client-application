@@ -1,34 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="core.controller.CreateRoomController"
-            prefHeight="400.0" prefWidth="600.0"
-            stylesheets="@createroom.css">
+<AnchorPane prefHeight="200.0" prefWidth="400.0" stylesheets="@createroom.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.controller.CreateRoomController">
     <children>
-        <VBox alignment="CENTER" spacing="20.0" AnchorPane.topAnchor="50.0" AnchorPane.bottomAnchor="50.0"
-              AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
-
-            <!-- 방 생성 타이틀 -->
-            <Label text="방 생성" styleClass="title-label"/>
 
             <!-- 방 제목 입력 필드 -->
-            <HBox alignment="CENTER_LEFT" spacing="10.0">
-                <Label text="방 제목:" styleClass="label"/>
-                <TextField fx:id="roomTitleField" promptText="방 제목을 입력하세요" HBox.hgrow="ALWAYS"/>
-            </HBox>
-
-            <!-- 방 생성 버튼 -->
-            <Button fx:id="createRoomButton" text="방 생성" onAction="#handleCreateRoom" styleClass="primary-button"/>
+            <HBox alignment="CENTER_LEFT" spacing="10.0" />
 
             <!-- 취소 버튼 -->
-            <Button fx:id="cancelButton" text="취소" onAction="#handleCancel" styleClass="secondary-button"/>
-        </VBox>
+            <Button fx:id="cancelButton" layoutX="318.0" layoutY="140.0" onAction="#handleCancel" styleClass="secondary-button" text="취소" />
+
+            <!-- 방 생성 버튼 -->
+            <Button fx:id="createRoomButton" layoutX="218.0" layoutY="140.0" onAction="#handleCreateRoom" styleClass="primary-button" text="방 생성" />
+
+         <!-- 방 생성 타이틀 -->
+         <Label layoutX="186.0" layoutY="26.0" styleClass="title-label" text="방 생성" />
+             <TextField fx:id="roomTitleField" layoutX="96.0" layoutY="71.0" prefHeight="32.0" prefWidth="318.0" promptText="방 제목을 입력하세요" />
+             <Label layoutX="26.0" layoutY="74.0" styleClass="label" text="방 제목:" />
     </children>
 </AnchorPane>

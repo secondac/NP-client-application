@@ -102,14 +102,21 @@ public class CreateRoomController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/gameroom.fxml"));
             Parent root = loader.load();
 
+
+            // Scene 생성 후 CSS 추가
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("/core/view/gameroom.css").toExternalForm());
+
+
             // GameRoomController에 방 제목 전달
             GameRoomController gameRoomController = loader.getController();
             gameRoomController.setRoomTitle(roomTitle);
 
             // 새로운 Stage 생성
             Stage gameRoomStage = new Stage();
+
             gameRoomStage.setTitle("방: " + roomTitle);
-            gameRoomStage.setScene(new Scene(root, 800, 600)); // 크기는 필요에 따라 조정
+            gameRoomStage.setScene(scene); // 크기는 필요에 따라 조정
             gameRoomStage.show();
         } catch (IOException e) {
             e.printStackTrace();

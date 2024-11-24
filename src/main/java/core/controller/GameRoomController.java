@@ -89,7 +89,7 @@ public class GameRoomController {
      */
     public void setRoomTitle(String roomTitle) {
         this.roomTitle = roomTitle;
-        gameRoomLabel.setText("방: " + roomTitle);
+        gameRoomLabel.setText("Room #" + roomTitle);
     }
 
     /**
