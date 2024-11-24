@@ -39,6 +39,10 @@
     -fx-background-radius: 4;
 }
 
+#yesButton, noButton, answerButton{
+    -fx-font-size: 16px;
+}
+
 
 #exitButton {
     -fx-text-fill: #FF0000;

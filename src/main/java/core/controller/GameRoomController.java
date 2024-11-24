@@ -41,6 +41,15 @@ public class GameRoomController {
     private HBox ynBox;
 
     @FXML
+    private Button yesButton;
+
+    @FXML
+    private Button noButton;
+
+    @FXML
+    private Button answerButton;
+
+    @FXML
     private ListView<String> participantListView;
 
     @FXML
@@ -120,6 +129,32 @@ public class GameRoomController {
             addChatMessage(message, false); // 상대방 메시지 추가
         });
     }
+
+
+
+    @FXML
+    private void handleYes() {
+        System.out.println("Yes button clicked.");
+        // 추가 로직: 게임 서비스에 "Yes" 응답 전송
+        gameService.sendMessage("Yes");
+        ynBox.setVisible(false); // ynBox 숨김
+    }
+
+    @FXML
+    private void handleNo() {
+        System.out.println("No button clicked.");
+        // 추가 로직: 게임 서비스에 "No" 응답 전송
+        gameService.sendMessage("No");
+        ynBox.setVisible(false); // ynBox 숨김
+    }
+
+    @FXML
+    private void handleAnswer() {
+        System.out.println("Cancel button clicked.");
+        // 추가 로직: 취소 처리를 위해 필요한 작업 수행
+        ynBox.setVisible(false); // ynBox 숨김
+    }
+
 
 
     /**

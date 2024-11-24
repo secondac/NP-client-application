@@ -44,13 +44,18 @@
                         </content>
                     </ScrollPane>
 
-                    <HBox fx:id="ynBox" prefHeight="24.0" prefWidth="541.0" />
+                    <HBox fx:id="ynBox" prefHeight="24.0" prefWidth="541.0" visible="false"  spacing="10.0" alignment="CENTER">
+                        <Button fx:id="yesButton" text="Yes" onAction="#handleYes" />
+                        <Button fx:id="noButton" text="No" onAction="#handleNo" />
+                        <Button fx:id="answerButton" text="Cancel" onAction="#handleAnswer" />
+                    </HBox>
 
                     <!-- 채팅 입력 영역 -->
                     <HBox spacing="6.5">
                         <TextField fx:id="chatInputField" promptText="메시지를 입력하세요" HBox.hgrow="ALWAYS" />
                         <Button fx:id="chatSendButton" onAction="#handleSendChat" text="전송" />
                     </HBox>
+
                 </VBox>
 
                 <!-- Right side: Participant list and exit button -->
