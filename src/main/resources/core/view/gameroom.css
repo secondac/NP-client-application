@@ -8,14 +8,16 @@
     src: url('../font/gangwon_font_bold.ttf');
 }
 
-.root{
-    -fx-background-color: #000000;
+.root {
+    -fx-background-color: #383838;
     -fx-font-size: 15pt;
 }
-.label{
+
+.label {
     -fx-text-fill: #E8E8E8;
 }
-.button{
+
+.button {
     -fx-background-color: white; /* 하얀색 배경 */
     -fx-border-color: skyblue;   /* 하늘색 테두리 */
     -fx-border-width: 2px;       /* 테두리 두께  */
@@ -23,13 +25,14 @@
     -fx-background-radius: 5px;  /* 배경 모서리  */
     -fx-text-fill: #383838;
 }
-.button-blue{
+
+.button-blue {
     -fx-background-color: #7CAFC2;
     -fx-text-fill: #FFFFFF;
     -fx-background-radius: 4;
 }
 
-#exitButton{
+#exitButton {
     -fx-text-fill: #FF0000;
 }
 
@@ -38,72 +41,31 @@
     -fx-font-size: 18px;
 }
 
-
-.chat-bubble {
-    -fx-background-radius: 15;
+/* 사용자 말풍선 */
+.user-bubble {
+    -fx-background-color: #ADD8E6; /* 연한 파란색 */
     -fx-padding: 10;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: gray;
+    -fx-border-width: 1px;
+    -fx-text-fill: black;
     -fx-wrap-text: true;
-    -fx-max-width: 250px;
 }
 
-.chat-bubble.user {
-    -fx-background-color: #DCF8C6; /* 사용자 메시지: 연한 초록색 */
+/* 상대방 말풍선 */
+.opponent-bubble {
+    -fx-background-color: #D3D3D3; /* 연한 회색 */
+    -fx-padding: 10;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: gray;
+    -fx-border-width: 1px;
     -fx-text-fill: black;
-}
-
-.chat-bubble.other {
-    -fx-background-color: #FFFFFF; /* 다른 사용자 메시지: 흰색 */
-    -fx-text-fill: black;
-}
-
-/* 채팅 메시지 컨테이너 */
-.chatDiv {
-    -fx-pref-width: 250px;
-    -fx-padding: 10px;
-}
-
-/* 기본 말풍선 스타일 */
-.speech-bubble {
-    -fx-padding: 10px;
-    -fx-background-color: #dadddf;
-    -fx-background-radius: 15px;
-    -fx-font-size: 15px;
     -fx-wrap-text: true;
-    -fx-text-fill: black;
-    /* 그림자 효과 */
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 1);
 }
 
-/* 사용자가 보낸 메시지 스타일 */
-.speech-bubble.sent {
-    -fx-background-color: #0084ff;
-    -fx-text-fill: white;
-}
-
-/* 상대방이 보낸 메시지 스타일 */
-.speech-bubble.received {
-    -fx-background-color: #f1f0f0;
-    -fx-text-fill: black;
-}
-
-/* 말풍선 꼬리 스타일 */
-.chatTail {
-    -fx-pref-width: 0;
-    -fx-pref-height: 0;
-    -fx-border-style: solid;
-    -fx-border-width: 0 10px 15px 10px;
-    -fx-border-color: transparent transparent #dadddf transparent;
-    -fx-rotate: 45deg;
-}
-
-/* 전송 버튼 스타일 (선택 사항) */
-.button {
-    -fx-background-color: #0084ff;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-radius: 5px;
-}
-
-.button:hover {
-    -fx-background-color: #006bbd;
+/* 채팅 박스의 스크롤바 스타일 (선택 사항) */
+.chatScrollPane .scroll-bar:vertical {
+    -fx-background-color: transparent;
 }

@@ -1,5 +1,8 @@
 package core.controller;
 
+import core.service.GameService;
+import core.uitl.UIUtils;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,18 +24,6 @@ import java.io.IOException;
 public class GameRoomController {
 
     @FXML
-    private VBox chatMessagesContainer;
-
-    @FXML
-    private ScrollPane gameContentScrollPane;
-
-    @FXML
-    private ScrollPane chatScrollPane;
-
-    @FXML
-    private VBox chatBox;
-
-    @FXML
     private TextArea gameContentArea;
 
     @FXML
@@ -42,10 +33,30 @@ public class GameRoomController {
     private Button sendButton;
 
     @FXML
+    private ScrollPane chatScrollPane;
+
+    @FXML
+    private VBox chatBox;
+
+    @FXML
     private ListView<String> participantListView;
 
     @FXML
     private Button exitButton;
+
+    @FXML
+    private TextField chatInputField;
+
+    @FXML
+    private Button chatSendButton;
+
+    private GameService gameService;
+
+    public GameRoomController() {
+        // GameService 초기화
+        this.gameService = new GameService();
+        this.gameService.setOnMessageReceived(this::handleMessageReceived);
+    }
 
     @FXML
     private void initialize() {
@@ -57,9 +68,10 @@ public class GameRoomController {
 
     @FXML
     private void handleSendQuestion() {
-        String question = questionTextField.getText();
-        if (!question.isEmpty()) {
-            gameContentArea.appendText("\nYou: " + question);
+        String message = questionTextField.getText();
+        if (!message.isEmpty()) {
+            gameContentArea.appendText("\nYou: " + message);
+            gameService.sendQuestion(message);
             questionTextField.clear();
             // 서버로 질문 전송 로직 추가 가능
         } else {
@@ -67,63 +79,69 @@ public class GameRoomController {
         }
     }
 
+    /**
+     * 채팅 전송 처리 메서드
+     */
+    @FXML
+    private void handleSendChat() {
+        String message = chatInputField.getText().trim();
+        if (!message.isEmpty()) {
+            addChatMessage(message, true); // 사용자 메시지 추가
+            gameService.sendMessage(message); // 서버로 메시지 전송
+            chatInputField.clear();
+        }
+    }
+
+    /**
+     * 메시지 수신 처리 메서드
+     *
+     * @param message 수신된 메시지
+     */
+    private void handleMessageReceived(String message) {
+        Platform.runLater(() -> {
+            addChatMessage(message, false); // 상대방 메시지 추가
+        });
+    }
+
+
+    /**
+     * 방 나가기 처리 메서드
+     */
     @FXML
     private void handleExitRoom() {
         System.out.println("Exiting the room...");
+
+        // GameService를 통해 서버에 방 나가기 요청
+        gameService.exitRoom();
 
         // 현재 Stage 닫기
         Stage currentStage = (Stage) exitButton.getScene().getWindow();
         currentStage.close();
     }
 
-    // 채팅 메시지를 추가하는 메소드
-    private void addChatMessage(String sender, String message, boolean isUser) {
-        // 메시지 HBox 생성
-        HBox messageBox = new HBox();
-        messageBox.setPadding(new Insets(5, 10, 5, 10));
+    /**
+     * 채팅 메시지를 채팅 박스에 추가하는 메서드
+     *
+     * @param message 메시지 텍스트
+     * @param isUser  메시지 발신자가 사용자인지 여부
+     */
+    private void addChatMessage(String message, boolean isUser) {
+        HBox messageBox = UIUtils.createMessageBox(message, isUser);
+        chatBox.getChildren().add(messageBox);
 
-        // 메시지 정렬 설정
-        if (isUser) {
-            messageBox.setAlignment(Pos.TOP_RIGHT);
-        } else {
-            messageBox.setAlignment(Pos.TOP_LEFT);
-        }
-
-        // 메시지 내용 VBox 생성 (보낸 사람과 메시지)
-        VBox messageContent = new VBox();
-        messageContent.setSpacing(2);
-
-        // 보낸 사람 라벨
-        Label senderLabel = new Label(sender);
-        senderLabel.setStyle("-fx-font-weight: bold;");
-
-        // 메시지 라벨 (말풍선)
-        Label messageLabel = new Label(message);
-        messageLabel.setWrapText(true);
-        messageLabel.getStyleClass().add("chat-bubble");
-        if (isUser) {
-            messageLabel.getStyleClass().add("user");
-        } else {
-            messageLabel.getStyleClass().add("other");
-        }
-
-        // 보낸 사람과 메시지를 VBox에 추가
-        messageContent.getChildren().addAll(senderLabel, messageLabel);
-
-        // 메시지 내용을 HBox에 추가
-        messageBox.getChildren().add(messageContent);
-
-        // 메시지를 채팅 컨테이너에 추가
-        chatMessagesContainer.getChildren().add(messageBox);
-
-        // ScrollPane을 맨 아래로 스크롤
-        gameContentScrollPane.layout();
-        gameContentScrollPane.setVvalue(1.0);
+        // 스크롤을 최신 메시지로 이동
+        chatScrollPane.layout();
+        chatScrollPane.setVvalue(1.0);
     }
 
-    // 다른 사용자로부터 메시지를 받을 때 호출되는 메소드
-    public void receiveMessage(String sender, String message) {
-        addChatMessage(sender, message, false);
+    /**
+     * 외부에서 GameService를 설정할 수 있도록 하는 메서드
+     *
+     * @param gameService 설정할 GameService 인스턴스
+     */
+    public void setGameService(GameService gameService) {
+        this.gameService = gameService;
+        this.gameService.setOnMessageReceived(this::handleMessageReceived);
     }
 
 

@@ -14,8 +14,6 @@ public class UIUtils {
      * @param isUser  메시지 발신자가 사용자인지 여부
      * @return 생성된 HBox 메시지 박스
      */
-
-
     public static HBox createMessageBox(String message, boolean isUser) {
         HBox messageBox = new HBox();
         messageBox.setPadding(new Insets(5, 10, 5, 10));

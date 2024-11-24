@@ -2,66 +2,57 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.controller.GameRoomController">
-    <children>
-        <SplitPane dividerPositions="0.7" prefHeight="400.0" prefWidth="600.0">
-            <!-- Left side: Game content and interaction -->
-            <items>
-                <VBox alignment="CENTER" prefWidth="420.0" spacing="10.0"
-                      xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
-
-                    <!-- 상단 Label -->
-                    <Label style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-font-family: 'GangwonEduAll Bold';"
-                           textFill="black" text="방 #" />
-
-                    <!-- ScrollPane -->
-                    <ScrollPane fx:id="chatScrollPane" prefHeight="325.0" prefWidth="415.0" fitToWidth="true" vbarPolicy="ALWAYS">
-                        <!-- ScrollPane 안에 VBox -->
-                        <content>
-                            <VBox fx:id="chatBox" spacing="10" >
-                                <!-- ScrollPane 내부의 예제 콘텐츠 -->
-                                <Label text="첫 번째 메시지" />
-                                <Label text="두 번째 메시지" />
-                                <Label text="세 번째 메시지" />
-                            </VBox>
-                        </content>
-                    </ScrollPane>
-
-
-
-                    <!-- 메시지 입력 필드와 전송 버튼 -->
-                    <HBox spacing="5.0">
-                        <TextField fx:id="questionTextField" promptText="질문을 작성하세요" HBox.hgrow="ALWAYS" />
-                        <Button onAction="#handleSendQuestion" text="Send" />
-                    </HBox>
-                </VBox>
-
-
-
-
-                <!-- Right side: Participant list and exit button -->
-                <VBox alignment="TOP_CENTER" prefWidth="180.0" spacing="10.0">
-                    <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="참여자 목록" />
-                    <ListView fx:id="participantListView" prefHeight="324.0" prefWidth="176.0" />
-                    <Button fx:id="exitButton" onAction="#handleExitRoom" text="Exit Room" />
-                </VBox>
-
-
-            </items>
-        </SplitPane>
-    </children>
-</AnchorPane>
 
 <!--
 <TextArea fx:id="gameContentArea" editable="false" prefHeight="325.0" prefWidth="415.0"
                               style="-fx-font-family: 'GangwonEduAll Bold'; -fx-font-size: 16px;" />
 
+
+
 -->
+<!--
+<TextArea fx:id="gameContentArea" editable="false" prefHeight="150.0" prefWidth="415.0" style="-fx-font-family: '맑은 고딕'; -fx-font-size: 14px;" />
+
+
+<HBox spacing="5.0">
+<TextField fx:id="questionTextField" promptText="질문을 작성하세요" HBox.hgrow="ALWAYS" />
+<Button onAction="#handleSendQuestion" text="Send" />
+</HBox>
+
+<Separator />
+-->
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.controller.GameRoomController">
+    <children>
+        <SplitPane dividerPositions="0.7" prefHeight="400.0" prefWidth="600.0">
+            <!-- Left side: Game content, interaction, and chat -->
+            <items>
+                <VBox alignment="CENTER" prefWidth="420.0" spacing="10.0">
+                    <!-- 방 정보 -->
+                    <Label style="-fx-font-size: 32px; -fx-font-family: 'GangwonEduAll Bold'; -fx-font-weight: bold;" text="방 #" />
+
+                    <!-- 채팅 영역 -->
+
+                    <ScrollPane fx:id="chatScrollPane" fitToWidth="true" prefHeight="278.0" prefWidth="520.0">
+                        <content>
+                            <VBox fx:id="chatBox" spacing="10" />
+                        </content>
+                    </ScrollPane>
+
+                    <!-- 채팅 입력 영역 -->
+                    <HBox spacing="5.0">
+                        <TextField fx:id="chatInputField" promptText="메시지를 입력하세요" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="chatSendButton" onAction="#handleSendChat" text="전송" />
+                    </HBox>
+                </VBox>
+
+                <!-- Right side: Participant list and exit button -->
+                <VBox alignment="TOP_CENTER" prefWidth="180.0" spacing="10.0">
+                    <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="참여자 목록" />
+                    <ListView fx:id="participantListView" prefHeight="300.0" prefWidth="176.0" />
+                    <Button fx:id="exitButton" onAction="#handleExitRoom" text="Exit Room" />
+                </VBox>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
