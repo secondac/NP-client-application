@@ -8,14 +8,20 @@
     src: url('../font/gangwon_font_bold.ttf');
 }
 
+/* 모든 서식에 적용 되는 default font 입니다. 삭제x */
+
+
 .root {
     -fx-background-color: #383838;
-    -fx-font-size: 15pt;
+    -fx-font-size: 18pt;
+    -fx-font-family: "GangwonEduAll Bold";
 }
 
 .label {
     -fx-text-fill: #383838;
 }
+
+
 
 .button {
     -fx-background-color: white; /* 하얀색 배경 */
@@ -38,10 +44,6 @@
     -fx-text-fill: #FF0000;
 }
 
-#welcomeLabel {
-    -fx-font-family: 'GangwonEduAll Bold';
-    -fx-font-size: 18px;
-}
 
 #leftVBox {
     -fx-background-color: #FFFFFF;
@@ -79,7 +81,50 @@
     -fx-wrap-text: true;
 }
 
+
+
+/* ScrollPane Viewport 배경색 설정 */
+#chatScrollPane .viewport {
+    -fx-background-color: #FFFFFF; /* Viewport의 배경색 */
+}
+
+
 /* 채팅 박스의 스크롤바 스타일 (선택 사항) */
 .chatScrollPane .scroll-bar:vertical {
-    -fx-background-color: transparent;
+    -fx-background-color: #F0F0F0;
+    -fx-pref-width: 6px; /* 세로 스크롤바 두께 */
+}
+
+#chatScrollPane .scroll-bar {
+    -fx-background-color: #F0F0F0; /* 스크롤바의 배경색 */
+    -fx-pref-width: 6px;
+}
+
+#chatScrollPane .scroll-bar:vertical .thumb {
+    -fx-background-color: #CCCCCC; /* 세로 스크롤바의 썸 색상 */
+    -fx-background-radius: 5; /* 썸의 둥근 정도 */
+}
+
+#chatScrollPane .scroll-bar:horizontal .thumb {
+    -fx-background-color: #CCCCCC; /* 가로 스크롤바의 썸 색상 */
+    -fx-background-radius: 5; /* 썸의 둥근 정도 */
+}
+
+#chatScrollPane .scroll-bar:vertical .track {
+    -fx-background-color: #E0E0E0; /* 세로 스크롤바 트랙 색상 */
+    -fx-pref-width: 0;
+}
+
+#chatScrollPane .scroll-bar:horizontal .track {
+    -fx-background-color: #E0E0E0; /* 가로 스크롤바 트랙 색상 */
+    -fx-pref-width: 0;
+}
+
+#chatScrollPane .scroll-bar .increment-button,
+#chatScrollPane .scroll-bar .decrement-button {
+    -fx-background-color: transparent; /* 배경 투명화 */
+    -fx-padding: 0; /* 버튼 크기를 줄임 */
+    -fx-shape: null; /* 버튼 모양 제거 */
+    -fx-pref-width: 0; /* 버튼의 너비를 0으로 설정 */
+    -fx-pref-height: 0; /* 버튼의 높이를 0으로 설정 */
 }
