@@ -44,10 +44,10 @@
                         </content>
                     </ScrollPane>
 
-                    <HBox fx:id="ynBox" prefHeight="24.0" prefWidth="541.0" visible="false"  spacing="10.0" alignment="CENTER">
-                        <Button fx:id="yesButton" text="Yes" onAction="#handleYes" />
-                        <Button fx:id="noButton" text="No" onAction="#handleNo" />
-                        <Button fx:id="answerButton" text="Cancel" onAction="#handleAnswer" />
+                    <HBox fx:id="ynBox" prefHeight="24.0" prefWidth="541.0" visible="false" managed="false" spacing="10.0" alignment="CENTER">
+                        <Button fx:id="yesButton" text="네" onAction="#handleYes" prefWidth="100.0" />
+                        <Button fx:id="noButton" text="아니오" onAction="#handleNo" prefWidth="100.0" />
+                        <Button fx:id="answerButton" text="정답입니다" onAction="#handleAnswer" prefWidth="100.0" />
                     </HBox>
 
                     <!-- 채팅 입력 영역 -->

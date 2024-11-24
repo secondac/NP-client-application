@@ -67,6 +67,8 @@ public class GameRoomController {
 
     private Runnable onExitCallback;
 
+    private boolean isHost = false;
+
 
 
     public GameRoomController() {
@@ -106,6 +108,12 @@ public class GameRoomController {
         gameRoomLabel.setText("Room #" + roomTitle);
     }
 
+    // isHost 값을 설정하는 메서드
+    public void setHost(boolean isHost) {
+        this.isHost = isHost;
+        updateYnBoxVisibility();
+    }
+
     /**
      * 채팅 전송 처리 메서드
      */
@@ -135,24 +143,22 @@ public class GameRoomController {
     @FXML
     private void handleYes() {
         System.out.println("Yes button clicked.");
-        // 추가 로직: 게임 서비스에 "Yes" 응답 전송
-        gameService.sendMessage("Yes");
-        ynBox.setVisible(false); // ynBox 숨김
+        // 게임 서비스에 "Yes" 응답 전송해야 함
+        gameService.sendMessage("네");
     }
 
     @FXML
     private void handleNo() {
         System.out.println("No button clicked.");
-        // 추가 로직: 게임 서비스에 "No" 응답 전송
-        gameService.sendMessage("No");
-        ynBox.setVisible(false); // ynBox 숨김
+        // 게임 서비스에 "No" 응답 전송해야 함
+        gameService.sendMessage("아니오");
     }
 
     @FXML
     private void handleAnswer() {
         System.out.println("Cancel button clicked.");
-        // 추가 로직: 취소 처리를 위해 필요한 작업 수행
-        ynBox.setVisible(false); // ynBox 숨김
+        // 추가: 취소 처리를 위해 필요한 작업 수행해야 함
+        gameService.sendMessage("정답입니다");
     }
 
 
@@ -210,6 +216,17 @@ public class GameRoomController {
      */
     public void setOnExitCallback(Runnable callback) {
         this.onExitCallback = callback;
+    }
+
+    // ynBox의 visible 및 managed 상태를 업데이트
+    private void updateYnBoxVisibility() {
+        if (isHost) {
+            ynBox.setVisible(true);
+            ynBox.setManaged(true);
+        } else {
+            ynBox.setVisible(false);
+            ynBox.setManaged(false);
+        }
     }
 
 }

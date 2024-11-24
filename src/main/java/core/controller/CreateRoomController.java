@@ -134,6 +134,9 @@ public class CreateRoomController {
             GameRoomController gameRoomController = loader.getController();
             gameRoomController.setRoomTitle(roomTitle);
 
+            // 방을 생성했으므로 Host로 설정
+            gameRoomController.setHost(true);
+
             // 방 나가기 콜백 설정
             gameRoomController.setOnExitCallback(() -> {
                 if (onRoomExitCallback != null) {

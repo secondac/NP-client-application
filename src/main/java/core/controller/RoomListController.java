@@ -82,6 +82,9 @@ public class RoomListController {
                 // GameRoomController 가져오기
                 GameRoomController gameRoomController = loader.getController();
 
+                // 방에 입장한 경우 Host가 아님
+                gameRoomController.setHost(false);
+
                 // 방 나가기 콜백 설정
                 gameRoomController.setOnExitCallback(() -> Platform.runLater(this::handleRoomExit));
 
