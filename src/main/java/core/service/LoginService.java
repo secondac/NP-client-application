@@ -1,29 +1,49 @@
 package core.service;
 
+import com.google.gson.Gson;
+import core.model.dto.DTO;
 import core.model.dto.LoginRequestDTO;
-import java.io.DataOutputStream;
-import java.io.DataInputStream;
+import core.model.dto.RequestType;
+import core.model.dto.ResponseDTO;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 public class LoginService {
 
-    public boolean authenticate(LoginRequestDTO loginRequest, String ipAddress, int port) {
-        try (Socket socket = new Socket(ipAddress, port);
-             DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
-             DataInputStream inputStream = new DataInputStream(socket.getInputStream())) {
+    private static final int SERVER_PORT = 10001;
+    private final Gson gson = new Gson();
 
-            // JSON ?
-            String jsonInputString = "{ \"id\": \"" + loginRequest.getId() + "\", \"username\": \"" + loginRequest.getUsername() + "\" }";
+    public boolean login(String username, String serverAddress) {
+        try (Socket socket = new Socket(serverAddress, SERVER_PORT);
+             PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
-            // 서버로 데이터 전송
-            outputStream.writeUTF(jsonInputString);
-            outputStream.flush();
+            // RequestType 및 LoginRequestDTO 생성
+            RequestType requestType = RequestType.LOGIN;
+            LoginRequestDTO loginRequestDTO = new LoginRequestDTO(username,0);
+            DTO requestDTO = new DTO(requestType, loginRequestDTO);
 
-            // 서버로부터 응답 받기
-            String response = inputStream.readUTF();
-            System.out.println("Response from server: " + response);
+            String jsonRequest = gson.toJson(requestDTO);
 
-            return response.equals("OK");
+            // 전송 전에 JSON 출력
+            System.out.println("Sending JSON to server: " + jsonRequest);
+
+            // JSON 전송
+            out.println(jsonRequest);
+
+            String jsonResponse = in.readLine();
+            System.out.println("Received JSON from server: " + jsonResponse);
+
+
+            ResponseDTO response = gson.fromJson(jsonResponse, ResponseDTO.class);
+
+            System.out.println("Received response: " + response);
+            return response.isSuccess();
+
 
         } catch (Exception e) {
             e.printStackTrace();

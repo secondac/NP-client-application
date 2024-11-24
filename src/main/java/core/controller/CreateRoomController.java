@@ -120,12 +120,9 @@ public class CreateRoomController {
      */
     private void openGameRoom(String roomTitle) {
         try {
-            // FXML 로드
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/gameroom.fxml"));
             Parent root = loader.load();
 
-
-            // Scene 생성 후 CSS 추가
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/core/view/gameroom.css").toExternalForm());
 
@@ -137,7 +134,7 @@ public class CreateRoomController {
             // 방을 생성했으므로 Host로 설정
             gameRoomController.setHost(true);
 
-            // 방 나가기 콜백 설정
+            // 방 나가기 콜백
             gameRoomController.setOnExitCallback(() -> {
                 if (onRoomExitCallback != null) {
                     onRoomExitCallback.run();
@@ -151,7 +148,6 @@ public class CreateRoomController {
             gameRoomStage.setScene(scene); // 크기는 필요에 따라 조정
             gameRoomStage.show();
 
-            // 창 닫기 이벤트 처리
             gameRoomStage.setOnCloseRequest(event -> {
                 if (onRoomExitCallback != null) {
                     onRoomExitCallback.run();

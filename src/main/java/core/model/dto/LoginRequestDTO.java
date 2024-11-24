@@ -1,20 +1,21 @@
 package core.model.dto;
 
 public class LoginRequestDTO {
-    private String id;
-    private String username;
 
-    public LoginRequestDTO(String id, String username) {
-        this.id = id;
+    private String username;
+    private int score;
+
+    public LoginRequestDTO(String username, int score) {
+        this.score = score;
         this.username = username;
     }
 
-    public String getId() {
-        return id;
+    public int getScore() {
+        return score;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public String getUsername() {

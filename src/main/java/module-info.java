@@ -15,8 +15,11 @@ module core {
     opens core.service to javafx.fxml;
     opens core.model to javafx.fxml;
     opens core.util to javafx.fxml;
+    opens core.model.dto to com.google.gson;
+    opens core.$__testserver to com.google.gson;
 
 
+    exports core.$__testserver;
     exports core.$__legacyfiles;
     exports core.controller;
     exports core.model;
@@ -26,5 +29,4 @@ module core {
     exports core;
     exports core.$__legacyfiles.test;
     opens core.$__legacyfiles.test to com.google.gson, javafx.fxml;
-    exports core.$__testserver;
 }

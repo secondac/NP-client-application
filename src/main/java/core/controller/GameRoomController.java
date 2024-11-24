@@ -175,12 +175,10 @@ public class GameRoomController {
             gameService.exitRoom();
         }
 
-        // 방 나가기 콜백 실행
         if (onExitCallback != null) {
             onExitCallback.run();
         }
 
-        // 현재 Stage 닫기
         Stage currentStage = (Stage) exitButton.getScene().getWindow();
         currentStage.close();
     }
@@ -196,7 +194,6 @@ public class GameRoomController {
         HBox messageBox = UIUtils.createMessageBox(message, isUser);
         chatBox.getChildren().add(messageBox);
 
-        // 스크롤을 최신 메시지로 이동
         chatScrollPane.layout();
         chatScrollPane.setVvalue(1.0);
     }
@@ -218,7 +215,6 @@ public class GameRoomController {
         this.onExitCallback = callback;
     }
 
-    // ynBox의 visible 및 managed 상태를 업데이트
     private void updateYnBoxVisibility() {
         if (isHost) {
             ynBox.setVisible(true);
