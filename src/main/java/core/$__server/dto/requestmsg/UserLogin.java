@@ -1,4 +1,4 @@
-package core.$__server.dto.requsetmsg;
+package core.$__server.dto.requestmsg;
 
 public class UserLogin {
     private String username;
