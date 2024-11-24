@@ -16,6 +16,7 @@
 .label{
     -fx-text-fill: #E8E8E8;
     -fx-font-family: 'BM DoHyeon';
+    -fx-font-size: 18px;
 
 }
 .button{
@@ -39,6 +40,10 @@
     -fx-text-fill: #FFFFFF;
     -fx-background-radius: 4;
     -fx-font-family: 'GangwonEduAll Bold';
+}
+
+#serverField {
+    -fx-background-color: #999999;
 }
 
 #welcomeLabel {

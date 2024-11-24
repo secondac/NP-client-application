@@ -19,20 +19,20 @@
             </font>
           </Label>
 
-          <TextField fx:id="usernameField" layoutX="113.0" layoutY="144.0" prefHeight="31.0" prefWidth="197.0" promptText="your username" />
+          <TextField fx:id="usernameField" layoutX="128.0" layoutY="144.0" prefHeight="31.0" prefWidth="192.0" promptText="your username" />
 
-          <TextField fx:id="idField" layoutX="113.0" layoutY="100.0" prefHeight="31.0" prefWidth="197.0" promptText="127.0.0.1" />
+          <TextField fx:id="serverField" editable="false" layoutX="128.0" layoutY="100.0" prefHeight="31.0" prefWidth="192.0" promptText="127.0.0.1" />
 
           <Button layoutX="342.0" layoutY="111.0" onAction="#handleLogin" prefHeight="55.0" prefWidth="108.0" text="Connect">
             <font>
                <Font name="Dubai Regular" size="18.0" />
             </font>
          </Button>
-          <Label contentDisplay="CENTER" layoutX="26.0" layoutY="100.0" prefHeight="32.0" prefWidth="59.0" style="-fx-background-color: transparent;" text="ID">
+          <Label contentDisplay="CENTER" layoutX="26.0" layoutY="100.0" prefHeight="32.0" prefWidth="82.0" style="-fx-background-color: transparent;" text="Server">
             <font>
                <Font name="Dubai Bold" size="18.0" />
             </font></Label>
-          <Label contentDisplay="CENTER" layoutX="26.0" layoutY="144.0" prefHeight="32.0" prefWidth="59.0" style="-fx-background-color: transparent;" text="Name">
+          <Label contentDisplay="CENTER" layoutX="26.0" layoutY="144.0" prefHeight="32.0" prefWidth="82.0" style="-fx-background-color: transparent;" text="Name">
             <font>
                <Font name="Dubai Bold" size="18.0" />
             </font></Label>

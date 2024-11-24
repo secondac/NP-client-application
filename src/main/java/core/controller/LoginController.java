@@ -2,25 +2,16 @@ package core.controller;
 
 import core.view.RoomListView;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
-import core.model.dto.LoginRequestDTO;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 public class LoginController {
 
     @FXML
-    private TextField idField;
+    private TextField serverField;
 
     @FXML
     private Label welcomeLabel;
@@ -36,32 +27,12 @@ public class LoginController {
 
     @FXML
     private void handleLogin() {
-        String usernameFieldText = idField.getText();
-        String serverFieldText = usernameField.getText();
+        String usernameFieldText = usernameField.getText();
+        String serverFieldText = serverField.getText();
 
-
-        /*
-        // 폰트 로드
-        try (InputStream fontStream = getClass().getResourceAsStream("/core/font/LeferiBaseBold.ttf")) {
-            if (fontStream != null) {
-                Font font = Font.loadFont(fontStream, 18);
-                if (font != null) {
-                    welcomeLabel.setFont(font);
-
-                    System.out.println("Font loaded successfully: " + font.getName());
-                } else {
-                    System.out.println("Failed to load font.");
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-         */
-
-        // 입력 필드 확인
-        if (usernameFieldText.isEmpty() || serverFieldText.isEmpty()) {
-            errorLabel.setText("Please enter both username and password.");
+        // username이 비어있으면 error msg 출력
+        if (usernameFieldText.isEmpty()) {
+            errorLabel.setText("Please enter username");
             errorLabel.setVisible(true);
             return;
         }
@@ -82,7 +53,7 @@ public class LoginController {
             System.out.println("roomlist.css applied.");
 
             // 현재 Stage 닫기
-            Stage currentStage = (Stage) idField.getScene().getWindow();
+            Stage currentStage = (Stage) serverField.getScene().getWindow();
             currentStage.close();
 
             // 새 Stage 열기
@@ -94,3 +65,45 @@ public class LoginController {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+        // 폰트 로드
+        try (InputStream fontStream = getClass().getResourceAsStream("/core/font/LeferiBaseBold.ttf")) {
+            if (fontStream != null) {
+                Font font = Font.loadFont(fontStream, 18);
+                if (font != null) {
+                    welcomeLabel.setFont(font);
+
+                    System.out.println("Font loaded successfully: " + font.getName());
+                } else {
+                    System.out.println("Failed to load font.");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+         */
