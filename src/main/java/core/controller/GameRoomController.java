@@ -1,14 +1,9 @@
 package core.controller;
 
 import core.service.GameService;
-import core.uitl.UIUtils;
+import core.util.UIUtils;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -19,10 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class GameRoomController {
-
 
     @FXML
     private VBox leftVBox;
@@ -59,6 +51,10 @@ public class GameRoomController {
 
     private GameService gameService;
 
+    private String roomTitle;
+
+
+
     public GameRoomController() {
         // GameService 초기화
         this.gameService = new GameService();
@@ -84,6 +80,16 @@ public class GameRoomController {
         } else {
             System.out.println("Question field is empty. Please type a question.");
         }
+    }
+
+    /**
+     * 방 제목을 설정하는 메서드
+     *
+     * @param roomTitle 생성된 방의 제목
+     */
+    public void setRoomTitle(String roomTitle) {
+        this.roomTitle = roomTitle;
+        gameRoomLabel.setText("방: " + roomTitle);
     }
 
     /**
@@ -150,8 +156,5 @@ public class GameRoomController {
         this.gameService = gameService;
         this.gameService.setOnMessageReceived(this::handleMessageReceived);
     }
-
-
-
 
 }

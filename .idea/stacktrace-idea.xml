@@ -24,6 +24,7 @@
         <option value="core.model.dto" />
         <option value="core.service" />
         <option value="core.uitl" />
+        <option value="core.util" />
         <option value="core.view" />
       </set>
     </option>

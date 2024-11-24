@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'BM DoHyeon';
+    src: url('../font/BMDOHYEON.ttf');
+}
+
+@font-face {
+    font-family: 'GangwonEduAll Bold';
+    src: url('../font/gangwon_font_bold.ttf');
+}
+
+
+
+/* 타이틀 레이블 스타일 */
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+/* 일반 레이블 스타일 */
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #555555;
+}
+
+/* 기본 버튼 스타일 */
+.button {
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+/* 주요 버튼 스타일 (방 생성) */
+.primary-button {
+    -fx-background-color: #4CAF50; /* 녹색 */
+    -fx-text-fill: white;
+}
+
+.primary-button:hover {
+    -fx-background-color: #45A049;
+}
+
+/* 보조 버튼 스타일 (취소) */
+.secondary-button {
+    -fx-background-color: #f44336; /* 빨간색 */
+    -fx-text-fill: white;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #da190b;
+}

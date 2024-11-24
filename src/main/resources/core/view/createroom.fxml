@@ -6,9 +6,29 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="core.controller.CreateRoomController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="400.0" prefWidth="600.0"
+            stylesheets="@createroom.css">
+    <children>
+        <VBox alignment="CENTER" spacing="20.0" AnchorPane.topAnchor="50.0" AnchorPane.bottomAnchor="50.0"
+              AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
 
+            <!-- 방 생성 타이틀 -->
+            <Label text="방 생성" styleClass="title-label"/>
+
+            <!-- 방 제목 입력 필드 -->
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Label text="방 제목:" styleClass="label"/>
+                <TextField fx:id="roomTitleField" promptText="방 제목을 입력하세요" HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <!-- 방 생성 버튼 -->
+            <Button fx:id="createRoomButton" text="방 생성" onAction="#handleCreateRoom" styleClass="primary-button"/>
+
+            <!-- 취소 버튼 -->
+            <Button fx:id="cancelButton" text="취소" onAction="#handleCancel" styleClass="secondary-button"/>
+        </VBox>
+    </children>
 </AnchorPane>

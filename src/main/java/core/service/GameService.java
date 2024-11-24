@@ -68,6 +68,22 @@ public class GameService {
     }
 
     /**
+     * 방을 생성하는 메서드
+     *
+     * @param roomTitle 생성할 방의 제목
+     * @return 방 생성 성공 여부
+     */
+    public boolean createRoom(String roomTitle) {
+        // 실제 방 생성 로직 구현
+        // 예: 서버에 HTTP 요청을 보내거나, 데이터베이스에 방 정보를 저장
+
+        // 여기서는 예시로 항상 성공했다고 가정
+        System.out.println("방 생성 요청: " + roomTitle);
+        return true;
+    }
+
+
+    /**
      * 방을 나가는 로직을 구현합니다.
      */
     public void exitRoom() {

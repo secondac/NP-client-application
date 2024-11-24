@@ -14,6 +14,7 @@ module core {
     opens core.controller to javafx.fxml;
     opens core.service to javafx.fxml;
     opens core.model to javafx.fxml;
+    opens core.util to javafx.fxml;
 
 
     exports core.$__legacyfiles;
