@@ -14,13 +14,8 @@
                     -fx-font-weight: bold;
                     -fx-font-family: 'GangwonEduAll Bold' " textFill="black" text="방 #" />
 
-
-
-
                     <TextArea fx:id="gameContentArea" editable="false" prefHeight="325.0" prefWidth="415.0"
                               style="-fx-font-family: 'GangwonEduAll Bold'; -fx-font-size: 16px;" />
-
-
 
                     <!-- HBox를 추가하여 TextField와 Button을 가로로 배치 -->
                     <HBox spacing="5.0">
@@ -39,3 +34,9 @@
         </SplitPane>
     </children>
 </AnchorPane>
+
+<!--
+<TextArea fx:id="gameContentArea" editable="false" prefHeight="325.0" prefWidth="415.0"
+                              style="-fx-font-family: 'GangwonEduAll Bold'; -fx-font-size: 16px;" />
+
+-->
