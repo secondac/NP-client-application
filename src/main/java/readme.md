@@ -44,6 +44,6 @@
 ### 2. 진행 상황
 
 - 로그인 DB 테스트, JSON 송수신 완료
-- 로그인하면 roomlist를 보여주는 걸 구현해야 함
+- 로그인하면 roomlist를 보여주는 걸 구현해야 함 RoomListController.initialize()
 - Create room / enter room 서버 통신 로직 구현해야 함
 - 게임 룸 입장 -
