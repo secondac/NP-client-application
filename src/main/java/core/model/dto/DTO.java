@@ -1,7 +1,5 @@
 package core.model.dto;
 
-import core.$__legacyfiles.test.RequestType;
-
 public class DTO {
     private RequestType requestType;
     private Object requestMsg;
