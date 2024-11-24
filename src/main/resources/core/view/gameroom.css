@@ -55,3 +55,55 @@
     -fx-background-color: #FFFFFF; /* 다른 사용자 메시지: 흰색 */
     -fx-text-fill: black;
 }
+
+/* 채팅 메시지 컨테이너 */
+.chatDiv {
+    -fx-pref-width: 250px;
+    -fx-padding: 10px;
+}
+
+/* 기본 말풍선 스타일 */
+.speech-bubble {
+    -fx-padding: 10px;
+    -fx-background-color: #dadddf;
+    -fx-background-radius: 15px;
+    -fx-font-size: 15px;
+    -fx-wrap-text: true;
+    -fx-text-fill: black;
+    /* 그림자 효과 */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 1);
+}
+
+/* 사용자가 보낸 메시지 스타일 */
+.speech-bubble.sent {
+    -fx-background-color: #0084ff;
+    -fx-text-fill: white;
+}
+
+/* 상대방이 보낸 메시지 스타일 */
+.speech-bubble.received {
+    -fx-background-color: #f1f0f0;
+    -fx-text-fill: black;
+}
+
+/* 말풍선 꼬리 스타일 */
+.chatTail {
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+    -fx-border-style: solid;
+    -fx-border-width: 0 10px 15px 10px;
+    -fx-border-color: transparent transparent #dadddf transparent;
+    -fx-rotate: 45deg;
+}
+
+/* 전송 버튼 스타일 (선택 사항) */
+.button {
+    -fx-background-color: #0084ff;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #006bbd;
+}
