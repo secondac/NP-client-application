@@ -38,6 +38,9 @@ public class GameRoomController {
     private VBox chatBox;
 
     @FXML
+    private HBox ynBox;
+
+    @FXML
     private ListView<String> participantListView;
 
     @FXML

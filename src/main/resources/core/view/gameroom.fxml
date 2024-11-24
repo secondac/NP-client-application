@@ -27,11 +27,9 @@
         <SplitPane dividerPositions="0.7" prefHeight="520.0" prefWidth="780.0" style="-fx-background-color: #FFFFFF;">
             <!-- Left side: Game content, interaction, and chat -->
             <items>
-                <VBox fx:id="leftVBox" alignment="CENTER" prefWidth="546.0" spacing="13.0" >
+                <VBox fx:id="leftVBox" alignment="CENTER" prefWidth="546.0" spacing="13.0">
                     <!-- 방 정보 -->
-                    <Label fx:id="gameRoomLabel"
-                           style="-fx-font-size: 36px; -fx-font-family: 'GangwonEduAll Bold'; -fx-font-weight: bold;"
-                           text="방 #" />
+                    <Label fx:id="gameRoomLabel" style="-fx-font-size: 36px; -fx-font-family: 'GangwonEduAll Bold'; -fx-font-weight: bold;" text="방 #" />
 
                     <!-- 채팅 영역 -->
                     <ScrollPane fx:id="chatScrollPane" fitToWidth="true" prefHeight="360.0" prefWidth="700.0" style="-fx-background-color: #FFFFFF" stylesheets="@gameroom.css">
@@ -39,12 +37,14 @@
                             <VBox fx:id="chatBox" spacing="13">
                                 <!-- 초기 메시지: 게임 시작 알림 -->
                                 <HBox alignment="CENTER">
-                                    <Label text="게임이 시작되었습니다" styleClass="system-message" style="-fx-font-family: 'BM DoHyeon'; -fx-font-size: 15"/>
+                                    <Label style="-fx-font-family: 'BM DoHyeon'; -fx-font-size: 15" styleClass="system-message" text="게임이 시작되었습니다" />
                                 </HBox>
                                 <!-- 기존 또는 초기 메시지들이 여기에 추가됩니다 -->
                             </VBox>
                         </content>
                     </ScrollPane>
+
+                    <HBox fx:id="ynBox" prefHeight="24.0" prefWidth="541.0" />
 
                     <!-- 채팅 입력 영역 -->
                     <HBox spacing="6.5">
