@@ -14,8 +14,6 @@ import core.model.Room;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class RoomListController {
 
@@ -46,7 +44,7 @@ public class RoomListController {
     @FXML
     private Button joinRoomButton;
 
-    // private final Lock lock = new ReentrantLock();
+    private boolean isRoom = false;  // 방 상태 플래그
 
     @FXML
     private void initialize() {
@@ -60,14 +58,15 @@ public class RoomListController {
         // 서버에 연결하기 전 예시 데이터
         usernameLabel.setText("User123");
         userListView.getItems().addAll("User1", "User2", "User3");
-    }
 
-    private boolean isCreateRoomOpen = false;  // flag로 lock과 유사하게 설정함
+        // 버튼 상태 초기화
+        updateButtonStates();
+    }
 
     @FXML
     private void handleJoinRoom() {
-        if (isCreateRoomOpen) { // 일종의 lock, createroom 열려 있으면 실행하지 않음
-            System.out.println("Cannot join room while the create room window is open.");
+        if (isRoom) {
+            System.out.println("Cannot join room while another room is active.");
             return;
         }
 
@@ -89,6 +88,17 @@ public class RoomListController {
                 newStage.setTitle("Game Room");
                 newStage.show();
 
+                // 방에 성공적으로 들어갔으므로 플래그 설정 및 버튼 상태 업데이트
+                isRoom = true;
+                updateButtonStates();
+
+                // 방 창이 닫힐 때 플래그 해제 및 버튼 상태 업데이트
+                newStage.setOnCloseRequest(event -> {
+                    isRoom = false;
+                    System.out.println("Game room closed.");
+                    updateButtonStates();
+                });
+
             } catch (IOException e) {
                 e.printStackTrace();
                 System.out.println("Failed to load the game room.");
@@ -100,13 +110,13 @@ public class RoomListController {
 
     @FXML
     private void openGameRoom() {
-        if (isCreateRoomOpen) {
-            System.out.println("Create room window is already open.");
+        if (isRoom) {
+            System.out.println("Cannot create room while another room is active.");
             return;
         }
 
-        isCreateRoomOpen = true;
-
+        isRoom = true;
+        updateButtonStates();
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/createroom.fxml"));
@@ -121,17 +131,26 @@ public class RoomListController {
             createRoomStage.setTitle("Create New Room");
             createRoomStage.show();
 
-            // When close stage, unlock
-
+            // 방 만들기 창이 닫히면 플래그를 해제하고 버튼 상태를 업데이트
             createRoomStage.setOnCloseRequest(event -> {
-                isCreateRoomOpen = false;
+                isRoom = false;
                 System.out.println("Create room window closed.");
+                updateButtonStates();
             });
 
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Failed to load the create room.");
-            isCreateRoomOpen = false;
+            isRoom = false;
+            updateButtonStates();
         }
+    }
+
+    /**
+     * isRoom 상태에 따라 버튼 활성화 상태를 업데이트하는 메서드
+     */
+    private void updateButtonStates() {
+        createRoomButton.setDisable(isRoom);
+        joinRoomButton.setDisable(isRoom);
     }
 }
