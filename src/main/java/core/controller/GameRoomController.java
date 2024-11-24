@@ -4,15 +4,27 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class GameRoomController {
+
+    @FXML
+    private VBox chatMessagesContainer;
+
+    @FXML
+    private ScrollPane gameContentScrollPane;
 
     @FXML
     private TextArea gameContentArea;
@@ -57,6 +69,58 @@ public class GameRoomController {
         Stage currentStage = (Stage) exitButton.getScene().getWindow();
         currentStage.close();
     }
+
+    // 채팅 메시지를 추가하는 메소드
+    private void addChatMessage(String sender, String message, boolean isUser) {
+        // 메시지 HBox 생성
+        HBox messageBox = new HBox();
+        messageBox.setPadding(new Insets(5, 10, 5, 10));
+
+        // 메시지 정렬 설정
+        if (isUser) {
+            messageBox.setAlignment(Pos.TOP_RIGHT);
+        } else {
+            messageBox.setAlignment(Pos.TOP_LEFT);
+        }
+
+        // 메시지 내용 VBox 생성 (보낸 사람과 메시지)
+        VBox messageContent = new VBox();
+        messageContent.setSpacing(2);
+
+        // 보낸 사람 라벨
+        Label senderLabel = new Label(sender);
+        senderLabel.setStyle("-fx-font-weight: bold;");
+
+        // 메시지 라벨 (말풍선)
+        Label messageLabel = new Label(message);
+        messageLabel.setWrapText(true);
+        messageLabel.getStyleClass().add("chat-bubble");
+        if (isUser) {
+            messageLabel.getStyleClass().add("user");
+        } else {
+            messageLabel.getStyleClass().add("other");
+        }
+
+        // 보낸 사람과 메시지를 VBox에 추가
+        messageContent.getChildren().addAll(senderLabel, messageLabel);
+
+        // 메시지 내용을 HBox에 추가
+        messageBox.getChildren().add(messageContent);
+
+        // 메시지를 채팅 컨테이너에 추가
+        chatMessagesContainer.getChildren().add(messageBox);
+
+        // ScrollPane을 맨 아래로 스크롤
+        gameContentScrollPane.layout();
+        gameContentScrollPane.setVvalue(1.0);
+    }
+
+    // 다른 사용자로부터 메시지를 받을 때 호출되는 메소드
+    public void receiveMessage(String sender, String message) {
+        addChatMessage(sender, message, false);
+    }
+
+
 
 
 }
