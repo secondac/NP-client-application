@@ -17,7 +17,7 @@
                         <Insets left="10.0" />
                     </HBox.margin>
                 </Label>
-                <TextField fx:id="roomTitleField" prefHeight="32.0" prefWidth="315.0" promptText="방 제목을 입력하세요" />
+                <TextField fx:id="roomTitleField" prefHeight="32.0" prefWidth="309.0" promptText="방 제목을 입력하세요" />
             </HBox>
 
             <!-- 버튼 그룹 -->
