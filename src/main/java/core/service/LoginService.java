@@ -33,7 +33,7 @@ public class LoginService {
      */
     public boolean login(String username, String serverAddress) {
         try {
-            // 소켓과 스트림 초기화
+
             socket = new Socket(serverAddress, SERVER_PORT);
             out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
