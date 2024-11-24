@@ -36,7 +36,13 @@
                     <!-- 채팅 영역 -->
                     <ScrollPane fx:id="chatScrollPane" fitToWidth="true" prefHeight="360.0" prefWidth="700.0" style="-fx-background-color: #FFFFFF" stylesheets="@gameroom.css">
                         <content>
-                            <VBox fx:id="chatBox" spacing="13" />
+                            <VBox fx:id="chatBox" spacing="13">
+                                <!-- 초기 메시지: 게임 시작 알림 -->
+                                <HBox alignment="CENTER">
+                                    <Label text="게임이 시작되었습니다" styleClass="system-message" style="-fx-font-family: 'BM DoHyeon'; -fx-font-size: 15"/>
+                                </HBox>
+                                <!-- 기존 또는 초기 메시지들이 여기에 추가됩니다 -->
+                            </VBox>
                         </content>
                     </ScrollPane>
 
