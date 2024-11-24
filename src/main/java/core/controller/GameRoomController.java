@@ -23,6 +23,13 @@ import java.io.IOException;
 
 public class GameRoomController {
 
+
+    @FXML
+    private VBox leftVBox;
+
+    @FXML
+    private Label gameRoomLabel;
+
     @FXML
     private TextArea gameContentArea;
 

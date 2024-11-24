@@ -14,7 +14,7 @@
 }
 
 .label {
-    -fx-text-fill: #E8E8E8;
+    -fx-text-fill: #383838;
 }
 
 .button {
@@ -24,6 +24,7 @@
     -fx-border-radius: 5px;      /* 테두리 모서리  */
     -fx-background-radius: 5px;  /* 배경 모서리  */
     -fx-text-fill: #383838;
+    -fx-font-family: "GangwonEduAll Bold";
 }
 
 .button-blue {
@@ -31,6 +32,7 @@
     -fx-text-fill: #FFFFFF;
     -fx-background-radius: 4;
 }
+
 
 #exitButton {
     -fx-text-fill: #FF0000;
@@ -41,13 +43,25 @@
     -fx-font-size: 18px;
 }
 
+#leftVBox {
+    -fx-background-color: #FFFFFF;
+}
+
+#chatBox {
+    -fx-background-color: #FFFFFF;
+}
+
+#chatScrollPane {
+    -fx-background-color: #FFFFFF;
+}
+
 /* 사용자 말풍선 */
 .user-bubble {
-    -fx-background-color: #ADD8E6; /* 연한 파란색 */
+    -fx-background-color: #C3F5C2; /* 연한 파란색 */
     -fx-padding: 10;
     -fx-background-radius: 15;
     -fx-border-radius: 15;
-    -fx-border-color: gray;
+    -fx-border-color: #C3F5C2;
     -fx-border-width: 1px;
     -fx-text-fill: black;
     -fx-wrap-text: true;
@@ -55,11 +69,11 @@
 
 /* 상대방 말풍선 */
 .opponent-bubble {
-    -fx-background-color: #D3D3D3; /* 연한 회색 */
+    -fx-background-color: #C2F0F0; /* 연한 회색 */
     -fx-padding: 10;
     -fx-background-radius: 15;
     -fx-border-radius: 15;
-    -fx-border-color: gray;
+    -fx-border-color: #C2F0F0;
     -fx-border-width: 1px;
     -fx-text-fill: black;
     -fx-wrap-text: true;
