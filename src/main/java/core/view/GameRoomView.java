@@ -3,9 +3,22 @@ package core.view;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import java.io.IOException;
+import javafx.geometry.Insets;
+import javafx.geometry.NodeOrientation;
+import javafx.geometry.Pos;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.*;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.scene.Node;
 
 public class GameRoomView {
 
+    private VBox chatBox;
+    private ScrollPane scrollPane;
+    private TextField inputField;
+    private Button sendButton;
     private Parent layout;
 
     public GameRoomView() {

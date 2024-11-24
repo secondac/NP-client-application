@@ -57,4 +57,6 @@ public class GameRoomController {
         Stage currentStage = (Stage) exitButton.getScene().getWindow();
         currentStage.close();
     }
+
+
 }
