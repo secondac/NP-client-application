@@ -27,6 +27,12 @@ public class GameRoomController {
     private ScrollPane gameContentScrollPane;
 
     @FXML
+    private ScrollPane chatScrollPane;
+
+    @FXML
+    private VBox chatBox;
+
+    @FXML
     private TextArea gameContentArea;
 
     @FXML
@@ -44,7 +50,7 @@ public class GameRoomController {
     @FXML
     private void initialize() {
         // 초기화 작업: 게임 내용과 참여자 목록을 설정할 수 있음
-        gameContentArea.setText("게임에 입장했습니다.");
+        // gameContentArea.setText("게임에 입장했습니다.");
         // gameContentArea.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         participantListView.getItems().addAll("Player 1", "Player 2", "Player 3");
     }
