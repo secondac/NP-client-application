@@ -1,5 +1,6 @@
 package core.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -78,6 +79,13 @@ public class RoomListController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/gameroom.fxml"));
                 Parent gameRoomLayout = loader.load();
 
+                // GameRoomController 가져오기
+                GameRoomController gameRoomController = loader.getController();
+
+                // 방 나가기 콜백 설정
+                gameRoomController.setOnExitCallback(() -> Platform.runLater(this::handleRoomExit));
+
+
                 Stage newStage = new Stage();
                 Scene newScene = new Scene(gameRoomLayout);
 
@@ -122,6 +130,12 @@ public class RoomListController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/createroom.fxml"));
             Parent createRoomLayout = loader.load();
 
+            CreateRoomController createRoomController = loader.getController();
+
+            // 방 나가기 콜백 설정
+            createRoomController.setOnRoomExitCallback(() -> Platform.runLater(this::handleRoomExit));
+
+
             Stage createRoomStage = new Stage();
             Scene createRoomScene = new Scene(createRoomLayout);
 
@@ -152,5 +166,11 @@ public class RoomListController {
     private void updateButtonStates() {
         createRoomButton.setDisable(isRoom);
         joinRoomButton.setDisable(isRoom);
+    }
+
+    private void handleRoomExit() {
+        System.out.println("Room exited.");
+        isRoom = false;
+        updateButtonStates();
     }
 }

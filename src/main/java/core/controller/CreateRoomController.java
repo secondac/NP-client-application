@@ -26,6 +26,12 @@ public class CreateRoomController {
 
     private GameService gameService;
 
+    // RoomListController의 콜백 설정
+    private Runnable onRoomExitCallback;
+
+
+
+
     public CreateRoomController() {
         // GameService 초기화 (필요에 따라 의존성 주입을 사용할 수 있음)
         this.gameService = new GameService();
@@ -83,6 +89,11 @@ public class CreateRoomController {
         alert.showAndWait();
     }
 
+    public void setOnRoomExitCallback(Runnable onRoomExitCallback) {
+        this.onRoomExitCallback = onRoomExitCallback;
+    }
+
+
     /**
      * 현재 창을 닫는 메서드
      */
@@ -112,15 +123,32 @@ public class CreateRoomController {
             GameRoomController gameRoomController = loader.getController();
             gameRoomController.setRoomTitle(roomTitle);
 
+            // 방 나가기 콜백 설정
+            gameRoomController.setOnExitCallback(() -> {
+                if (onRoomExitCallback != null) {
+                    onRoomExitCallback.run();
+                }
+            });
+
             // 새로운 Stage 생성
             Stage gameRoomStage = new Stage();
 
             gameRoomStage.setTitle("방: " + roomTitle);
             gameRoomStage.setScene(scene); // 크기는 필요에 따라 조정
             gameRoomStage.show();
+
+            // 창 닫기 이벤트 처리
+            gameRoomStage.setOnCloseRequest(event -> {
+                if (onRoomExitCallback != null) {
+                    onRoomExitCallback.run();
+                }
+            });
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("오류", "게임 방을 여는 중 오류가 발생했습니다.", AlertType.ERROR);
         }
     }
+
+
+
 }

@@ -53,6 +53,8 @@ public class GameRoomController {
 
     private String roomTitle;
 
+    private Runnable onExitCallback;
+
 
 
     public GameRoomController() {
@@ -124,13 +126,21 @@ public class GameRoomController {
     private void handleExitRoom() {
         System.out.println("Exiting the room...");
 
-        // GameService를 통해 서버에 방 나가기 요청
-        gameService.exitRoom();
+        // 서버에 방 나가기 요청
+        if (gameService != null) {
+            gameService.exitRoom();
+        }
+
+        // 방 나가기 콜백 실행
+        if (onExitCallback != null) {
+            onExitCallback.run();
+        }
 
         // 현재 Stage 닫기
         Stage currentStage = (Stage) exitButton.getScene().getWindow();
         currentStage.close();
     }
+
 
     /**
      * 채팅 메시지를 채팅 박스에 추가하는 메서드
@@ -155,6 +165,13 @@ public class GameRoomController {
     public void setGameService(GameService gameService) {
         this.gameService = gameService;
         this.gameService.setOnMessageReceived(this::handleMessageReceived);
+    }
+
+    /**
+     * 방 나가기 콜백 설정 메서드
+     */
+    public void setOnExitCallback(Runnable callback) {
+        this.onExitCallback = callback;
     }
 
 }
