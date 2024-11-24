@@ -26,8 +26,9 @@ public class LoginController {
     @FXML
     private Button loginButton;
 
-
     private final LoginService loginService = new LoginService();
+
+    private String userName;
 
     @FXML
     private void handleLogin() {
@@ -50,8 +51,11 @@ public class LoginController {
         boolean loginSuccess = loginService.login(usernameFieldText, serverFieldText);
         System.out.println("Login successful? " + loginSuccess);
 
-        // 임시 코드
-        loginSuccess = true;
+        // 임시 코드 - 통신 실패시 사용하는 용도
+        // loginSuccess = true;
+
+        // username을 얻어와서 내 정보에 표시해야 함
+        userName = loginService.getUsername();
 
 
 

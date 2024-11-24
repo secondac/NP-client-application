@@ -17,6 +17,8 @@ module core {
     opens core.util to javafx.fxml;
     opens core.model.dto to com.google.gson;
     opens core.$__testserver to com.google.gson;
+    opens core.model.dto.request to com.google.gson;
+    opens core.model.dto.response to com.google.gson;
 
 
     exports core.$__testserver;
