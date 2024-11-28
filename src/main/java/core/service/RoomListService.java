@@ -38,7 +38,6 @@ public class RoomListService extends Thread {
 
     private ArrayList<Room> rooms;
 
-
     /**
      * run : 서버로부터 연결되면 실행됨, 실시간으로 요청을 받아야 하므로, thread 위에서 실행됨
      */
@@ -59,28 +58,28 @@ public class RoomListService extends Thread {
      *
      * 예시: boolean roomlistRequest = roomService.request();
      * **/
-    
-    public boolean request(String serverAddress){
-        try{
-            socket = new Socket();
-            out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            // 방 연결 요청을 생성하고, 전송
-            RequestType requestType = RequestType.ROOMLIST;
+    public boolean request(String serverAddress) {
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(LocalDateTime.class, new GsonLocalDateTimeAdapter())
+                .create();
+        DTO dto = new DTO(RequestType.ROOMLIST, null);
 
-            Gson gson = new GsonBuilder()
-                    .registerTypeAdapter(LocalDateTime.class, new GsonLocalDateTimeAdapter())
-                    .create();
-            DTO dto = new DTO(requestType, null);
+        try (Socket socket = new Socket(serverAddress, SERVER_PORT);
+             PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
+            // ROOMLIST 요청 JSON 데이터 생성 및 전송
             String json = gson.toJson(dto);
-
-            // 여기서부터 전송
             out.println(json);
             System.out.println("ROOMLIST 요청 JSON 데이터 서버로 전송: " + json);
 
+            // 서버 응답 수신
             String responseJson = in.readLine();
+            if (responseJson == null || responseJson.isEmpty()) {
+                System.err.println("서버 응답이 비어있습니다.");
+                return false;
+            }
             System.out.println("서버로부터 수신한 JSON 데이터: " + responseJson);
 
             // JSON 데이터를 ListChatRoom 객체로 변환
@@ -93,18 +92,14 @@ public class RoomListService extends Thread {
                 System.out.println(chatRoom);
             }
 
+            return true; // 성공적으로 요청 처리 시 true 반환
 
-            // 서버 응답 처리
-
-        } catch (Exception e){
-
+        } catch (Exception e) {
+            System.err.println("ROOMLIST 요청 처리 중 오류 발생:");
+            e.printStackTrace();
+            return false; // 요청 처리 중 오류 발생 시 false 반환
         }
-        
-        
-        return false; // 임시 주석
     }
-
-
 
 
 

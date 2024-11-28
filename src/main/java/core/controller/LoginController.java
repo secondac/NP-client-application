@@ -1,6 +1,7 @@
 package core.controller;
 
 import core.service.LoginService;
+import core.service.RoomListService;
 import core.view.RoomListView;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -77,6 +78,13 @@ public class LoginController {
                 Stage currentStage = (Stage) serverField.getScene().getWindow();
                 currentStage.close();
                 newStage.show();
+
+
+                // 테스트 코드
+                System.out.println("roomlistService test");
+                RoomListService roomListService = new RoomListService();
+                boolean r = roomListService.request("127.0.0.1");
+                System.out.println("roomlistService.request: " + r);
 
             } catch (Exception e) {
                 e.printStackTrace();

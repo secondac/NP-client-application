@@ -1,5 +1,6 @@
 package core.controller;
 
+import core.service.RoomListService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,6 +60,7 @@ public class RoomListController {
         // 서버에 연결하기 전 예시 데이터
         usernameLabel.setText("User123");
         userListView.getItems().addAll("User1", "User2", "User3");
+
 
         // 버튼 상태 초기화
         updateButtonStates();
