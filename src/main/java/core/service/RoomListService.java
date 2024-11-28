@@ -37,15 +37,26 @@ public class RoomListService extends Thread {
 
     @Override
     public void run() {
+        
 
-
-
-
-
-
-
-
-
+    }
+    
+    
+    
+    /** roomlistRequest 
+     *
+     * RoomService의 인스턴스를 생성하고 .roomlistRequest를 통해 서버에 방 리스트 전달 요청
+     * 로그인에 성공하면 true를 RoomService를 호출한 곳 (RoomListController ?)에 전달합니다.
+     * 그러면, 그곳에서 RoomService.run()을 호출합니다.
+     *
+     * 예시: boolean roomlistRequest = roomService.request();
+     * **/
+    
+    public boolean request(){
+        
+        
+        
+        return false; // 임시 주석
     }
 
 
@@ -54,3 +65,57 @@ public class RoomListService extends Thread {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Room Class 내용
+
+
+package core.model;
+
+public class Room {
+    private String name;
+    private int currentPlayers;
+
+    public Room(String name, int currentPlayers) {
+        this.name = name;
+        this.currentPlayers = currentPlayers;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCurrentPlayers() {
+        return currentPlayers;
+    }
+}
+
+ */
