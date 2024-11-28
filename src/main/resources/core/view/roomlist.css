@@ -95,6 +95,10 @@
     -fx-alignment: center;
 }
 
+#currentUserName {
+    -fx-font-size: 20px;
+}
+
 #roomTable{
     -fx-font-family: 'GangwonEduAll Bold';
     -fx-font-size: 24px;
