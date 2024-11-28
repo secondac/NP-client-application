@@ -65,7 +65,7 @@ public class RoomListController {
         // RoomListService 호출
         System.out.println("roomlistService test");
         RoomListService roomListService = new RoomListService();
-        rooms = roomListService.request("43.203.212.19");
+        rooms = roomListService.request("127.0.0.1"); //43.203.212.19"
         System.out.println("roomlistService.request: " + rooms);
 
         // 연결에 성공하면 동기화를 위한 thread 실행부분 추가 예정입니다

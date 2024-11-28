@@ -41,13 +41,7 @@ public class GameRoomController {
     private HBox ynBox;
 
     @FXML
-    private Button yesButton;
-
-    @FXML
-    private Button noButton;
-
-    @FXML
-    private Button answerButton;
+    private Button yesButton, noButton, anserButton;
 
     @FXML
     private ListView<String> participantListView;
@@ -146,21 +140,21 @@ public class GameRoomController {
     private void handleYes() {
         System.out.println("Yes button clicked.");
         // 게임 서비스에 "Yes" 응답 전송해야 함
-        gameService.sendMessage("네");
+        gameService.sendMessage("/네");
     }
 
     @FXML
     private void handleNo() {
         System.out.println("No button clicked.");
         // 게임 서비스에 "No" 응답 전송해야 함
-        gameService.sendMessage("아니오");
+        gameService.sendMessage("/아니오");
     }
 
     @FXML
     private void handleAnswer() {
         System.out.println("Cancel button clicked.");
         // 추가: 취소 처리를 위해 필요한 작업 수행해야 함
-        gameService.sendMessage("정답입니다");
+        gameService.sendMessage("/정답입니다");
     }
 
 
