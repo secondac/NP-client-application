@@ -80,11 +80,14 @@ public class LoginController {
                 newStage.show();
 
 
+                /*
+
                 // 테스트 코드
                 System.out.println("roomlistService test");
                 RoomListService roomListService = new RoomListService();
                 boolean r = roomListService.request("127.0.0.1");
                 System.out.println("roomlistService.request: " + r);
+                 */
 
             } catch (Exception e) {
                 e.printStackTrace();

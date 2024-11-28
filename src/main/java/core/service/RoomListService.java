@@ -69,12 +69,12 @@ public class RoomListService extends Thread {
              PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
-            // ROOMLIST 요청 JSON 데이터 생성 및 전송
+            // 여기서 전송
             String json = gson.toJson(dto);
             out.println(json);
             System.out.println("ROOMLIST 요청 JSON 데이터 서버로 전송: " + json);
 
-            // 서버 응답 수신
+            // 여기서부터 수신
             String responseJson = in.readLine();
             if (responseJson == null || responseJson.isEmpty()) {
                 System.err.println("서버 응답이 비어있습니다.");
@@ -82,11 +82,9 @@ public class RoomListService extends Thread {
             }
             System.out.println("서버로부터 수신한 JSON 데이터: " + responseJson);
 
-            // JSON 데이터를 ListChatRoom 객체로 변환
             Type listChatRoomType = new TypeToken<ListChatRoom>() {}.getType();
             ListChatRoom listChatRoom = gson.fromJson(responseJson, listChatRoomType);
 
-            // 방 목록 출력
             System.out.println("수신한 방 목록:");
             for (ChatRoom chatRoom : listChatRoom.getChatRooms()) {
                 System.out.println(chatRoom);

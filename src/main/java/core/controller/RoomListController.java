@@ -53,14 +53,18 @@ public class RoomListController {
         roomNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         currentPlayersColumn.setCellValueFactory(new PropertyValueFactory<>("currentPlayers"));
 
-        // 서버에 연결하기 전 예시 데이터
+        // Sample data : 연결 성공시 삭제
         roomTable.getItems().add(new Room("Room A", 5));
         roomTable.getItems().add(new Room("Room B", 3));
-
-        // 서버에 연결하기 전 예시 데이터
         usernameLabel.setText("User123");
         userListView.getItems().addAll("User1", "User2", "User3");
 
+
+        // RoomListService 호출
+        System.out.println("roomlistService test");
+        RoomListService roomListService = new RoomListService();
+        boolean r = roomListService.request("127.0.0.1");
+        System.out.println("roomlistService.request: " + r);
 
         // 버튼 상태 초기화
         updateButtonStates();
