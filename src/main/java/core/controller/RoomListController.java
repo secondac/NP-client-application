@@ -23,28 +23,17 @@ public class RoomListController {
     private TableColumn<Room, Integer> idColumn;
 
     @FXML
-    private TableColumn<Room, String> roomNameColumn;
+    private TableColumn<Room, String> roomNameColumn, hostColumn;
 
     @FXML
-    private TableColumn<Room, String> hostColumn;
-
-    @FXML
-    private Label roomlistLabel;
-
-    @FXML
-    private Label currentUserName;
-
-    @FXML
-    private Label usernameLabel;
+    private Label usernameLabel, roomlistLabel, currentUserName, userlistLabel;
 
     @FXML
     private ListView<String> userListView;
 
     @FXML
-    private Button createRoomButton;
+    private Button createRoomButton, joinRoomButton, exitButton;
 
-    @FXML
-    private Button joinRoomButton;
 
     String userName;
     private boolean isRoom = false;  // 방 상태 플래그
