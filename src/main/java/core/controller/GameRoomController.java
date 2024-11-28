@@ -69,6 +69,8 @@ public class GameRoomController {
 
     private boolean isHost = false;
 
+    private String admin = "admin";
+
 
 
     public GameRoomController() {

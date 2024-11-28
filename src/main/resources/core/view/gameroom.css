@@ -81,6 +81,18 @@
     -fx-wrap-text: true;
 }
 
+/* 관리자 말풍선 */
+.admin-bubble {
+    -fx-background-color: #aaaaaa;
+    -fx-padding: 10;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: #C3F5C2;
+    -fx-border-width: 1px;
+    -fx-text-fill: black;
+    -fx-wrap-text: true;
+}
+
 /* 상대방 말풍선 */
 .opponent-bubble {
     -fx-background-color: #C2F0F0;

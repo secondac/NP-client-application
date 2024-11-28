@@ -27,7 +27,7 @@ public class UIUtils {
         Label text = new Label(message);
         text.setWrapText(true);
         text.setMaxWidth(250); // 말풍선의 최대 너비 설정
-        text.getStyleClass().add(isUser ? "user-bubble" : "opponent-bubble");
+        text.getStyleClass().add(isUser ? "admin-bubble" : "opponent-bubble");
 
         messageBox.getChildren().add(text);
         return messageBox;
