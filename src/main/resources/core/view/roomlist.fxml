@@ -5,21 +5,22 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.controller.RoomListController">
     <children>
-        <HBox spacing="5" style="-fx-background-color: #F2FFED;">
+        <HBox spacing="10" style="-fx-background-color: #F2FFED;">
             <!-- Left side: Room list -->
             <VBox alignment="CENTER" prefWidth="400" spacing="5" style="-fx-background-color: #F2FFED; -fx-padding: 0 0 5 5;">
                 <AnchorPane prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: #F2FFED;">
                     <Label fx:id="roomlistLabel" prefHeight="33.0" prefWidth="252.0" text="방 리스트" textAlignment="CENTER" />
                 </AnchorPane>
 
-                <TableView fx:id="roomTable" prefHeight="415.0" prefWidth="518.0">
+                <TableView fx:id="roomTable" prefHeight="400.0" prefWidth="518.0">
                     <columns>
                         <TableColumn fx:id="idColumn" prefWidth="40" text="Id" />
                         <TableColumn fx:id="roomNameColumn" prefWidth="342" text="Title" />
                         <TableColumn fx:id="hostColumn" prefWidth="100" text="Host" />
                     </columns>
                 </TableView>
-                <AnchorPane prefHeight="10.0" prefWidth="722.0">
+
+                <AnchorPane prefHeight="60.0" prefWidth="722.0">
                     <children>
                         <Button fx:id="createRoomButton" layoutX="288.0" layoutY="7.0" onAction="#openGameRoom" prefHeight="42.0" prefWidth="108.0" text="방 만들기" />
                         <Button fx:id="joinRoomButton" layoutX="403.0" layoutY="7.0" onAction="#handleJoinRoom" prefHeight="42.0" prefWidth="108.0" text="입장하기" />
@@ -31,19 +32,21 @@
             <VBox alignment="CENTER" prefWidth="300" spacing="5" style="-fx-background-color: #F2FFED; -fx-padding: 0 0 5 5;">
                 <!-- Match left VBox heights -->
                 <AnchorPane prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #F2FFED;">
-                     <Label fx:id="currentUserName" layoutY="11.0" prefHeight="26.0" prefWidth="119.0" text="name:" />
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label fx:id="currentUserName" prefHeight="26.0" prefWidth="119.0" text="name:" />
+                        <Label fx:id="usernameLabel" prefHeight="20.0" prefWidth="42.0" style="-fx-font-size: 14px;" text="-" />
+                    </HBox>
                 </AnchorPane>
 
-                <AnchorPane prefHeight="415.0" prefWidth="300.0">
-                    <ListView fx:id="userListView" layoutY="52.0" prefHeight="356.0" prefWidth="300.0" />
+                <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #F2FFED;">
+                    <ListView fx:id="userListView" prefHeight="400.0" prefWidth="300.0" />
                 </AnchorPane>
 
-                <AnchorPane prefHeight="10.0" prefWidth="300.0">
+                <AnchorPane prefHeight="60.0" prefWidth="300.0">
                     <children>
-                        <Label fx:id="usernameLabel" layoutX="150.0" layoutY="15.0" prefWidth="76.0" style="-fx-font-size: 14px;" text="-" />
+                        <!-- Additional buttons or elements can go here -->
                     </children>
                 </AnchorPane>
-
             </VBox>
         </HBox>
     </children>
