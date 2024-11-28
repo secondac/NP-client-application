@@ -17,10 +17,66 @@
     -fx-font-family: "GangwonEduAll Bold";
     -fx-font-size: 24;
 }
+
+.split-pane-divider {
+    -fx-background-color: white;
+}
+
+
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+}
+
+.table-view .scroll-bar {
+    -fx-pref-width: 0;  /* 스크롤바의 너비를 0으로 설정 */
+    -fx-pref-height: 0; /* 스크롤바의 높이를 0으로 설정 */
+    -fx-max-width: 0;   /* 스크롤바의 최대 너비를 0으로 설정 */
+    -fx-max-height: 0;  /* 스크롤바의 최대 높이를 0으로 설정 */
+    -fx-min-width: 0;   /* 스크롤바의 최소 너비를 0으로 설정 */
+    -fx-min-height: 0;  /* 스크롤바의 최소 높이를 0으로 설정 */
+    -fx-opacity: 0;     /* 스크롤바를 투명하게 설정 */
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: white;
+    -fx-text-fill: black;
+}
+
+.table-cell {
+    -fx-border-color: white;
+}
+
+.table-header-row {
+    -fx-border-color: white;
+}
+
+.table-view .column-header-background {
+}
+.table-view .column-header {
+    -fx-background-color: white;
+}
+
+
+/* 선택된 행 스타일 */
+.table-view .table-row-cell:selected {
+    -fx-background-color: #d9d9d9;
+    -fx-text-fill: black;
+}
+
+/* 선택된 셀 스타일 */
+.table-cell:selected {
+    -fx-background-color: red;
+    -fx-text-fill: black; /* 선택된 셀 텍스트 색상 */
+}
+
 .button{
-    -fx-background-color: white; /* 하얀색 배경 */
-    -fx-border-color: skyblue;   /* 하늘색 테두리 */
-    -fx-border-width: 2px;       /* 테두리 두께  */
+    -fx-background-color: skyblue;
+    -fx-border-color: skyblue;   /* skyblue */
+    -fx-border-width: 2px;
     -fx-border-radius: 5px;      /* 테두리 모서리  */
     -fx-background-radius: 5px;  /* 배경 모서리  */
     -fx-font-size: 16;
@@ -44,9 +100,9 @@
     -fx-font-size: 24px;
 }
 #userListView{
-    -fx-background-color: white; /* 하얀색 배경 */
-    -fx-border-color: skyblue;   /* 하늘색 테두리 */
-    -fx-border-width: 2px;       /* 테두리 두께  */
+    -fx-background-color: white;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
     -fx-border-radius: 5px;      /* 테두리 모서리  */
     -fx-background-radius: 5px;  /* 배경 모서리  */
     -fx-font-size: 16;

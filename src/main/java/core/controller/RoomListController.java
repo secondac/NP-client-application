@@ -6,16 +6,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import core.model.Room;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class RoomListController {
 
@@ -52,6 +49,8 @@ public class RoomListController {
     String userName;
     private boolean isRoom = false;  // 방 상태 플래그
 
+    private List<Room> rooms;
+
     @FXML
     private void initialize() {
 
@@ -63,9 +62,12 @@ public class RoomListController {
         roomNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         hostColumn.setCellValueFactory(new PropertyValueFactory<>("Host"));
 
+        roomTable.getColumns().clear(); // 기존 컬럼 초기화
+        roomTable.getColumns().addAll(idColumn, roomNameColumn, hostColumn); // 원하는 컬럼만 추가
+
         // Sample data : 연결 성공시 삭제
-        roomTable.getItems().add(new Room(1,"Room A", "hostA"));
-        roomTable.getItems().add(new Room(2,"Room B", "hostB"));
+        //roomTable.getItems().add(new Room(9999,"Room A", "hostA"));
+        //roomTable.getItems().add(new Room(2222,"Room B", "hostB"));
         usernameLabel.setText("User123");
 
         userListView.getItems().addAll("User1", "User2", "User3");
@@ -74,15 +76,33 @@ public class RoomListController {
         // RoomListService 호출
         System.out.println("roomlistService test");
         RoomListService roomListService = new RoomListService();
-        boolean r = roomListService.request("127.0.0.1");
-        System.out.println("roomlistService.request: " + r);
-        // 연결에 성공하면 동기화를 위한 thread 실행
-        if(r){
+        rooms = roomListService.request("127.0.0.1");
+        System.out.println("roomlistService.request: " + rooms);
+
+        // 연결에 성공하면 동기화를 위한 thread 실행부분 추가 예정입니다
+        if(rooms != null){
+            roomTable.getItems().addAll(rooms);
             roomListService.start();
+        } else {
+            System.out.println("연결 실패");
         }
 
         // 버튼 상태 초기화
         updateButtonStates();
+
+        // 테이블뷰 너비조정
+        roomTable.widthProperty().addListener((obs, oldWidth, newWidth) -> {
+            double totalWidth = newWidth.doubleValue();
+            idColumn.setPrefWidth(totalWidth * 0.1); // 10% 너비
+            roomNameColumn.setPrefWidth(totalWidth * 0.6); // 60% 너비
+            hostColumn.setPrefWidth(totalWidth * 0.298); // 전체 합 100% 되면 스크롤바 생김
+        });
+
+        roomTable.lookupAll(".scroll-bar").forEach(scrollBar -> {
+            scrollBar.setVisible(false);  // 스크롤바를 숨김
+            scrollBar.setManaged(false); // 스크롤바가 레이아웃 공간을 차지하지 않도록 설정
+        });
+
     }
 
     @FXML
@@ -100,13 +120,8 @@ public class RoomListController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/gameroom.fxml"));
                 Parent gameRoomLayout = loader.load();
 
-                // GameRoomController 가져오기
                 GameRoomController gameRoomController = loader.getController();
-
-                // 방에 입장한 경우 Host가 아님
                 gameRoomController.setHost(false);
-
-                // 방 나가기 콜백 설정
                 gameRoomController.setOnExitCallback(() -> Platform.runLater(this::handleRoomExit));
 
 

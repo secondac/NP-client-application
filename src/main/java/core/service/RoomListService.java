@@ -23,6 +23,7 @@ import core.model.dto.*;
 
 public class RoomListService extends Thread {
 
+    // private boolean connectedFlag = false;
     private static final int SERVER_PORT = 10001;
     private final Gson gson = new Gson();
     private String userName;
@@ -60,7 +61,9 @@ public class RoomListService extends Thread {
      * 예시: boolean roomlistRequest = roomService.request();
      * **/
 
-    public boolean request(String serverAddress) {
+
+
+    public List<Room> request(String serverAddress) {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDateTime.class, new GsonLocalDateTimeAdapter())
                 .create();
@@ -79,25 +82,35 @@ public class RoomListService extends Thread {
             String responseJson = in.readLine();
             if (responseJson == null || responseJson.isEmpty()) {
                 System.err.println("서버 응답이 비어있습니다.");
-                return false;
+                return null;
             }
             System.out.println("서버로부터 수신한 JSON 데이터: " + responseJson);
 
+            // JSON 데이터를 ListChatRoom 객체로 변환
             Type listChatRoomType = new TypeToken<ListChatRoom>() {}.getType();
             ListChatRoom listChatRoom = gson.fromJson(responseJson, listChatRoomType);
 
             System.out.println("수신한 방 목록:");
+            List<Room> rooms = new ArrayList<>();
             for (ChatRoom chatRoom : listChatRoom.getChatRooms()) {
                 System.out.println(chatRoom);
+                rooms.add(new Room(chatRoom.getId(), chatRoom.getName(), chatRoom.getCreator()));
             }
 
-            return true; // 성공적으로 요청 처리 시 true 반환
+            return rooms; // 변환된 Room 리스트 반환
+
 
         } catch (Exception e) {
             System.err.println("ROOMLIST 요청 처리 중 오류 발생:");
             e.printStackTrace();
-            return false; // 요청 처리 중 오류 발생 시 false 반환
+            return null;
         }
+    }
+
+
+    @Deprecated
+    public boolean isConnected() {
+        return true;
     }
 
 
