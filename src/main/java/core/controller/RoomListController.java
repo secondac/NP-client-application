@@ -23,10 +23,13 @@ public class RoomListController {
     private TableView<Room> roomTable;
 
     @FXML
+    private TableColumn<Room, Integer> idColumn;
+
+    @FXML
     private TableColumn<Room, String> roomNameColumn;
 
     @FXML
-    private TableColumn<Room, Integer> currentPlayersColumn;
+    private TableColumn<Room, String> hostColumn;
 
     @FXML
     private Label roomlistLabel;
@@ -46,17 +49,25 @@ public class RoomListController {
     @FXML
     private Button joinRoomButton;
 
+    String userName;
     private boolean isRoom = false;  // 방 상태 플래그
 
     @FXML
     private void initialize() {
+
+        /**
+         * 각 필드의 getter 가 반드시 필요함
+         */
+
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         roomNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        currentPlayersColumn.setCellValueFactory(new PropertyValueFactory<>("currentPlayers"));
+        hostColumn.setCellValueFactory(new PropertyValueFactory<>("Host"));
 
         // Sample data : 연결 성공시 삭제
-        roomTable.getItems().add(new Room("Room A", 5));
-        roomTable.getItems().add(new Room("Room B", 3));
+        roomTable.getItems().add(new Room(1,"Room A", "hostA"));
+        roomTable.getItems().add(new Room(2,"Room B", "hostB"));
         usernameLabel.setText("User123");
+
         userListView.getItems().addAll("User1", "User2", "User3");
 
 
@@ -65,6 +76,10 @@ public class RoomListController {
         RoomListService roomListService = new RoomListService();
         boolean r = roomListService.request("127.0.0.1");
         System.out.println("roomlistService.request: " + r);
+        // 연결에 성공하면 동기화를 위한 thread 실행
+        if(r){
+            roomListService.start();
+        }
 
         // 버튼 상태 초기화
         updateButtonStates();

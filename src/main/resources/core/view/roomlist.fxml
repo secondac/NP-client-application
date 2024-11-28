@@ -13,8 +13,9 @@
 
                    <TableView fx:id="roomTable" prefHeight="414.0" prefWidth="525.0">
                        <columns>
-                           <TableColumn fx:id="roomNameColumn" prefWidth="414.6666566133499" text="Title" />
-                           <TableColumn fx:id="currentPlayersColumn" prefWidth="123.33331298828125" text="인원 수" />
+                           <TableColumn fx:id="idColumn" prefWidth="40" text="Id" />
+                           <TableColumn fx:id="roomNameColumn" prefWidth="374.6666566133499" text="Title" />
+                           <TableColumn fx:id="hostColumn" prefWidth="123.33331298828125" text="Host" />
                        </columns>
                    </TableView>
                <AnchorPane prefHeight="10.0" prefWidth="722.0">

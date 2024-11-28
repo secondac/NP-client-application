@@ -25,6 +25,7 @@ public class RoomListService extends Thread {
 
     private static final int SERVER_PORT = 10001;
     private final Gson gson = new Gson();
+    private String userName;
 
     private Socket socket;
     private PrintWriter out;

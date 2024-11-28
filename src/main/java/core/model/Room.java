@@ -1,19 +1,25 @@
 package core.model;
 
 public class Room {
+    private Integer id;
     private String name;
-    private int currentPlayers;
+    private String host;
 
-    public Room(String name, int currentPlayers) {
+    public Room(Integer id, String name, String host) {
+        this.id = id;
         this.name = name;
-        this.currentPlayers = currentPlayers;
+        this.host = host;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getCurrentPlayers() {
-        return currentPlayers;
+    public String getHost() {
+        return host;
     }
 }
