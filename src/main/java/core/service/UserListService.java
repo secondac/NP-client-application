@@ -26,12 +26,20 @@ public class UserListService {
     private Socket socket;
     private PrintWriter out;
     private BufferedReader in;
+    
+    private final Integer i = 0;
 
     public List<String> request(String serverAddress){
+        //
+
+        System.out.println("i = " + i);
+        
+        
+        
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDateTime.class, new GsonLocalDateTimeAdapter())
                 .create();
-        DTO dto = new DTO(RequestType.USERLIST, 0);
+        DTO dto = new DTO(RequestType.USERLIST, i);
 
         try (Socket socket = new Socket(serverAddress, SERVER_PORT);
              PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);

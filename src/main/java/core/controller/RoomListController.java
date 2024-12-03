@@ -36,7 +36,9 @@ public class RoomListController {
     private Button createRoomButton, joinRoomButton, exitButton, refreshRoomButton, refreshUserButton;
 
 
-    private static final String ADDRESS = "127.0.0.1";
+    private static final String ADDRESS = "43.203.212.19";
+
+    // private static final String ADDRESS = "43.203.212.19";
     // private static final String ADDRESS = "127.0.0.1"; // 43.203.212.19
 
     String userName;

@@ -31,7 +31,8 @@ public class LoginController {
 
     private String userName;
 
-    private static final String ADDRESS = "127.0.0.1";
+    private static final String ADDRESS = "43.203.212.19";
+    // private static final String ADDRESS = "127.0.0.1";
     // private static final String ADDRESS = "127.0.0.1";
 
     @FXML
