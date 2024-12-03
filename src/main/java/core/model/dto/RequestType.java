@@ -1,5 +1,6 @@
 package core.model.dto;
 
 public enum RequestType {
-    ROOMLIST, NEWROOM, CONNECTCHAT, LOGIN
+    USERLIST, ROOMLIST, NEWROOM, CONNECTCHAT, LOGIN
+    // roomlist 에서는 USERLIST 보낼 떄 id=0으로 보냄
 }

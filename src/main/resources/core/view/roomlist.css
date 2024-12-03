@@ -94,13 +94,27 @@
     -fx-background-radius: 4;
 }
 
-#roomlistLabel{
+#refreshRoomButton{
+    -fx-background-color: #F2FFED;
+    -fx-border-color: #F2FFED;
+    -fx-font-size: 12px;
+    -fx-font-family: "GangwonEduAll Bold";
+}
+
+#refreshUserButton{
+    -fx-background-color: #F2FFED;
+    -fx-border-color: #F2FFED;
+    -fx-font-size: 12px;
+    -fx-font-family: "GangwonEduAll Bold";
+}
+
+#roomListLabel{
     -fx-font-family: 'GangwonEduAll Bold';
     -fx-font-size: 36px;
     -fx-alignment: center;
 }
 
-#userlistLabel {
+#userListLabel {
     -fx-font-family: 'GangwonEduAll Bold';
     -fx-font-size: 20px;
     -fx-alignment: center;

@@ -9,6 +9,8 @@
             <VBox alignment="CENTER" prefWidth="400" spacing="5" style="-fx-background-color: #F2FFED; -fx-padding: 0 0 5 5;">
                 <AnchorPane prefHeight="50.0" prefWidth="400.0" style="-fx-background-color: #F2FFED;">
                     <Label fx:id="roomlistLabel" layoutX="130.0" layoutY="8.0" prefHeight="33.0" prefWidth="252.0" text="방 리스트" textAlignment="CENTER" />
+                    <Button fx:id="refreshRoomButton" layoutX="447.0" layoutY="23.0" mnemonicParsing="false" onAction="#refreshRoom" prefHeight="20.0" prefWidth="60.0" text="새로고침" />
+
                 </AnchorPane>
 
                 <TableView fx:id="roomTable" prefHeight="400.0" prefWidth="518.0">
@@ -36,8 +38,9 @@
                 </AnchorPane>
 
                 <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #F2FFED;">
-                    <Label fx:id="userlistLabel" layoutX="31.0" prefHeight="60.0" prefWidth="238.0" text="접속한 유저" />
+                    <Label fx:id="userListLabel" layoutX="31.0" prefHeight="60.0" prefWidth="238.0" text="접속한 유저" />
                     <ListView fx:id="userListView" layoutY="57.0" prefHeight="343.0" prefWidth="300.0" />
+                    <Button fx:id="refreshUserButton" layoutX="234.0" layoutY="18.0" mnemonicParsing="false" onAction="#refreshUser" text="새로고침" />
                 </AnchorPane>
 
                 <AnchorPane prefHeight="60.0" prefWidth="300.0">

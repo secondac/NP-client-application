@@ -26,17 +26,17 @@ public class RoomListController {
     private TableColumn<Room, String> roomNameColumn, hostColumn;
 
     @FXML
-    private Label usernameLabel, roomlistLabel, currentUserName, userlistLabel;
+    private Label usernameLabel, roomlistLabel, currentUserName, userListLabel;
 
     @FXML
     private ListView<String> userListView;
 
     @FXML
-    private Button createRoomButton, joinRoomButton, exitButton, refreshButton;
+    private Button createRoomButton, joinRoomButton, exitButton, refreshRoomButton, refreshUserButton;
 
 
     private static final String ADDRESS = "127.0.0.1";
-    // private static final String ADDRESS = "127.0.0.1";
+    // private static final String ADDRESS = "127.0.0.1"; // 43.203.212.19
 
     String userName;
     private boolean isRoom = false;  // 방 상태 플래그
@@ -65,7 +65,7 @@ public class RoomListController {
         userListView.getItems().addAll("User1", "User2", "User3");
 
         // sendRequest to server
-        sendRequest();
+        sendRoomListRequest();
 
         // 버튼 상태 초기화
         updateButtonStates();
@@ -181,19 +181,30 @@ public class RoomListController {
 
 
     @FXML
-    private void refresh(){
-        sendRequest();
+    private void refreshRoom(){
+
+        sendRoomListRequest();
     }
 
-    private void sendRequest(){
+    @FXML
+    private void refreshUser(){
+
+    }
+
+    private void deleteRoomList(){
+
+    }
+
+    private void sendRoomListRequest(){
         // RoomListService 호출
         System.out.println("roomlistService test");
         RoomListService roomListService = new RoomListService();
-        rooms = roomListService.request(ADDRESS); //43.203.212.19"
+        rooms = roomListService.request(ADDRESS);
         System.out.println("roomlistService.request: " + rooms);
 
         // 연결에 성공하면 동기화를 위한 thread 실행부분 추가 예정입니다
         if(rooms != null){
+            roomTable.getItems().clear();
             roomTable.getItems().addAll(rooms);
             roomListService.start();
         } else {
