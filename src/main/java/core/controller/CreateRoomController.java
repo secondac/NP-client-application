@@ -13,6 +13,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.Socket;
 
 public class CreateRoomController {
 
@@ -35,8 +36,7 @@ public class CreateRoomController {
 
     // RoomListController의 콜백 설정
     private Runnable onRoomExitCallback;
-
-
+    private String username;
 
 
     public CreateRoomController() {
@@ -157,6 +157,12 @@ public class CreateRoomController {
             e.printStackTrace();
             showAlert("오류", "게임 방을 여는 중 오류가 발생했습니다.", AlertType.ERROR);
         }
+    }
+
+    public void setGameService(String username) throws IOException {
+        this.username = username;
+        System.out.println(username);
+        this.gameService = new GameService(username,0,new Socket("127.0.0.1",10001));
     }
 
 

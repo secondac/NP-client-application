@@ -18,16 +18,28 @@ public class UIUtils {
         HBox messageBox = new HBox();
         messageBox.setPadding(new Insets(5, 10, 5, 10));
 
-        if (isUser) {
-            messageBox.setAlignment(Pos.CENTER_RIGHT);
-        } else {
-            messageBox.setAlignment(Pos.CENTER_LEFT);
-        }
-
         Label text = new Label(message);
         text.setWrapText(true);
         text.setMaxWidth(250); // 말풍선의 최대 너비 설정
-        text.getStyleClass().add(isUser ? "admin-bubble" : "opponent-bubble");
+
+        if (isUser) {
+            // 사용자 메시지 (우측 정렬)
+            messageBox.setAlignment(Pos.CENTER_RIGHT);
+            text.getStyleClass().add("user-bubble");
+        } else if (message.startsWith("admin")) {
+            // 관리자 메시지 (중앙 정렬)
+            messageBox.setAlignment(Pos.CENTER);
+            text.getStyleClass().add("admin-bubble");
+        } else {
+            // 상대방 메시지 (좌측 정렬)
+            messageBox.setAlignment(Pos.CENTER_LEFT);
+            text.getStyleClass().add("opponent-bubble");
+        }
+
+//        Label text = new Label(message);
+//        text.setWrapText(true);
+//        text.setMaxWidth(250); // 말풍선의 최대 너비 설정
+//        text.getStyleClass().add(isUser ? "admin-bubble" : "opponent-bubble");
 
         messageBox.getChildren().add(text);
         return messageBox;

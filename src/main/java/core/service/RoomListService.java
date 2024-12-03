@@ -32,6 +32,8 @@ public class RoomListService extends Thread {
     private PrintWriter out;
     private BufferedReader in;
 
+    private int roomID;
+
     // private String roomName;
     // ArrayList로 구현 ?
     /**

@@ -65,7 +65,7 @@ public class RoomListController {
         // RoomListService 호출
         System.out.println("roomlistService test");
         RoomListService roomListService = new RoomListService();
-        rooms = roomListService.request("43.203.212.19");
+        rooms = roomListService.request("127.0.0.1");
         System.out.println("roomlistService.request: " + rooms);
 
         // 연결에 성공하면 동기화를 위한 thread 실행부분 추가 예정입니다
@@ -102,6 +102,9 @@ public class RoomListController {
         }
 
         Room selectedRoom = roomTable.getSelectionModel().getSelectedItem();
+        String username = "test1"; //현재 로그인한 유저네임
+        int roomId = selectedRoom.getId();
+
         if (selectedRoom != null) {
             System.out.println("Joining room: " + selectedRoom.getName());
 
@@ -110,6 +113,7 @@ public class RoomListController {
                 Parent gameRoomLayout = loader.load();
 
                 GameRoomController gameRoomController = loader.getController();
+                gameRoomController.setGameService(username,roomId);
                 gameRoomController.setHost(false);
                 gameRoomController.setOnExitCallback(() -> Platform.runLater(this::handleRoomExit));
 
@@ -153,17 +157,17 @@ public class RoomListController {
 
         isRoom = true;
         updateButtonStates();
+        String username = "test1"; //현재 로그인한 유저네임
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/createroom.fxml"));
             Parent createRoomLayout = loader.load();
 
             CreateRoomController createRoomController = loader.getController();
+            createRoomController.setGameService(username);
 
             // 방 나가기 콜백 설정
             createRoomController.setOnRoomExitCallback(() -> Platform.runLater(this::handleRoomExit));
-
-
             Stage createRoomStage = new Stage();
             Scene createRoomScene = new Scene(createRoomLayout);
 
@@ -172,6 +176,7 @@ public class RoomListController {
             createRoomStage.setScene(createRoomScene);
             createRoomStage.setTitle("Create New Room");
             createRoomStage.show();
+
 
             // 방 만들기 창이 닫히면 플래그를 해제하고 버튼 상태를 업데이트
             createRoomStage.setOnCloseRequest(event -> {
