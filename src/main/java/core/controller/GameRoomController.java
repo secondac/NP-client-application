@@ -1,6 +1,7 @@
 package core.controller;
 
 import core.service.GameService;
+import core.service.RoomService;
 import core.util.UIUtils;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -13,6 +14,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.Socket;
 
 public class GameRoomController {
 
@@ -65,7 +69,8 @@ public class GameRoomController {
 
     private String admin = "admin";
 
-
+    private int roomID;
+    private String username;
 
     public GameRoomController() {
         // GameService 초기화
@@ -101,7 +106,7 @@ public class GameRoomController {
      */
     public void setRoomTitle(String roomTitle) {
         this.roomTitle = roomTitle;
-        gameRoomLabel.setText("Room #" + roomTitle);
+        gameRoomLabel.setText("Room " + roomTitle);
     }
 
     // isHost 값을 설정하는 메서드
@@ -130,7 +135,14 @@ public class GameRoomController {
      */
     private void handleMessageReceived(String message) {
         Platform.runLater(() -> {
-            addChatMessage(message, false); // 상대방 메시지 추가
+            // 메시지가 "admin"으로 시작하는지 확인
+            if (message.startsWith(admin)) {
+                // 메시지에서 "admin:" 부분 제거
+                String adminMessage = message.substring("admin:".length()).trim();
+                addChatMessage(admin + ":" + adminMessage, false); // admin 메시지 추가
+            } else {
+                addChatMessage(message, false); // 일반 메시지 추가
+            }
         });
     }
 
@@ -187,9 +199,10 @@ public class GameRoomController {
      * @param isUser  메시지 발신자가 사용자인지 여부
      */
     private void addChatMessage(String message, boolean isUser) {
-        HBox messageBox = UIUtils.createMessageBox(message, isUser);
-        chatBox.getChildren().add(messageBox);
+        HBox messageBox;
+        messageBox = UIUtils.createMessageBox(message, isUser);
 
+        chatBox.getChildren().add(messageBox);
         chatScrollPane.layout();
         chatScrollPane.setVvalue(1.0);
     }
@@ -197,11 +210,13 @@ public class GameRoomController {
     /**
      * 외부에서 GameService를 설정할 수 있도록 하는 메서드
      *
-     * @param gameService 설정할 GameService 인스턴스
      */
-    public void setGameService(GameService gameService) {
-        this.gameService = gameService;
+    public void setGameService(String username, int roomID) throws IOException {
+        this.username = username;
+        this.roomID = roomID;
+        this.gameService = new GameService(username,roomID,new Socket("127.0.0.1",10001));
         this.gameService.setOnMessageReceived(this::handleMessageReceived);
+        this.gameService.receiveFromServer();
     }
 
     /**

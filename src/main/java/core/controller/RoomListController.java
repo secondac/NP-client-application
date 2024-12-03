@@ -1,7 +1,6 @@
 package core.controller;
 
 import core.service.RoomListService;
-import core.service.UserListService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,20 +26,14 @@ public class RoomListController {
     private TableColumn<Room, String> roomNameColumn, hostColumn;
 
     @FXML
-    private Label usernameLabel, roomlistLabel, currentUserName, userListLabel;
+    private Label usernameLabel, roomlistLabel, currentUserName, userlistLabel;
 
     @FXML
     private ListView<String> userListView;
 
     @FXML
-    private Button createRoomButton, joinRoomButton, exitButton, refreshRoomButton, refreshUserButton;
+    private Button createRoomButton, joinRoomButton, exitButton;
 
-
-    // private static final String ADDRESS = "43.203.212.19";
-
-    // private static final String ADDRESS = "43.203.212.19";
-    private static final String ADDRESS = "127.0.0.1"; // 43.203.212.19
-    // private static final String ADDRESS = "127.0.0.1"; // 43.203.212.19
 
     String userName;
     private boolean isRoom = false;  // 방 상태 플래그
@@ -68,9 +61,20 @@ public class RoomListController {
 
         userListView.getItems().addAll("User1", "User2", "User3");
 
-        // sendRequest to server
-        sendRoomListRequest();
-        sendUserListRequest();
+
+        // RoomListService 호출
+        System.out.println("roomlistService test");
+        RoomListService roomListService = new RoomListService();
+        rooms = roomListService.request("127.0.0.1");
+        System.out.println("roomlistService.request: " + rooms);
+
+        // 연결에 성공하면 동기화를 위한 thread 실행부분 추가 예정입니다
+        if(rooms != null){
+            roomTable.getItems().addAll(rooms);
+            roomListService.start();
+        } else {
+            System.out.println("연결 실패");
+        }
 
         // 버튼 상태 초기화
         updateButtonStates();
@@ -90,15 +94,6 @@ public class RoomListController {
 
     }
 
-
-
-
-
-
-
-
-
-
     @FXML
     private void handleJoinRoom() {
         if (isRoom) {
@@ -107,8 +102,8 @@ public class RoomListController {
         }
 
         Room selectedRoom = roomTable.getSelectionModel().getSelectedItem();
+        String username = "test1"; //현재 로그인한 유저네임
         int roomId = selectedRoom.getId();
-
 
         if (selectedRoom != null) {
             System.out.println("Joining room: " + selectedRoom.getName());
@@ -118,8 +113,7 @@ public class RoomListController {
                 Parent gameRoomLayout = loader.load();
 
                 GameRoomController gameRoomController = loader.getController();
-                // 접속 부분 추가
-                gameRoomController.setGameService(this.userName,roomId);
+                gameRoomController.setGameService(username,roomId);
                 gameRoomController.setHost(false);
                 gameRoomController.setOnExitCallback(() -> Platform.runLater(this::handleRoomExit));
 
@@ -154,16 +148,6 @@ public class RoomListController {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
     @FXML
     private void openGameRoom() {
         if (isRoom) {
@@ -173,17 +157,17 @@ public class RoomListController {
 
         isRoom = true;
         updateButtonStates();
+        String username = "test1"; //현재 로그인한 유저네임
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/createroom.fxml"));
             Parent createRoomLayout = loader.load();
 
             CreateRoomController createRoomController = loader.getController();
+            createRoomController.setGameService(username);
 
             // 방 나가기 콜백 설정
             createRoomController.setOnRoomExitCallback(() -> Platform.runLater(this::handleRoomExit));
-
-
             Stage createRoomStage = new Stage();
             Scene createRoomScene = new Scene(createRoomLayout);
 
@@ -192,6 +176,7 @@ public class RoomListController {
             createRoomStage.setScene(createRoomScene);
             createRoomStage.setTitle("Create New Room");
             createRoomStage.show();
+
 
             // 방 만들기 창이 닫히면 플래그를 해제하고 버튼 상태를 업데이트
             createRoomStage.setOnCloseRequest(event -> {
@@ -205,56 +190,6 @@ public class RoomListController {
             System.out.println("Failed to load the create room.");
             isRoom = false;
             updateButtonStates();
-        }
-    }
-
-
-    @FXML
-    private void refreshRoom(){
-
-        sendRoomListRequest();
-    }
-
-    @FXML
-    private void refreshUser(){
-
-        sendUserListRequest();
-    }
-
-    private void deleteRoomList(){
-
-    }
-
-    private void sendRoomListRequest(){
-        // RoomListService 호출
-        System.out.println("roomlistService test");
-        RoomListService roomListService = new RoomListService();
-        rooms = roomListService.request(ADDRESS);
-        System.out.println("roomlistService.request: " + rooms);
-
-        // 연결에 성공하면 동기화를 위한 thread 실행부분 추가 예정입니다
-        if(rooms != null){
-            roomTable.getItems().clear();
-            roomTable.getItems().addAll(rooms);
-            roomListService.start();
-        } else {
-            System.out.println("연결 실패");
-        }
-    }
-
-    private void sendUserListRequest(){
-        // 유저 목록 가져오기
-        System.out.println("userListService test");
-        UserListService userListService = new UserListService();
-        List<String> users = userListService.request(ADDRESS);
-
-        if (users != null) {
-            // 유저 목록 업데이트
-            userListView.getItems().clear();
-            userListView.getItems().addAll(users);
-            System.out.println("유저 목록 업데이트 완료: " + users);
-        } else {
-            System.out.println("유저 목록 가져오기 실패");
         }
     }
 
