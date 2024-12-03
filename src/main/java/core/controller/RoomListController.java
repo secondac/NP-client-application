@@ -1,6 +1,7 @@
 package core.controller;
 
 import core.service.RoomListService;
+import core.service.UserListService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -66,6 +67,7 @@ public class RoomListController {
 
         // sendRequest to server
         sendRoomListRequest();
+        sendUserListRequest();
 
         // 버튼 상태 초기화
         updateButtonStates();
@@ -189,6 +191,7 @@ public class RoomListController {
     @FXML
     private void refreshUser(){
 
+        sendUserListRequest();
     }
 
     private void deleteRoomList(){
@@ -209,6 +212,22 @@ public class RoomListController {
             roomListService.start();
         } else {
             System.out.println("연결 실패");
+        }
+    }
+
+    private void sendUserListRequest(){
+        // 유저 목록 가져오기
+        System.out.println("userListService test");
+        UserListService userListService = new UserListService();
+        List<String> users = userListService.request(ADDRESS);
+
+        if (users != null) {
+            // 유저 목록 업데이트
+            userListView.getItems().clear();
+            userListView.getItems().addAll(users);
+            System.out.println("유저 목록 업데이트 완료: " + users);
+        } else {
+            System.out.println("유저 목록 가져오기 실패");
         }
     }
 

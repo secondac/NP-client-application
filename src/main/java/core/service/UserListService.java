@@ -54,6 +54,17 @@ public class UserListService {
 
             Type listUserType = new TypeToken<ListUser>() {}.getType();
             ListUser listUser = gson.fromJson(responseJson, listUserType);
+
+            // 유저 목록 반환
+            System.out.println("수신한 유저 목록:");
+            List<String> users = new ArrayList<>(listUser.getUsers());
+            for (String user : users) {
+                System.out.println(user);
+            }
+
+            return users;
+
+            /*
             System.out.println("수신한 유저 목록:");
             List<String> users = new ArrayList<>();
 
@@ -64,8 +75,10 @@ public class UserListService {
 
             return users;
 
+             */
+
         } catch (Exception e) {
-            System.err.println("ROOMLIST 요청 처리 중 오류 발생:");
+            System.err.println("USERLIST 요청 처리 중 오류 발생:");
             e.printStackTrace();
             return null;
         }
