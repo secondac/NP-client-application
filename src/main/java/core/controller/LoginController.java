@@ -27,15 +27,18 @@ public class LoginController {
     @FXML
     private Button loginButton;
 
-    private final LoginService loginService = new LoginService();
+    // private final LoginService loginService;
 
     private String userName;
+
+    private static final String ADDRESS = "127.0.0.1";
+    // private static final String ADDRESS = "127.0.0.1";
 
     @FXML
     private void handleLogin() {
         String usernameFieldText = usernameField.getText();
         // String serverFieldText = serverField.getText();
-        String serverFieldText = "127.0.0.1"; // 43.203.212.19"
+        // String serverFieldText = "127.0.0.1"; // 43.203.212.19"
 
         // username이 비어있으면 error msg 출력
         if (usernameFieldText.isEmpty()) {
@@ -50,7 +53,8 @@ public class LoginController {
 
 
         // 로그인 요청
-        boolean loginSuccess = loginService.login(usernameFieldText, serverFieldText);
+        LoginService loginService = new LoginService();
+        boolean loginSuccess = loginService.login(usernameFieldText, ADDRESS);
         System.out.println("Login successful? " + loginSuccess);
 
         // 임시 코드 - 통신 실패시 사용하는 용도
