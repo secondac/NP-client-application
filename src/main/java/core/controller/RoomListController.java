@@ -90,6 +90,15 @@ public class RoomListController {
 
     }
 
+
+
+
+
+
+
+
+
+
     @FXML
     private void handleJoinRoom() {
         if (isRoom) {
@@ -98,6 +107,9 @@ public class RoomListController {
         }
 
         Room selectedRoom = roomTable.getSelectionModel().getSelectedItem();
+        int roomId = selectedRoom.getId();
+
+
         if (selectedRoom != null) {
             System.out.println("Joining room: " + selectedRoom.getName());
 
@@ -106,6 +118,8 @@ public class RoomListController {
                 Parent gameRoomLayout = loader.load();
 
                 GameRoomController gameRoomController = loader.getController();
+                // 접속 부분 추가
+                gameRoomController.setGameService(this.userName,roomId);
                 gameRoomController.setHost(false);
                 gameRoomController.setOnExitCallback(() -> Platform.runLater(this::handleRoomExit));
 
@@ -139,6 +153,16 @@ public class RoomListController {
             System.out.println("No room selected.");
         }
     }
+
+
+
+
+
+
+
+
+
+
 
     @FXML
     private void openGameRoom() {
