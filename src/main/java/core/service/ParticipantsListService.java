@@ -19,11 +19,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParticipantsListService {
+import static core.service.LoginService.SERVER_ADDRESS;
+import static core.service.LoginService.SERVER_PORT;
 
-    private static final int SERVER_PORT = 10001;
-    //private static final String serverAddress = "43.203.212.19";
-    private static final String serverAddress = "127.0.0.1";
+public class ParticipantsListService {
     private final Gson gson = new Gson();
     private String userName;
 
@@ -43,7 +42,7 @@ public class ParticipantsListService {
                 .create();
         DTO dto = new DTO(RequestType.USERLIST, roomid);
 
-        try (Socket socket = new Socket(serverAddress, SERVER_PORT);
+        try (Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
              PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 

@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+import static core.service.LoginService.SERVER_ADDRESS;
+
 public class RoomListController {
 
     @FXML
@@ -78,7 +80,8 @@ public class RoomListController {
         // RoomListService 호출
         System.out.println("roomlistService test");
         RoomListService roomListService = new RoomListService();
-        rooms = roomListService.request("127.0.0.1");
+        //rooms = roomListService.request("127.0.0.1");
+        rooms = roomListService.request(SERVER_ADDRESS);
         System.out.println("roomlistService.request: " + rooms);
 
         // 연결에 성공하면 동기화를 위한 thread 실행부분 추가 예정입니다
@@ -126,7 +129,11 @@ public class RoomListController {
 
                 GameRoomController gameRoomController = loader.getController();
                 gameRoomController.setGameService(this.userName,roomId);
-                gameRoomController.setHost(false);
+                if(userName.equals(selectedRoom.getHost())){
+                    gameRoomController.setHost(true);
+                } else {
+                    gameRoomController.setHost(false);
+                }
                 gameRoomController.setOnExitCallback(() -> Platform.runLater(this::handleRoomExit));
 
 
