@@ -1,5 +1,5 @@
 package core.model.dto;
 
 public enum RequestType {
-    ROOMLIST, NEWROOM, CONNECTCHAT, LOGIN
+    ROOMLIST, NEWROOM, CONNECTCHAT, LOGIN, USERLIST
 }

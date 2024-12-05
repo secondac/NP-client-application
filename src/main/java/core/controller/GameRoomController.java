@@ -1,7 +1,10 @@
 package core.controller;
 
+import core.model.Message;
 import core.service.GameService;
+import core.service.ParticipantsListService;
 import core.service.RoomService;
+import core.service.UserListService;
 import core.util.UIUtils;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -17,6 +20,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.List;
 
 public class GameRoomController {
 
@@ -73,7 +77,7 @@ public class GameRoomController {
 
     private boolean isHost = false;
 
-    private String admin = "admin";
+    private String admin = "[관리자]";
 
     private int roomID;
     private String username;
@@ -89,7 +93,8 @@ public class GameRoomController {
         // 초기화 작업: 게임 내용과 참여자 목록을 설정할 수 있음
         // gameContentArea.setText("게임에 입장했습니다.");
         // gameContentArea.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
-        participantListView.getItems().addAll("Player 1", "Player 2", "Player 3");
+        //participantListView.getItems().addAll("Player 1", "Player 2", "Player 3");
+        sendUserListRequest();
     }
 
     @FXML
@@ -139,18 +144,21 @@ public class GameRoomController {
      *
      * @param message 수신된 메시지
      */
-    private void handleMessageReceived(String message) {
+    private void handleMessageReceived(Message message) {
         Platform.runLater(() -> {
             // 메시지가 "admin"으로 시작하는지 확인
             if(message==null){
                 return;
             }
-            if (message.startsWith(admin)) {
+            if ("admin".equals(message.getUsername())) {
                 // 메시지에서 "admin:" 부분 제거
-                String adminMessage = message.substring("admin:".length()).trim();
+                String adminMessage = message.getMessage();
                 addChatMessage(admin + ":" + adminMessage, false); // admin 메시지 추가
+            } else if (username.equals(message.getUsername())) {
+                addChatMessage(message.getMessage(), true);
+
             } else {
-                addChatMessage(message, false); // 일반 메시지 추가
+                addChatMessage(message.getMessage(), false); // 일반 메시지 추가
             }
         });
     }
@@ -220,10 +228,10 @@ public class GameRoomController {
      * 외부에서 GameService를 설정할 수 있도록 하는 메서드
      *
      */
-    public void setGameService(String username, int roomID) throws IOException {
+    public void setGameService(String username, int roomID){
         this.username = username;
         this.roomID = roomID;
-        this.gameService = new GameService(username,roomID,new Socket("127.0.0.1",10001));
+        this.gameService = new GameService(username,roomID);
         this.gameService.setOnMessageReceived(this::handleMessageReceived);
         this.gameService.receiveFromServer();
     }
@@ -242,6 +250,22 @@ public class GameRoomController {
         } else {
             ynBox.setVisible(false);
             ynBox.setManaged(false);
+        }
+    }
+
+    private void sendUserListRequest(){
+        // 유저 목록 가져오기
+        System.out.println("참가자 목록 가져오기 요청");
+        ParticipantsListService participantsListService = new ParticipantsListService();
+        List<String> participants = participantsListService.request(this.roomID);
+
+        if (participants != null) {
+            // 유저 목록 업데이트
+            participantListView.getItems().clear();
+            participantListView.getItems().addAll(participants);
+            System.out.println("유저 목록 업데이트 완료: " + participants);
+        } else {
+            System.out.println("유저 목록 가져오기 실패");
         }
     }
 
