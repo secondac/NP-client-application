@@ -36,6 +36,7 @@ public class LoginController {
         String usernameFieldText = usernameField.getText();
         // String serverFieldText = serverField.getText();
         String serverFieldText = "127.0.0.1";
+        //String serverFieldText = "43.203.212.19";
 
         // username이 비어있으면 error msg 출력
         if (usernameFieldText.isEmpty()) {

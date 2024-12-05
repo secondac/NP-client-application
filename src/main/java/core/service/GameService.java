@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import core.common.GsonLocalDateTimeAdapter;
 import core.common.GsonMessageAdapter;
-import core.common.InputThread;
 import core.model.Message;
 import core.model.dto.DTO;
 import core.model.dto.RequestType;
@@ -30,17 +29,29 @@ public class GameService {
     private String requestUserName;
     private int requestRoomID;
     private int roomId;
-    private Consumer<String> onMessageReceived;
+    private Consumer<Message> onMessageReceived;
+
+    //private static final String serveraddress = "43.203.212.19";
+    private static final String serveraddress = "127.0.0.1";
 
     public GameService() {
     }
 
-    public GameService(String requestUserName, int requestRoomID, Socket socket) {
+    public GameService(String requestUserName) {
+        this.requestUserName = requestUserName;
+        initializeSocketStreams();
+    }
+
+    public GameService(String requestUserName, int requestRoomID)  {
         this.requestUserName = requestUserName;
         this.requestRoomID = requestRoomID;
-        this.socket = socket;
         initializeSocketStreams();
-        sendToServer(new DTO(RequestType.CONNECTCHAT, new ChatConnection(requestUserName,requestRoomID)));
+        try {
+            Thread.sleep(500);
+            sendToServer(new DTO(RequestType.CONNECTCHAT, new ChatConnection(requestUserName, requestRoomID)));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -48,6 +59,7 @@ public class GameService {
      */
     private void initializeSocketStreams() {
         try {
+            socket = new Socket(serveraddress,10001);
             out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (IOException e) {
@@ -58,7 +70,7 @@ public class GameService {
     /**
      * 메시지 수신 핸들러 설정
      */
-    public void setOnMessageReceived(Consumer<String> handler) {
+    public void setOnMessageReceived(Consumer<Message> handler) {
         this.onMessageReceived = handler;
     }
 
@@ -90,6 +102,7 @@ public class GameService {
         DTO requestDTO = new DTO(RequestType.NEWROOM, newRoom);
         String responseRoom = sendToServerAndGetResponse(requestDTO);
         ChatRoom chatRoom = gson.fromJson(responseRoom, ChatRoom.class);
+        System.out.println(chatRoom.toString());
         if (chatRoom != null) {
             System.out.println("방 생성 완료: " + chatRoom.getName());
             this.roomId = chatRoom.getId();
@@ -132,6 +145,7 @@ public class GameService {
             System.out.println(jsonRequest);
             out.println(jsonRequest);
             String responseRoom = in.readLine();
+            System.out.println(responseRoom);
             return responseRoom;
         } catch (IOException e) {
             System.err.println("서버 응답 수신 실패: " + e.getMessage());
@@ -182,7 +196,7 @@ public class GameService {
         }
 
         if (onMessageReceived != null) {
-            onMessageReceived.accept(message.getMessage());
+            onMessageReceived.accept(message);
         }
     }
 
@@ -191,17 +205,17 @@ public class GameService {
      */
     public synchronized void exitRoom() {
         try {
-            // 소켓과 스트림 닫기
-            if (socket != null && !socket.isClosed()) {
-                socket.close();
-            }
-            if (in != null) {
-                in.close();
-            }
             if (out != null) {
                 out.close();
             }
 
+            if (in != null) {
+                in.close();
+            }
+            // 소켓과 스트림 닫기
+            if (socket != null && !socket.isClosed()) {
+                socket.close();
+            }
             // 자원 해제 완료 메시지
             System.out.println("채팅방 연결이 종료되었습니다. 메인 화면으로 돌아갑니다.");
 

@@ -44,7 +44,7 @@ public class CreateRoomController {
 
     public CreateRoomController() {
         // GameService 초기화 (필요에 따라 의존성 주입을 사용할 수 있음)
-        this.gameService = new GameService();
+        //this.gameService = new GameService();
     }
 
     @FXML
@@ -164,10 +164,10 @@ public class CreateRoomController {
         }
     }
 
-    public void setGameService(String username) throws IOException {
+    public void setGameService(String username) {
         this.username = username;
         System.out.println(username);
-        this.gameService = new GameService(username,0,new Socket("127.0.0.1",10001));
+        this.gameService = new GameService(username);
     }
 
 }

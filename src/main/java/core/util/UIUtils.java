@@ -27,7 +27,7 @@ public class UIUtils {
             // 사용자 메시지 (우측 정렬)
             messageBox.setAlignment(Pos.CENTER_RIGHT);
             text.getStyleClass().add("user-bubble");
-        } else if (message.startsWith("admin")) {
+        } else if (message.startsWith("[관리자]")) {
             // 관리자 메시지 (중앙 정렬)
             messageBox.setAlignment(Pos.CENTER);
             text.getStyleClass().add("admin-bubble");

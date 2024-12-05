@@ -1,25 +1,29 @@
 package core.service;
 
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import java.time.LocalDateTime;
 import com.google.gson.Gson;
-import java.lang.reflect.Type;
-
-
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import core.common.GsonLocalDateTimeAdapter;
-import core.model.Room;
-import core.model.dto.request.*;
-import core.model.dto.response.*;
-import core.model.dto.*;
+import core.model.dto.DTO;
+import core.model.dto.RequestType;
+import core.model.dto.response.ListUser;
 
-public class UserListService {
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.lang.reflect.Type;
+import java.net.Socket;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ParticipantsListService {
 
     private static final int SERVER_PORT = 10001;
+    //private static final String serverAddress = "43.203.212.19";
+    private static final String serverAddress = "127.0.0.1";
     private final Gson gson = new Gson();
     private String userName;
 
@@ -27,19 +31,17 @@ public class UserListService {
     private PrintWriter out;
     private BufferedReader in;
 
-    private final Integer i = 0;
+    private int roomid;
 
-    public List<String> request(String serverAddress){
+    public List<String> request(int roomid){
         //
-
-        //System.out.println("i = " + i);
-
-
+        this.roomid = roomid;
+        System.out.println("roomid = " + roomid);
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDateTime.class, new GsonLocalDateTimeAdapter())
                 .create();
-        DTO dto = new DTO(RequestType.USERLIST, i);
+        DTO dto = new DTO(RequestType.USERLIST, roomid);
 
         try (Socket socket = new Socket(serverAddress, SERVER_PORT);
              PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
@@ -47,7 +49,7 @@ public class UserListService {
 
             String json = gson.toJson(dto);
             out.println(json);
-            System.out.println("USERLIST 요청 JSON 데이터 서버로 전송: " + json);
+            System.out.println("참가자 목록 요청 JSON 데이터 서버로 전송: " + json);
 
 
             // 여기서부터 수신
@@ -86,7 +88,7 @@ public class UserListService {
              */
 
         } catch (Exception e) {
-            System.err.println("USERLIST 요청 처리 중 오류 발생:");
+            System.err.println("참가자리스트 요청 처리 중 오류 발생:");
             e.printStackTrace();
             return null;
         }
