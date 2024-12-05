@@ -10,6 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import static core.service.LoginService.SERVER_ADDRESS;
+
 public class LoginController {
 
     @FXML
@@ -35,8 +37,8 @@ public class LoginController {
     private void handleLogin() {
         String usernameFieldText = usernameField.getText();
         // String serverFieldText = serverField.getText();
-        String serverFieldText = "127.0.0.1";
-        //String serverFieldText = "43.203.212.19";
+        //String serverFieldText = "127.0.0.1";
+        String serverFieldText = SERVER_ADDRESS;
 
         // username이 비어있으면 error msg 출력
         if (usernameFieldText.isEmpty()) {

@@ -126,10 +126,17 @@ public class GameRoomController {
     @FXML
     private void handleSendChat() {
         String message = chatInputField.getText().trim();
-        if (!message.isEmpty()) {
-            addChatMessage(message, true); // 사용자 메시지 추가
-            gameService.sendMessage(message); // 서버로 메시지 전송
+
+        if(isHost == false && message.contains("/문제")){
+            System.out.println("호스트가 아니므로 문제 제출 불가");
             chatInputField.clear();
+        } else {
+
+            if (!message.isEmpty()) {
+                addChatMessage(message, true); // 사용자 메시지 추가
+                gameService.sendMessage(message); // 서버로 메시지 전송
+                chatInputField.clear();
+            }
         }
     }
 

@@ -16,6 +16,10 @@ import java.net.Socket;
 import java.time.LocalDateTime;
 import java.util.function.Consumer;
 
+import static core.service.LoginService.SERVER_ADDRESS;
+import static core.service.LoginService.SERVER_PORT;
+
+
 public class GameService {
 
     private final Gson gson = new GsonBuilder()
@@ -32,7 +36,7 @@ public class GameService {
     private Consumer<Message> onMessageReceived;
 
     //private static final String serveraddress = "43.203.212.19";
-    private static final String serveraddress = "127.0.0.1";
+    //private static final String serveraddress = "127.0.0.1";
 
     public GameService() {
     }
@@ -59,7 +63,7 @@ public class GameService {
      */
     private void initializeSocketStreams() {
         try {
-            socket = new Socket(serveraddress,10001);
+            socket = new Socket(SERVER_ADDRESS,SERVER_PORT);
             out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (IOException e) {

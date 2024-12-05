@@ -20,11 +20,13 @@ import core.model.dto.request.*;
 import core.model.dto.response.*;
 import core.model.dto.*;
 
+import static core.service.LoginService.SERVER_ADDRESS;
+import static core.service.LoginService.SERVER_PORT;
+
 
 public class RoomListService extends Thread {
 
     // private boolean connectedFlag = false;
-    private static final int SERVER_PORT = 10001;
     private final Gson gson = new Gson();
     private String userName;
 
@@ -71,7 +73,7 @@ public class RoomListService extends Thread {
                 .create();
         DTO dto = new DTO(RequestType.ROOMLIST, null);
 
-        try (Socket socket = new Socket(serverAddress, SERVER_PORT);
+        try (Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
              PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
