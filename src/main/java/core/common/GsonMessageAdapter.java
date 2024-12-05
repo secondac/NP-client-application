@@ -14,7 +14,7 @@ public class GsonMessageAdapter extends TypeAdapter<Message> {
         // JSON 직렬화
         out.beginObject();
         out.name("chatId").value(value.getChatId());
-        out.name("userName").value(value.getUsername());
+        out.name("username").value(value.getUsername());
         out.name("message").value(value.getMessage());
         out.endObject();
     }
@@ -33,7 +33,7 @@ public class GsonMessageAdapter extends TypeAdapter<Message> {
                 case "chatId":
                     chatId = in.nextInt();
                     break;
-                case "userName":
+                case "username":
                     userName = in.nextString();
                     break;
                 case "message":

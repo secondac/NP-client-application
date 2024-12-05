@@ -43,6 +43,18 @@ public class RoomListController {
     @FXML
     private void initialize() {
 
+        Platform.runLater(() -> {
+            Stage stage = (Stage) roomTable.getScene().getWindow();
+            this.userName = (String) stage.getUserData();
+
+            // userName이 null이 아니면 usernameLabel에 표시
+            if (userName != null) {
+                usernameLabel.setText(userName);
+            } else {
+                usernameLabel.setText("Unknown User");
+            }
+        });
+
         /**
          * 각 필드의 getter 가 반드시 필요함
          */
@@ -57,7 +69,8 @@ public class RoomListController {
         // Sample data : 연결 성공시 삭제
         //roomTable.getItems().add(new Room(9999,"Room A", "hostA"));
         //roomTable.getItems().add(new Room(2222,"Room B", "hostB"));
-        usernameLabel.setText("User123");
+
+        //usernameLabel.setText(userName);
 
         userListView.getItems().addAll("User1", "User2", "User3");
 
@@ -102,7 +115,6 @@ public class RoomListController {
         }
 
         Room selectedRoom = roomTable.getSelectionModel().getSelectedItem();
-        String username = "test1"; //현재 로그인한 유저네임
         int roomId = selectedRoom.getId();
 
         if (selectedRoom != null) {
@@ -113,7 +125,7 @@ public class RoomListController {
                 Parent gameRoomLayout = loader.load();
 
                 GameRoomController gameRoomController = loader.getController();
-                gameRoomController.setGameService(username,roomId);
+                gameRoomController.setGameService(this.userName,roomId);
                 gameRoomController.setHost(false);
                 gameRoomController.setOnExitCallback(() -> Platform.runLater(this::handleRoomExit));
 
@@ -157,14 +169,13 @@ public class RoomListController {
 
         isRoom = true;
         updateButtonStates();
-        String username = "test1"; //현재 로그인한 유저네임
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/core/view/createroom.fxml"));
             Parent createRoomLayout = loader.load();
 
             CreateRoomController createRoomController = loader.getController();
-            createRoomController.setGameService(username);
+            createRoomController.setGameService(this.userName);
 
             // 방 나가기 콜백 설정
             createRoomController.setOnRoomExitCallback(() -> Platform.runLater(this::handleRoomExit));

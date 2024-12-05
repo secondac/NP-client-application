@@ -81,7 +81,7 @@ public class GameRoomController {
     public GameRoomController() {
         // GameService 초기화
         this.gameService = new GameService();
-        this.gameService.setOnMessageReceived(this::handleMessageReceived);
+        //this.gameService.setOnMessageReceived(this::handleMessageReceived);
     }
 
     @FXML
@@ -142,6 +142,9 @@ public class GameRoomController {
     private void handleMessageReceived(String message) {
         Platform.runLater(() -> {
             // 메시지가 "admin"으로 시작하는지 확인
+            if(message==null){
+                return;
+            }
             if (message.startsWith(admin)) {
                 // 메시지에서 "admin:" 부분 제거
                 String adminMessage = message.substring("admin:".length()).trim();
