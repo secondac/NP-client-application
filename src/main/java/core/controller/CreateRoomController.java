@@ -1,6 +1,7 @@
 package core.controller;
 
 import core.service.GameService;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -37,6 +38,8 @@ public class CreateRoomController {
     // RoomListController의 콜백 설정
     private Runnable onRoomExitCallback;
     private String username;
+
+    private int roomId;
 
 
     public CreateRoomController() {
@@ -130,6 +133,8 @@ public class CreateRoomController {
             // GameRoomController에 방 제목 전달
             GameRoomController gameRoomController = loader.getController();
             gameRoomController.setRoomTitle(roomTitle);
+            this.roomId = gameService.getRoomId();
+            gameRoomController.setGameService(this.username,this.roomId);
 
             // 방을 생성했으므로 Host로 설정
             gameRoomController.setHost(true);
@@ -164,7 +169,5 @@ public class CreateRoomController {
         System.out.println(username);
         this.gameService = new GameService(username,0,new Socket("127.0.0.1",10001));
     }
-
-
 
 }

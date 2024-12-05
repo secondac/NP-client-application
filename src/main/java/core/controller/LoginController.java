@@ -73,6 +73,8 @@ public class LoginController {
                 newScene.getStylesheets().add(getClass().getResource("/core/view/roomlist.css").toExternalForm());
                 System.out.println("roomlist.css applied.");
 
+                newStage.setUserData(userName);
+
                 Stage currentStage = (Stage) serverField.getScene().getWindow();
                 currentStage.close();
                 newStage.show();
