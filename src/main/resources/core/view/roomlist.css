@@ -108,13 +108,13 @@
     -fx-font-family: "GangwonEduAll Bold";
 }
 
-#roomListLabel{
+#roomlistLabel{
     -fx-font-family: 'GangwonEduAll Bold';
     -fx-font-size: 36px;
     -fx-alignment: center;
 }
 
-#userListLabel {
+#userlistLabel {
     -fx-font-family: 'GangwonEduAll Bold';
     -fx-font-size: 20px;
     -fx-alignment: center;

@@ -16,8 +16,8 @@ import java.net.Socket;
 public class LoginService {
 
     public static final int SERVER_PORT = 10001;
-    public static String SERVER_ADDRESS = "43.203.212.19";
-    //public static String SERVER_ADDRESS = "127.0.0.1";
+    // public static String SERVER_ADDRESS = "43.203.212.19";
+    public static String SERVER_ADDRESS = "127.0.0.1";
 
     private final Gson gson = new Gson();
 

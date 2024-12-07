@@ -1,6 +1,7 @@
 package core.controller;
 
 import core.service.RoomListService;
+import core.service.UserListService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,13 +29,13 @@ public class RoomListController {
     private TableColumn<Room, String> roomNameColumn, hostColumn;
 
     @FXML
-    private Label usernameLabel, roomlistLabel, currentUserName, userlistLabel;
+    private Label usernameLabel, roomlistLabel, currentUserName, userListLabel;
 
     @FXML
     private ListView<String> userListView;
 
     @FXML
-    private Button createRoomButton, joinRoomButton, exitButton;
+    private Button createRoomButton, joinRoomButton, exitButton, refreshRoomButton, refreshUserButton;
 
 
     String userName;
@@ -77,20 +78,9 @@ public class RoomListController {
         userListView.getItems().addAll("User1", "User2", "User3");
 
 
-        // RoomListService 호출
-        System.out.println("roomlistService test");
-        RoomListService roomListService = new RoomListService();
-        //rooms = roomListService.request("127.0.0.1");
-        rooms = roomListService.request(SERVER_ADDRESS);
-        System.out.println("roomlistService.request: " + rooms);
-
-        // 연결에 성공하면 동기화를 위한 thread 실행부분 추가 예정입니다
-        if(rooms != null){
-            roomTable.getItems().addAll(rooms);
-            roomListService.start();
-        } else {
-            System.out.println("연결 실패");
-        }
+        // sendRequest to server
+        sendRoomListRequest();
+        sendUserListRequest();
 
         // 버튼 상태 초기화
         updateButtonStates();
@@ -208,6 +198,55 @@ public class RoomListController {
             System.out.println("Failed to load the create room.");
             isRoom = false;
             updateButtonStates();
+        }
+    }
+
+    @FXML
+    private void refreshRoom(){
+
+        sendRoomListRequest();
+    }
+
+    @FXML
+    private void refreshUser(){
+
+        sendUserListRequest();
+    }
+
+    private void deleteRoomList(){
+
+    }
+
+    private void sendRoomListRequest(){
+        // RoomListService 호출
+        System.out.println("roomlistService test");
+        RoomListService roomListService = new RoomListService();
+        rooms = roomListService.request(SERVER_ADDRESS);
+        System.out.println("roomlistService.request: " + rooms);
+
+        // 연결에 성공하면 동기화를 위한 thread 실행부분 추가 예정입니다
+        if(rooms != null){
+            roomTable.getItems().clear();
+            roomTable.getItems().addAll(rooms);
+            roomListService.start();
+        } else {
+            System.out.println("연결 실패");
+        }
+    }
+
+    private void sendUserListRequest(){
+        // 유저 목록 가져오기
+        System.out.println("userListService test");
+        UserListService userListService = new UserListService();
+        List<String> users = userListService.request(SERVER_ADDRESS);
+
+        if (users != null) {
+            // 유저 목록 업데이트
+            userListView.getItems().clear();
+            userListView.getItems().addAll(users);
+            System.out.println("유저 목록 업데이트 완료: " + users);
+        } else {
+            System.out.println("유저 목록 가져오기 실패");
         }
     }
 
