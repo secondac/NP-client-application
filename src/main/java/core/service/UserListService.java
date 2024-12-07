@@ -52,6 +52,7 @@ public class UserListService {
             String json = gson.toJson(dto);
             out.println(json);
             System.out.println("USERLIST 요청 JSON 데이터 서버로 전송: " + json);
+            System.out.println(serverIP +"로 전송");
 
 
             // 여기서부터 수신

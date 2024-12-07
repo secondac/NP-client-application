@@ -27,7 +27,7 @@ public class LoginService {
     private BufferedReader in;
 
     private String username;
-    String serverAddress = ServerIP.getServerAddress();
+    String serverIP = ServerIP.getServerAddress();
 
     /**
      * 사용자 로그인 메서드.
@@ -49,6 +49,7 @@ public class LoginService {
             DTO requestDTO = new DTO(requestType, userLogin); // 래핑된 DTO 사용
             String jsonRequest = gson.toJson(requestDTO);
             System.out.println("Sending JSON to server: " + jsonRequest);
+            System.out.println(serverIP +"로 전송");
             out.println(jsonRequest);
 
             // 서버 응답 처리
