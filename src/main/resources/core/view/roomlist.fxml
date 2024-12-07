@@ -44,7 +44,7 @@
                 </AnchorPane>
 
                 <AnchorPane prefHeight="60.0" prefWidth="300.0">
-                    <Button fx:id="exitButton" layoutX="192.0" layoutY="9.0" prefHeight="42.0" prefWidth="108.0" text="종료하기" />
+                    <Button fx:id="exitButton" onAction="#exitService" layoutX="192.0" layoutY="9.0" prefHeight="42.0" prefWidth="108.0" text="종료하기" />
                 </AnchorPane>
             </VBox>
         </HBox>
