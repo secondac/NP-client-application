@@ -21,6 +21,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class GameRoomController {
 
@@ -81,6 +84,7 @@ public class GameRoomController {
 
     private int roomID;
     private String username;
+    private ScheduledExecutorService scheduler;
 
     public GameRoomController() {
         // GameService 초기화
@@ -95,6 +99,7 @@ public class GameRoomController {
         // gameContentArea.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
         //participantListView.getItems().addAll("Player 1", "Player 2", "Player 3");
         sendUserListRequest();
+        startParticipantListUpdater();
     }
 
     @FXML
@@ -176,6 +181,7 @@ public class GameRoomController {
     private void handleYes() {
         System.out.println("Yes button clicked.");
         // 게임 서비스에 "Yes" 응답 전송해야 함
+        addChatMessage("네", true);
         gameService.sendMessage("/네");
     }
 
@@ -183,6 +189,7 @@ public class GameRoomController {
     private void handleNo() {
         System.out.println("No button clicked.");
         // 게임 서비스에 "No" 응답 전송해야 함
+        addChatMessage("아니오", true);
         gameService.sendMessage("/아니오");
     }
 
@@ -190,6 +197,7 @@ public class GameRoomController {
     private void handleAnswer() {
         System.out.println("Cancel button clicked.");
         // 추가: 취소 처리를 위해 필요한 작업 수행해야 함
+        addChatMessage("정답입니다", true);
         gameService.sendMessage("/정답입니다");
     }
 
@@ -210,6 +218,8 @@ public class GameRoomController {
         if (onExitCallback != null) {
             onExitCallback.run();
         }
+
+        stopParticipantListUpdater();
 
         Stage currentStage = (Stage) exitButton.getScene().getWindow();
         currentStage.close();
@@ -263,17 +273,39 @@ public class GameRoomController {
     private void sendUserListRequest(){
         // 유저 목록 가져오기
         System.out.println("참가자 목록 가져오기 요청");
+
         ParticipantsListService participantsListService = new ParticipantsListService();
         List<String> participants = participantsListService.request(this.roomID);
 
         if (participants != null) {
             // 유저 목록 업데이트
-            participantListView.getItems().clear();
-            participantListView.getItems().addAll(participants);
-            System.out.println("유저 목록 업데이트 완료: " + participants);
+            Platform.runLater(() -> {
+                participantListView.getItems().clear();
+                participantListView.getItems().addAll(participants);
+                System.out.println("유저 목록 업데이트 완료: " + participants);
+            });
         } else {
             System.out.println("유저 목록 가져오기 실패");
         }
     }
 
+    private void startParticipantListUpdater() {
+        scheduler = Executors.newScheduledThreadPool(1);
+
+        scheduler.scheduleAtFixedRate(() -> {
+            try {
+                sendUserListRequest();
+            } catch (Exception e) {
+                System.err.println("유저 목록 업데이트 중 오류 발생: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }, 0, 5, TimeUnit.SECONDS); // 5초마다 실행
+    }
+
+    public void stopParticipantListUpdater() {
+        if (scheduler != null && !scheduler.isShutdown()) {
+            scheduler.shutdown();
+            System.out.println("참가자 목록 업데이트 스케줄러 중지됨.");
+        }
+    }
 }
