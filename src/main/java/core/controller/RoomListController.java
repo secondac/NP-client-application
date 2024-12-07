@@ -258,9 +258,52 @@ public class RoomListController {
         joinRoomButton.setDisable(isRoom);
     }
 
+
     private void handleRoomExit() {
         System.out.println("Room exited.");
         isRoom = false;
         updateButtonStates();
     }
+
+
+    private void exit() {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("확인");
+        alert.setHeaderText("종료하시겠습니까?");
+        alert.setContentText("");
+
+        ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+
+        if (result == ButtonType.OK) {
+            System.out.println("종료 중");
+            Platform.exit(); // JavaFX 종료
+            System.exit(0);
+        } else {
+            System.out.println("Exit");
+        }
+    }
+
+    @FXML
+    private void exitService(){
+        exit();
+    }
 }
+
+
+/*
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("확인");
+        alert.setHeaderText("종료하시겠습니까?");
+        alert.setContentText("종료 중");
+
+        ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+
+        if (result == ButtonType.OK) {
+            System.out.println("종료 중");
+            Platform.exit(); // JavaFX 종료
+            System.exit(0);
+        } else {
+            System.out.println("Exit");
+        }
+ */

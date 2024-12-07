@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="400.0" stylesheets="@createroom.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.controller.RoomListController">
+    <children>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" spacing="20.0">
+            <!-- 방 생성 타이틀 -->
+            <Label fx:id="createLabel" alignment="CENTER" styleClass="title-label" text="종료" textAlignment="CENTER" />
+
+            <!-- 방 제목 입력 필드 -->
+            <HBox alignment="CENTER_LEFT" prefWidth="400.0" spacing="10.0">
+                <Label fx:id="titleLabel" styleClass="label" text="종료하시겠습니까 ?" textAlignment="CENTER">
+                    <HBox.margin>
+                        <Insets left="10.0" />
+                    </HBox.margin>
+                </Label>
+            </HBox>
+
+            <!-- 버튼 그룹 -->
+            <HBox alignment="CENTER_RIGHT" prefWidth="400.0" spacing="10.0">
+                <HBox.margin>
+                    <Insets right="10.0" />
+                </HBox.margin>
+                <Button fx:id="createRoomButton" onAction="#exitService" styleClass="primary-button" text="종료" />
+                <Button fx:id="cancelButton"  styleClass="secondary-button" text="취소">
+                    <HBox.margin>
+                        <Insets right="20.0" />
+                    </HBox.margin>
+                </Button>
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'BM DoHyeon';
+    src: url('../font/BMDOHYEON.ttf');
+}
+
+@font-face {
+    font-family: 'GangwonEduAll Bold';
+    src: url('../font/gangwon_font_bold.ttf');
+}
+
+
+
+/* 타이틀 레이블 스타일 */
+.title-label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+/* 일반 레이블 스타일 */
+.label {
+    -fx-text-fill: #555555;
+    -fx-font-family: "BM DoHyeon";
+}
+
+.text-field {
+    -fx-font-size: 18px;
+    -fx-text-fill: #555555;
+    -fx-font-family: "GangwonEduAll Bold";
+}
+
+#createLabel {
+    -fx-font-family: "BM DoHyeon";
+    -fx-font-size: 24px;
+}
+
+#titleLabel {
+    -fx-font-size: 18px;
+    -fx-font-family: "BM DoHyeon";
+}
+
+/* 기본 버튼 스타일 */
+.button {
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+#roomTitleField{
+    -fx-font-family: "GangwonEduAll Bold";
+}
+
+#createRoomButton {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-family: "GangwonEduAll Bold";
+    -fx-font-size: 24px;
+}
+
+#createRoomButton:hover {
+    -fx-background-color: #45A049;
+}
+
+
+#cancelButton {
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+    -fx-font-family: "GangwonEduAll Bold";
+    -fx-font-size: 24px;
+}
+
+#cancelButton:hover {
+    -fx-background-color: #da190b;
+}
