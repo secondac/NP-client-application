@@ -15,12 +15,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import core.common.GsonLocalDateTimeAdapter;
+import core.common.ServerIP;
 import core.model.Room;
 import core.model.dto.request.*;
 import core.model.dto.response.*;
 import core.model.dto.*;
 
-import static core.service.LoginService.SERVER_ADDRESS;
+// import static core.service.LoginService.SERVER_ADDRESS;
 import static core.service.LoginService.SERVER_PORT;
 
 
@@ -35,6 +36,7 @@ public class RoomListService extends Thread {
     private BufferedReader in;
 
     private int roomID;
+    String serverIP = ServerIP.getServerAddress();
 
     // private String roomName;
     // ArrayList로 구현 ?
@@ -73,7 +75,7 @@ public class RoomListService extends Thread {
                 .create();
         DTO dto = new DTO(RequestType.ROOMLIST, null);
 
-        try (Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
+        try (Socket socket = new Socket(serverIP, SERVER_PORT);
              PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 

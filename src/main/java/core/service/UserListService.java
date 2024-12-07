@@ -16,8 +16,9 @@ import core.model.Room;
 import core.model.dto.request.*;
 import core.model.dto.response.*;
 import core.model.dto.*;
+import core.common.ServerIP;
 
-import static core.service.LoginService.SERVER_ADDRESS;
+// import static core.service.LoginService.SERVER_ADDRESS;
 import static core.service.LoginService.SERVER_PORT;
 
 public class UserListService {
@@ -30,6 +31,7 @@ public class UserListService {
     private BufferedReader in;
 
     private final Integer i = 0;
+    String serverIP = ServerIP.getServerAddress();
 
     public List<String> request(String serverAddress){
         //
@@ -43,7 +45,7 @@ public class UserListService {
                 .create();
         DTO dto = new DTO(RequestType.USERLIST, i);
 
-        try (Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
+        try (Socket socket = new Socket(serverIP, SERVER_PORT);
              PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 

@@ -15,7 +15,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
-import static core.service.LoginService.SERVER_ADDRESS;
+// import static core.service.LoginService.SERVER_ADDRESS;
+import core.common.ServerIP;
 
 public class RoomListController {
 
@@ -38,10 +39,12 @@ public class RoomListController {
     private Button createRoomButton, joinRoomButton, exitButton, refreshRoomButton, refreshUserButton;
 
 
-    String userName;
+    String userName, serverAddress;
     private boolean isRoom = false;  // 방 상태 플래그
 
     private List<Room> rooms;
+
+    String serverIP = ServerIP.getServerAddress();
 
     @FXML
     private void initialize() {
@@ -78,6 +81,7 @@ public class RoomListController {
         userListView.getItems().addAll("User1", "User2", "User3");
 
 
+        serverAddress = ServerIP.getServerAddress();
         // sendRequest to server
         sendRoomListRequest();
         sendUserListRequest();
@@ -221,7 +225,7 @@ public class RoomListController {
         // RoomListService 호출
         System.out.println("roomlistService test");
         RoomListService roomListService = new RoomListService();
-        rooms = roomListService.request(SERVER_ADDRESS);
+        rooms = roomListService.request(serverAddress);
         System.out.println("roomlistService.request: " + rooms);
 
         // 연결에 성공하면 동기화를 위한 thread 실행부분 추가 예정입니다
@@ -238,7 +242,7 @@ public class RoomListController {
         // 유저 목록 가져오기
         System.out.println("userListService test");
         UserListService userListService = new UserListService();
-        List<String> users = userListService.request(SERVER_ADDRESS);
+        List<String> users = userListService.request(serverAddress);
 
         if (users != null) {
             // 유저 목록 업데이트

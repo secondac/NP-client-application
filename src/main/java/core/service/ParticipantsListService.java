@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import core.common.GsonLocalDateTimeAdapter;
+import core.common.ServerIP;
 import core.model.dto.DTO;
 import core.model.dto.RequestType;
 import core.model.dto.response.ListUser;
@@ -19,7 +20,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static core.service.LoginService.SERVER_ADDRESS;
+// import static core.service.LoginService.SERVER_ADDRESS;
 import static core.service.LoginService.SERVER_PORT;
 
 public class ParticipantsListService {
@@ -31,6 +32,7 @@ public class ParticipantsListService {
     private BufferedReader in;
 
     private int roomid;
+    String serverIP = ServerIP.getServerAddress();
 
     public List<String> request(int roomid){
         //
@@ -42,7 +44,7 @@ public class ParticipantsListService {
                 .create();
         DTO dto = new DTO(RequestType.USERLIST, roomid);
 
-        try (Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
+        try (Socket socket = new Socket(serverIP, SERVER_PORT);
              PrintWriter out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 

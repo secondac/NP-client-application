@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import core.common.GsonLocalDateTimeAdapter;
 import core.common.GsonMessageAdapter;
+import core.common.ServerIP;
 import core.model.Message;
 import core.model.dto.DTO;
 import core.model.dto.RequestType;
@@ -16,7 +17,7 @@ import java.net.Socket;
 import java.time.LocalDateTime;
 import java.util.function.Consumer;
 
-import static core.service.LoginService.SERVER_ADDRESS;
+// import static core.service.LoginService.SERVER_ADDRESS;
 import static core.service.LoginService.SERVER_PORT;
 
 
@@ -34,6 +35,7 @@ public class GameService {
     private int requestRoomID;
     private int roomId;
     private Consumer<Message> onMessageReceived;
+    String serverIP = ServerIP.getServerAddress();
 
     //private static final String serveraddress = "43.203.212.19";
     //private static final String serveraddress = "127.0.0.1";
@@ -63,7 +65,7 @@ public class GameService {
      */
     private void initializeSocketStreams() {
         try {
-            socket = new Socket(SERVER_ADDRESS,SERVER_PORT);
+            socket = new Socket(serverIP,SERVER_PORT);
             out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (IOException e) {

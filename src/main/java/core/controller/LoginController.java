@@ -1,5 +1,6 @@
 package core.controller;
 
+import core.common.ServerIP;
 import core.service.LoginService;
 import core.service.RoomListService;
 import core.view.RoomListView;
@@ -10,7 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import static core.service.LoginService.SERVER_ADDRESS;
+// import static core.service.LoginService.SERVER_ADDRESS;
 
 public class LoginController {
 
@@ -33,12 +34,18 @@ public class LoginController {
 
     private String userName;
 
+    public static String serverAddress;
+
     @FXML
     private void handleLogin() {
         String usernameFieldText = usernameField.getText();
         // String serverFieldText = serverField.getText();
         //String serverFieldText = "127.0.0.1";
-        String serverFieldText = SERVER_ADDRESS;
+        // String serverFieldText = SERVER_ADDRESS;
+        serverAddress = serverField.getText();
+        ServerIP.setServerAddress(serverAddress);
+
+
 
         // username이 비어있으면 error msg 출력
         if (usernameFieldText.isEmpty()) {
@@ -53,7 +60,7 @@ public class LoginController {
 
 
         // 로그인 요청
-        boolean loginSuccess = loginService.login(usernameFieldText, serverFieldText);
+        boolean loginSuccess = loginService.login(usernameFieldText, serverAddress);
         System.out.println("Login successful? " + loginSuccess);
 
         // 임시 코드 - 통신 실패시 사용하는 용도

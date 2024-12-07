@@ -1,6 +1,7 @@
 package core.service;
 
 import com.google.gson.Gson;
+import core.common.ServerIP;
 import core.model.dto.DTO;
 import core.model.dto.LoginRequestDTO;
 import core.model.dto.RequestType;
@@ -17,7 +18,7 @@ public class LoginService {
 
     public static final int SERVER_PORT = 10001;
     // public static String SERVER_ADDRESS = "43.203.212.19";
-    public static String SERVER_ADDRESS = "127.0.0.1";
+    // public static String SERVER_ADDRESS = "127.0.0.1";
 
     private final Gson gson = new Gson();
 
@@ -26,6 +27,7 @@ public class LoginService {
     private BufferedReader in;
 
     private String username;
+    String serverAddress = ServerIP.getServerAddress();
 
     /**
      * 사용자 로그인 메서드.

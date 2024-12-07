@@ -28,7 +28,7 @@
 .text-field {
     -fx-text-fill: rgba(56, 56, 56, 0.8);
     -fx-font-family: 'GangwonEduAll Bold';
-    -fx-prompt-text-fill: rgba(192, 192, 192, 0.8);
+    /* -fx-prompt-text-fill: rgba(192, 192, 192, 0.8); */
 }
 
 .text-area{
@@ -43,7 +43,7 @@
 }
 
 #serverField {
-    -fx-background-color: #999999;
+    /* -fx-background-color: #999999; */
 }
 
 #welcomeLabel {
