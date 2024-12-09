@@ -2,9 +2,7 @@ package core.model;
 
 import com.google.gson.annotations.Expose;
 
-/**
- * Message transfer object for chatting mechanism
- */
+
 public class Message {
 
     @Expose

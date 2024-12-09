@@ -15,11 +15,12 @@ import javafx.stage.Stage;
 
 public class LoginController {
 
-    @FXML
-    private TextField serverField;
 
     @FXML
     private Label welcomeLabel;
+
+    @FXML
+    private TextField serverField;
 
     @FXML
     private TextField usernameField;

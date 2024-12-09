@@ -86,6 +86,7 @@ public class GameService {
     public void sendMessage(String message) {
         try {
             String jsonRequest = gson.toJson(new Message(requestRoomID, requestUserName, message));
+            System.out.println(serverIP +"로 전송");
             System.out.println(jsonRequest);
             out.println(jsonRequest);
         } catch (Exception e) {
@@ -182,7 +183,7 @@ public class GameService {
                 case "이미 20번의 질문기회를 사용하셨습니다.":
                     System.out.println("[관리자]: " + message.getMessage());
                     synchronized (this) {
-                        exitRoom(); // 모든 소켓 연결 종료
+                        // exitRoom(); // 모든 소켓 연결 종료
                     }
                     System.out.println("메인 화면으로 돌아갑니다.");
                     break;

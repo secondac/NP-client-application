@@ -19,16 +19,12 @@ public class LoginView {
             FXMLLoader loader = new FXMLLoader(LoginView.class.getResource("loginview.fxml"));
             layout = loader.load();
 
-            Font f = Font.loadFont(ClientMain.class.getResource("font/TRON.ttf").toExternalForm(), 10);
-            System.out.println("Font loaded successfully: " + f.getName());
+            // Font f = Font.loadFont(ClientMain.class.getResource("font/TRON.ttf").toExternalForm(), 10);
+            // System.out.println("Font loaded successfully: " + f.getName());
             Font f2 = Font.loadFont(ClientMain.class.getResource("font/BMDOHYEON.ttf").toExternalForm(), 10);
             System.out.println("Font loaded successfully: " + f2.getName());
             Font f3 = Font.loadFont(ClientMain.class.getResource("font/gangwon_font_bold.ttf").toExternalForm(), 10);
             System.out.println("Font loaded successfully: " + f3.getName());
-
-
-
-
 
             // Stage와 Scene 생성 및 설정
             stage = new Stage();

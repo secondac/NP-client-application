@@ -31,9 +31,9 @@
 
             <VBox alignment="CENTER" prefWidth="300" spacing="5" style="-fx-background-color: #F2FFED; -fx-padding: 0 0 5 5;">
                 <AnchorPane prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #F2FFED;">
-                    <HBox alignment="CENTER_LEFT" spacing="10">
-                        <Label fx:id="currentUserName" prefHeight="26.0" prefWidth="119.0" text="name:" />
-                        <Label fx:id="usernameLabel" prefHeight="20.0" prefWidth="42.0" style="-fx-font-size: 14px;" text="-" />
+                    <HBox fx:id="hbox2" alignment="CENTER_LEFT" spacing="10">
+                        <Label fx:id="currentUserName" prefHeight="26.0" prefWidth="67.0" text="name:" />
+                        <Label fx:id="usernameLabel" prefHeight="44.0" prefWidth="221.0" style="-fx-font-size: 25px;" text="-" />
                     </HBox>
                 </AnchorPane>
 
@@ -44,7 +44,7 @@
                 </AnchorPane>
 
                 <AnchorPane prefHeight="60.0" prefWidth="300.0">
-                    <Button fx:id="exitButton" onAction="#exitService" layoutX="192.0" layoutY="9.0" prefHeight="42.0" prefWidth="108.0" text="종료하기" />
+                    <Button fx:id="exitButton" layoutX="192.0" layoutY="9.0" onAction="#exitService" prefHeight="42.0" prefWidth="108.0" text="종료하기" />
                 </AnchorPane>
             </VBox>
         </HBox>

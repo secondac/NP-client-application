@@ -3,8 +3,6 @@ package core.controller;
 import core.model.Message;
 import core.service.GameService;
 import core.service.ParticipantsListService;
-import core.service.RoomService;
-import core.service.UserListService;
 import core.util.UIUtils;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -18,8 +16,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.net.Socket;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

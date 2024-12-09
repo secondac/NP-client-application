@@ -38,7 +38,6 @@ public class LoginService {
      */
     public boolean login(String username, String serverAddress) {
         try {
-
             socket = new Socket(serverAddress, SERVER_PORT);
             out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -48,34 +47,32 @@ public class LoginService {
             UserLogin userLogin = new UserLogin(username);
             DTO requestDTO = new DTO(requestType, userLogin); // 래핑된 DTO 사용
             String jsonRequest = gson.toJson(requestDTO);
-            System.out.println("Sending JSON to server: " + jsonRequest);
-            System.out.println(serverIP +"로 전송");
+            System.out.println("[Message]: Sending JSON to server: " + jsonRequest);
+            System.out.println("[Message]: " + serverIP +"로 전송");
             out.println(jsonRequest);
 
             // 서버 응답 처리
             String jsonResponse = in.readLine();
-            System.out.println("Received JSON from server: " + jsonResponse);
+            System.out.println("[Message]: Received JSON from server: " + jsonResponse);
 
             if (jsonResponse == null || jsonResponse.isEmpty()) {
-                System.err.println("서버로부터 응답이 없습니다.");
+                System.err.println("[Message]: 서버로부터 응답이 없습니다.");
                 return false;
             }
 
             User userResponse = gson.fromJson(jsonResponse, User.class);
-            System.out.println("Received user: " + userResponse);
+            System.out.println("[Message]: Received user: " + userResponse);
 
-            // 응답이 유효한지 확인
             if (userResponse != null && userResponse.getUsername() != null) {
                 this.username = userResponse.getUsername();
-                // 필요에 따라 추가 필드(예: score)도 저장할 수 있습니다.
                 return true;
             } else {
-                System.err.println("로그인 실패: 서버 응답이 유효하지 않습니다.");
+                System.err.println("[Message]: 로그인 실패: 서버 응답이 유효하지 않습니다.");
                 return false;
             }
 
         } catch (Exception e) {
-            System.err.println("로그인 중 예외 발생:");
+            System.err.println("[Message]: 로그인 중 예외 발생:");
             e.printStackTrace();
             return false;
         }
@@ -89,9 +86,9 @@ public class LoginService {
             if (in != null) in.close();
             if (out != null) out.close();
             if (socket != null && !socket.isClosed()) socket.close();
-            System.out.println("Socket closed.");
+            System.out.println("[Message]: Socket closed.");
         } catch (IOException e) {
-            System.err.println("소켓 닫기 중 예외 발생:");
+            System.err.println("[Message]: 소켓 닫기 중 예외 발생:");
             e.printStackTrace();
         }
     }

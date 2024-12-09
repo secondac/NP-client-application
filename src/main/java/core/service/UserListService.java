@@ -51,17 +51,17 @@ public class UserListService {
 
             String json = gson.toJson(dto);
             out.println(json);
-            System.out.println("USERLIST 요청 JSON 데이터 서버로 전송: " + json);
+            System.out.println("[Message]: USERLIST 요청 JSON 데이터 서버로 전송: " + json);
             System.out.println(serverIP +"로 전송");
 
 
             // 여기서부터 수신
             String responseJson = in.readLine();
             if (responseJson == null || responseJson.isEmpty()) {
-                System.err.println("서버 응답이 비어있습니다.");
+                System.err.println("[Message]: 서버 응답이 비어있습니다.");
                 return null;
             }
-            System.out.println("서버로부터 수신한 JSON 데이터: " + responseJson);
+            System.out.println("[Message]: 서버로부터 수신한 JSON 데이터: " + responseJson);
 
             // JSON 데이터를 ListUser 객체로 변환
 
@@ -69,7 +69,7 @@ public class UserListService {
             ListUser listUser = gson.fromJson(responseJson, listUserType);
 
             // 유저 목록 반환
-            System.out.println("수신한 유저 목록:");
+            System.out.println("[Message]: 수신한 유저 목록:");
             List<String> users = new ArrayList<>(listUser.getUsers());
             for (String user : users) {
                 System.out.println(user);
@@ -91,7 +91,7 @@ public class UserListService {
              */
 
         } catch (Exception e) {
-            System.err.println("USERLIST 요청 처리 중 오류 발생:");
+            System.err.println("[Message]: USERLIST 요청 처리 중 오류 발생:");
             e.printStackTrace();
             return null;
         }

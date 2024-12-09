@@ -59,6 +59,16 @@
 .table-view .column-header {
     -fx-background-color: white;
 }
+.list-view .column-header-background{
+
+}
+
+.list-view .column-header{
+    -fx-background-color: white;
+}
+.list-view .list-cell {
+    -fx-background-color: white;
+}
 
 
 /* 선택된 행 스타일 */
@@ -124,6 +134,13 @@
     -fx-font-size: 20px;
 }
 
+#usernameLabel {
+    -fx-font-size: 22px;
+}
+
+#hbox2{
+    -fx-background-color: white;
+}
 #roomTable{
     -fx-font-family: 'GangwonEduAll Bold';
     -fx-font-size: 24px;
